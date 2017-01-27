@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Tommy-Lim/market-tracker/issues"
   },
-  "homepage": "https://github.com/Tommy-Lim/market-tracker#readme"
+  "homepage": "https://github.com/Tommy-Lim/market-tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "path": "^0.12.7"
+  }
 }
