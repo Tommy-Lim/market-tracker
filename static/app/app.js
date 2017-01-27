@@ -15,6 +15,10 @@ angular.module('App', ['ui.router'])
       url: '/',
       component: 'homeComp'
     })
+    .state('userState', {
+      url: '/user',
+      component: 'userComp'
+    })
 
     $locationProvider.html5Mode(true);
 
