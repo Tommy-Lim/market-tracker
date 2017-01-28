@@ -7,6 +7,7 @@ angular.module('App')
 
 function NewCompCtrl(){
   var newComp = this;
+
 }
 
 NewCompCtrl.$inject = [];
