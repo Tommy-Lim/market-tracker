@@ -17,8 +17,17 @@
   },
   "homepage": "https://github.com/Tommy-Lim/market-tracker#readme",
   "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.16.0",
+    "csslint": "^1.0.5",
+    "dotenv": "^4.0.0",
+    "eslint": "^3.14.1",
     "express": "^4.14.0",
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.2.1",
+    "mongoose": "^4.7.9",
+    "morgan": "^1.7.0",
     "path": "^0.12.7"
   }
 }
