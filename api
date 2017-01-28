@@ -4,7 +4,7 @@ A "[ ]" indicates that the value is an array containing 0 or more instances of t
 
 CompanyLookup
 http://dev.markitondemand.com/Api/v2/Lookup
-http://dev.markitondemand.com/MODApis/Api/v2/Lookup/jsonp?input=NFLX&callback=myFunction
+http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input=alphabet
 
 StockQuote
 http://dev.markitondemand.com/Api/v2/Quote
