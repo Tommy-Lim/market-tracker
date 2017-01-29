@@ -11,8 +11,8 @@ var secret = process.env.JWT_SECRET;
 
 // Mongoose models and connection
 var mongoose = require('mongoose');
-var user = require('./models/user');
-var stock = require('./models/stock');
+// var user = require('./models/user');
+// var stock = require('./models/stock');
 mongoose.connect('mongodb://localhost/markettracker');
 
 // Decode POST and PUT data in JSON and URL encoded formats

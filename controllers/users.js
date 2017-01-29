@@ -1,7 +1,11 @@
 var express = require('express');
-var User = require('../models/user');
 var router = express.Router();
+var models = require('../models/schemas');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/markettracker');
 
-// routes...
+
+// Routes...
+
 
 module.exports = router;
