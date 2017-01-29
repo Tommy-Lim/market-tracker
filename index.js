@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
-
+require('dotenv').config();
 
 // JSON web token dependencies including secret key to sign token
 var expressJWT = require('express-jwt');
@@ -25,15 +25,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('morgan')('dev'));
 
 // API layers
-app.use('/api/users', require('./controllers/users'))
-app.use('/api/stocks', require('./controllers/stocks'))
+app.use('/api/users', expressJWT({secret: secret}).unless({
+  path: [{url: '/api/users', methods:['POST']}]
+}), require('./controllers/users'));
+app.use('/api/stocks', require('./controllers/stocks'));
+app.use('/api/purchased', expressJWT({secret: secret}), require('./controllers/purchased'));
+
 
 // Middleware will check if JWT did not authorize user and return message
 app.use(function(err, req, res, next){
   if(err.name === 'UnauthorizedError'){
     res.status(401).send({message: 'You need an authorization token to view this information'});
   }
-})
+});
 
 // POST API layers
 app.post('/api/auth', function(req, res){
@@ -57,7 +61,7 @@ app.post('/api/auth', function(req, res){
   })
 })
 
-// TODO: test routes:
+// Test routes:
 app.get('/api/users', function(req, res){
   console.log("res: ", res);
 })
