@@ -1,4 +1,4 @@
-var models = require('./models/schemas');
+var models = require('../models/schemas');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/markettracker');
 

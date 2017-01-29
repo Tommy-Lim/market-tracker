@@ -57,6 +57,15 @@ app.post('/api/auth', function(req, res){
   })
 })
 
+// TODO: test routes:
+app.get('/api/users', function(req, res){
+  console.log("res: ", res);
+})
+
+app.get('/api/stocks', function(req, res){
+  console.log("res: ", res);
+})
+
 
 // GET root - Send index.html
 app.get('/*', function(req, res){

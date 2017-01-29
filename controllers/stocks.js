@@ -7,5 +7,10 @@ var mongoose = require('mongoose');
 
 // Routes....
 
+router.route('/')
+.get(function(req, res){
+  return res.send({msg: "stocks / get route hit"});
+})
+
 
 module.exports = router;
