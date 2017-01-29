@@ -11,8 +11,7 @@ var secret = process.env.JWT_SECRET;
 
 // Mongoose models and connection
 var mongoose = require('mongoose');
-// var user = require('./models/user');
-// var stock = require('./models/stock');
+var models = require('./models/schemas');
 mongoose.connect('mongodb://localhost/markettracker');
 
 // Decode POST and PUT data in JSON and URL encoded formats
@@ -38,7 +37,7 @@ app.use(function(err, req, res, next){
 
 // POST API layers
 app.post('/api/auth', function(req, res){
-  User.findOne({email: req.body.email}, function(err, user){
+  models.User.findOne({email: req.body.email}, function(err, user){
     // return 401 error if error or no user
     if(err || user){
       return res.status(401).send({message: 'User not found'});
