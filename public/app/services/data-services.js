@@ -47,6 +47,11 @@ function DataServices($http){
           Symbol: "AAPL",
           Type: "price",
           Params: ["c"]
+        },
+        {
+          Symbol: "GOOGL",
+          Type: "price",
+          Params: ["c"]
         }
       ]
     };
