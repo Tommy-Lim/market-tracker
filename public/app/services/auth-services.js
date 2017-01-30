@@ -54,10 +54,11 @@ function AuthServices($window, $http, $location){
       email: 'username@email.com',
       password: 'password'
     }
+    var authScope = this;
     $http.post('/api/auth', user).then(function success(res){
       console.log("success: ", res);
-      AuthServices.saveToken(res.data.token);
-      location.path('/');
+      authScope.saveToken(res.data.token);
+      $location.path('/');
     }, function error(res){
       console.log("error: ", res);
     })
