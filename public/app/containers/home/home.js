@@ -5,9 +5,10 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl(DataServices){
+function HomeCompCtrl(DataServices, AuthServices){
   var homeComp = this;
   DataServices.test();
+  AuthServices.test();
 }
 
-HomeCompCtrl.$inject = ['DataServices'];
+HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];

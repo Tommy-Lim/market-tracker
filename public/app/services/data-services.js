@@ -4,7 +4,7 @@ angular.module('App')
 function DataServices(){
 
   this.test = function(){
-    console.log("hello world");
+    console.log("Data Services hit");
   }
 
 }
