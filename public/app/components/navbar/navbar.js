@@ -8,11 +8,6 @@ angular.module('App')
 function NavbarCompCtrl(AuthServices){
   var navbarComp = this;
 
-  navbarComp.login = function(){
-    console.log("logging in");
-    AuthServices.userLogin();
-  }
-
   navbarComp.logout = function(){
     console.log("logging out");
     AuthServices.userLogout();

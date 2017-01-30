@@ -43,25 +43,18 @@ function AuthServices($window, $http, $location){
     }
   }
 
-  this.userSignup = function(){
-    var user = {
-      email: 'username@email.com',
-      password: 'password'
-    }
+  this.userSignup = function(user){
+    var authScope = this;
     $http.post('/api/users', user).then(function success(res){
       console.log("post success", res);
-      $location.path('/');
+      authScope.userLogin(user);
+      // $location.path('/');
     }, function failure(res){
       console.log("post failure", res);
     })
   }
 
-  this.userLogin = function(){
-    console.log("logging in");
-    var user = {
-      email: 'username@email.com',
-      password: 'password'
-    }
+  this.userLogin = function(user){
     var authScope = this;
     $http.post('/api/auth', user).then(function success(res){
       console.log("success: ", res);
