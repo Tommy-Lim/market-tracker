@@ -64,7 +64,7 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
-      console.log("chart success: ", res.data);
+      console.log("chart success");
       return res.data;
     }, function failure(res) {
         console.log("chart failure");
