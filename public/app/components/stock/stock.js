@@ -1,6 +1,6 @@
 angular.module('App')
 .component('stockComp', {
-  templateUrl: 'app/containers/stock/stock.html',
+  templateUrl: 'app/components/stock/stock.html',
   controller: StockCompCtrl,
   controllerAs: 'stockComp',
 });

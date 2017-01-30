@@ -10,11 +10,12 @@ function HomeCompCtrl(DataServices, AuthServices){
 
   // AuthServices.userSignup();
   // AuthServices.userLogin();
+  // AuthServices.isLoggedIn();
   // AuthServices.userLogout();
 
   // DataServices.searchStocks();
   // DataServices.details();
-  DataServices.chart();
+  // DataServices.chart();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];
