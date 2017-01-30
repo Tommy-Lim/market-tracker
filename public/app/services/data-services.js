@@ -39,20 +39,14 @@ function DataServices($http){
 
   this.chart = function() {
     var chartDataObject = {
-      Normalized: true,
-      StartDate: "",
-      EndDate: "",
-      EndOffsetDays: 1,
-      NumberOfDays: 1,
-      DataPeriod: 1,
-      DataInterval: 1,
-      LabelPeriod: 1,
-      LabelInterval: 1,
+      Normalized: false,
+      NumberOfDays: 365,
+      DataPeriod: "Day",
       Elements:[
         {
           Symbol: "AAPL",
           Type: "price",
-          Params: []
+          Params: ["c"]
         }
       ]
     };
@@ -64,11 +58,11 @@ function DataServices($http){
       method: "GET",
     }
 
-    $http(req).then(function success(res) {
-      console.log("success");
-      console.log(res);
+    return $http(req).then(function success(res) {
+      console.log("chart success: ", res.data);
+      return res.data;
     }, function failure(res) {
-        console.log("failure");
+        console.log("chart failure");
     });
   }
 
