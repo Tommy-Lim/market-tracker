@@ -57,6 +57,7 @@ function AuthServices($window, $http, $location){
   }
 
   this.userLogin = function(){
+    console.log("logging in");
     var user = {
       email: 'username@email.com',
       password: 'password'

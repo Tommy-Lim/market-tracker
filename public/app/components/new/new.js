@@ -1,6 +1,6 @@
 angular.module('App')
 .component('newComp', {
-  templateUrl: 'app/containers/new/new.html',
+  templateUrl: 'app/components/new/new.html',
   controller: NewCompCtrl,
   controllerAs: 'newComp'
 });

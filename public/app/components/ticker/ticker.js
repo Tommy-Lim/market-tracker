@@ -1,6 +1,6 @@
 angular.module('App')
 .component('tickerComp', {
-  templateUrl: 'app/containers/ticker/ticker.html',
+  templateUrl: 'app/components/ticker/ticker.html',
   controller: TickerCompCtrl,
   controllerAs: 'tickerComp',
   });
