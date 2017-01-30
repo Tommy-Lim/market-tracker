@@ -19,6 +19,13 @@ function AuthServices($window, $http, $location){
     $window.localStorage.removeItem('secret-token');
   }
 
+  this.userLogout = function(){
+    var authScope = this;
+    console.log("My token before removing:", authScope.getToken());
+    authScope.removeToken();
+    console.log("My token after removing:", authScope.getToken());
+  }
+
   this.isLoggedIn =  function() {
     var token = this.getToken();
     return token ? true : false;
