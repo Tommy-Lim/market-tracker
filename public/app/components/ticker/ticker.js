@@ -3,5 +3,8 @@ angular.module('App')
   templateUrl: 'app/containers/ticker/ticker.html',
   controller: TickerCompCtrl,
   controllerAs: 'tickerComp',
-
   });
+
+  function TickerCompCtrl(){
+
+  }

@@ -3,5 +3,8 @@ angular.module('App')
   templateUrl: 'app/containers/stock/stock.html',
   controller: StockCompCtrl,
   controllerAs: 'stockComp',
-
 });
+
+function StockCompCtrl(){
+
+}

@@ -4,3 +4,7 @@ angular.module('App')
   controller: ChartCompCtrl,
   controllerAs: 'chartComp',
 });
+
+function ChartCompCtrl(){
+
+}

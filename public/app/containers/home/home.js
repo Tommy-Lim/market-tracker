@@ -10,6 +10,8 @@ function HomeCompCtrl(DataServices, AuthServices){
   DataServices.test();
   AuthServices.test();
   DataServices.searchStocks();
+  DataServices.details();
+  DataServices.chart();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];
