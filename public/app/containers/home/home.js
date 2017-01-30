@@ -9,12 +9,10 @@ function HomeCompCtrl(DataServices, AuthServices){
   var homeComp = this;
 
   // AuthServices.userSignup();
-  AuthServices.userLogin();
-  // DataServices.test();
-  // AuthServices.test();
+  // AuthServices.userLogin();
 
-  // DataServices.searchStocks();
-  // DataServices.details();
+  DataServices.searchStocks();
+  DataServices.details();
   // DataServices.chart();
 }
 

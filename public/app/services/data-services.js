@@ -10,15 +10,13 @@ function DataServices($http){
   this.searchStocks = function() {
     var stock = "A";
     var req = {
-      url: 'http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json',
+      url: '/api/stocks/lookup/' + stock,
       method: "GET",
-      params: {
-        input: stock,
-      }
     }
 
     $http(req).then(function success(res) {
       console.log("success");
+      console.log(res);
     }, function failure(res) {
         console.log("failure");
     });
@@ -26,19 +24,17 @@ function DataServices($http){
 
   this.details = function() {
     var oneStock = "BA";
-    var req = {
-      url: 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json',
-      method: "GET",
-      params: {
-        symbol: oneStock,
-      }
-    }
+      var req = {
+        url: '/api/stocks/quote/' + oneStock,
+        method: "GET",
+        }
 
-    $http(req).then(function success(res) {
-      console.log("success")
-    }, function failure(res) {
-        console.log("failure");
-    });
+      $http(req).then(function success(res) {
+        console.log("success");
+        console.log(res);
+      }, function failure(res) {
+          console.log("failure");
+      });
   }
 
   this.chart = function() {
@@ -46,10 +42,7 @@ function DataServices($http){
     var req = {
       url: 'http://dev.markitondemand.com/Api/v2/InteractiveChart/json',
       method: "GET",
-      params: {
-        parameters: chart,
       }
-    }
 
     $http(req).then(function success(res) {
       console.log("success")
