@@ -14,56 +14,27 @@ var googleStock = {
   symbol: "GOOGL"
 }
 
-models.Stock.findOne({
-  name: "Apple"
-}, function(err, stock){
-  console.log("err: ", err);
-  console.log("stock: ", stock);
-  if(!stock){
-    models.Stock.create(
-      appleStock,
-      function(err, created){
-        console.log("created stock");
-      }
-    )
-  } else{
-    console.log("stock found");
-  }
-})
+function createStock(newStock){
+  models.Stock.findOne({
+    name: newStock.name
+  }, function(err, stock){
+    console.log("err: ", err);
+    console.log("stock: ", stock);
+    if(!stock){
+      models.Stock.create(
+        newStock,
+        function(err, created){
+          console.log("created stock: ", created.name);
+        }
+      )
+    } else{
+      console.log("stock found: ", stock.name);
+    }
+  })
+}
 
-models.Stock.findOne({
-  name: "Apple"
-}, function(err, stock){
-  console.log("err: ", err);
-  console.log("stock: ", stock);
-  if(!stock){
-    models.Stock.create(
-      appleStock,
-      function(err, created){
-        console.log("created stock");
-      }
-    )
-  } else{
-    console.log("stock found");
-  }
-})
-
-models.Stock.findOne({
-  name: "Google"
-}, function(err, stock){
-  console.log("err: ", err);
-  console.log("stock: ", stock);
-  if(!stock){
-    models.Stock.create(
-      googleStock,
-      function(err, created){
-        console.log("created stock");
-      }
-    )
-  } else{
-    console.log("stock found");
-  }
-})
+// createStock(appleStock);
+// createStock(googleStock);
 
 
 // CREATE USERS
@@ -78,56 +49,72 @@ var user2 = {
   password: "password"
 }
 
-models.User.findOne({
-  email: "user1@email.com"
-}, function(err, user){
-  console.log("err: ", err);
-  console.log("user: ", user);
-  if(!user){
-    console.log("going to create user...");
-    models.User.create(
-      user1,
-      function(err, created){
-        console.log("created user");
-      }
-    )
-  } else{
-    console.log("user found");
-  }
-})
+function createUser(newUser){
+  models.User.findOne({
+    email: newUser.email
+  }, function(err, user){
+    console.log("err: ", err);
+    console.log("user: ", user);
+    if(!user){
+      console.log("going to create new user");
+      models.User.create(
+        newUser,
+        function(err, created){
+          console.log("created user: ", created.email);
+        }
+      )
+    } else{
+      console.log("user found: ", user.email);
+    }
+  })
+}
 
-models.User.findOne({
-  email: "user1@email.com"
-}, function(err, user){
-  console.log("err: ", err);
-  console.log("user: ", user);
-  if(!user){
-    console.log("going to create user...");
-    models.User.create(
-      user1,
-      function(err, created){
-        console.log("created user");
-      }
-    )
-  } else{
-    console.log("user found");
-  }
-})
+// createUser(user1);
+// createUser(user2);
 
-models.User.findOne({
-  email: "user2@email.com"
-}, function(err, user){
-  console.log("err: ", err);
-  console.log("user: ", user);
-  if(!user){
-    console.log("going to create user...");
-    models.User.create(
-      user2,
-      function(err, created){
-        console.log("created user");
-      }
-    )
-  } else{
-    console.log("user found");
-  }
-})
+
+// CREATE PURCHASED
+
+var purchased1 = {
+  userEmail: "user2@email.com",
+  stock: {
+    name: "Apple",
+    symbol: "AAPL"
+  },
+  quantity: 10
+}
+
+var purchased2 = {
+  userEmail: "user1@email.com",
+  stock: {
+    name: "Google",
+    symbol: "GOOGL"
+  },
+  quantity: 15
+}
+
+function createPurchased(newPurchase){
+  console.log("going to create purchase", newPurchase.stock.name, "for", newPurchase.userEmail);
+  models.Purchased.findOne({
+    userEmail: newPurchase.userEmail,
+    stock: {
+      name: newPurchase.stock.name
+    }
+  }, function(err, purchase){
+    console.log("purchase error: ", err);
+    console.log("purchase: ", purchase);
+    if(!purchase){
+      models.Purchased.create(
+        newPurchase,
+        function(err, created){
+          console.log("purchase created: ", created);
+        }
+      )
+    } else{
+      console.log("purchase found: ", newPurchase.stock.name, "for", newPurchase.userEmail);
+    }
+  })
+}
+
+createPurchased(purchased1);
+createPurchased(purchased2);

@@ -24,15 +24,18 @@ var StockSchema = new mongoose.Schema({
 });
 var Stock = mongoose.model('Stock', StockSchema);
 
+
 // PURCHASED SCHEMA
 
 var PurchasedSchema = new mongoose.Schema({
+  userEmail: String,
   stock: StockSchema,
   quantity: Number,
 },{
   collection: 'Purchased'
 });
 var Purchased = mongoose.model('Purchased', PurchasedSchema);
+
 
 // USER SCHEMA
 
@@ -72,9 +75,12 @@ UserSchema.methods.authenticated = function(password){
 
 UserSchema.pre('save', function(next){
   if(!this.isModified('password')){
+    // if password not changed, do nothing:
     next();
   } else{
+    // if password modified, hash it:
     this.password = bcrypt.hashSync(this.password, 10);
+    next();
   }
 })
 
