@@ -10,7 +10,7 @@ function DataServices($http){
   this.searchStocks = function() {
     var stock = "A";
     var req = {
-      url: '/api/stocks/' + stock,
+      url: '/api/stocks/lookup/' + stock,
       method: "GET",
     }
 
@@ -23,17 +23,15 @@ function DataServices($http){
   }
 
   this.details = function() {
-    var oneStock = "A";
+    var oneStock = "BA";
       var req = {
-        url: 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json',
+        url: '/api/stocks/quote/' + oneStock,
         method: "GET",
-        params: {
-          symbol: oneStock,
         }
-      }
 
       $http(req).then(function success(res) {
-        console.log("success")
+        console.log("success");
+        console.log(res);
       }, function failure(res) {
           console.log("failure");
       });
@@ -44,10 +42,7 @@ function DataServices($http){
     var req = {
       url: 'http://dev.markitondemand.com/Api/v2/InteractiveChart/json',
       method: "GET",
-      params: {
-        parameters: chart,
       }
-    }
 
     $http(req).then(function success(res) {
       console.log("success")

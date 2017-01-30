@@ -13,7 +13,7 @@ router.route('/')
   return res.send({msg: "stocks / get route hit"});
 })
 
-router.route('/:query')
+router.route('/lookup/:query')
 .get(function(req, res) {
   console.log(req.params.query);
   var url = "http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input=" + req.params.query;
@@ -22,6 +22,19 @@ router.route('/:query')
     res.send(body);
   })
 });
+
+router.route('/quote/:query')
+.get(function(req, res) {
+  console.log(req.params.query);
+  var url = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=" + req.params.query;
+  request.get(url, function(error, response, body) {
+    // var results = JSON.parse(body);
+    res.send(body);
+  })
+});
+
+
+
 
 
 
