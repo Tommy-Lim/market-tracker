@@ -7,8 +7,10 @@ angular.module('App')
 
 function HomeCompCtrl(DataServices, AuthServices){
   var homeComp = this;
-  DataServices.test();
-  AuthServices.test();
+  // DataServices.test();
+  // AuthServices.test();
+  // AuthServices.userSignup();
+  AuthServices.userLogin();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];

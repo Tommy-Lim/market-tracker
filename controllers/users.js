@@ -9,12 +9,27 @@ var mongoose = require('mongoose');
 
 router.route('/')
 .get(function(req, res){
-  return res.send({msg: "users / get route hit"});
+  return res.send({msg: "auth / get route hit"});
+})
+.post(function(req, res){
+  models.User.findOne({email: req.body.email}, function(err, user){
+    if(user){
+      return res.status(400).send({message: "email already exists"});
+    } else{
+      models.User.create(req.body, function(err, created){
+        if(err){
+          return res.status(500).send(err);
+        } else{
+          return res.send(user);
+        }
+      })
+    }
+  })
 })
 
 router.route('/:id')
 .get(function(req, res){
-  return res.send({msg: "users /:id get route hit", id: req.params.id});
+  return res.send({msg: "auth /:id get route hit", id: req.params.id});
 })
 
 

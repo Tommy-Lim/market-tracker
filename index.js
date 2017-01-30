@@ -41,9 +41,10 @@ app.use(function(err, req, res, next){
 
 // POST API layers
 app.post('/api/auth', function(req, res){
+  console.log(req.body.email);
   models.User.findOne({email: req.body.email}, function(err, user){
     // return 401 error if error or no user
-    if(err || user){
+    if(err || !user){
       return res.status(401).send({message: 'User not found'});
     }
 

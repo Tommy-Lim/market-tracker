@@ -1,22 +1,22 @@
 angular.module('App')
 .service('AuthServices', AuthServices);
 
-function AuthServices($window){
+function AuthServices($window, $http, $location){
 
   this.test = function(){
     console.log("Auth Services hit");
   }
 
   this.saveToken =  function(token) {
-    $window.localStorage['secretrecipes-token'] = token;
+    $window.localStorage['secret-token'] = token;
   }
 
   this.getToken =  function() {
-    return $window.localStorage['secretrecipes-token'];
+    return $window.localStorage['secret-token'];
   }
 
   this.removeToken =  function() {
-    $window.localStorage.removeItem('secretrecipes-token');
+    $window.localStorage.removeItem('secret-token');
   }
 
   this.isLoggedIn =  function() {
@@ -36,6 +36,33 @@ function AuthServices($window){
     }
   }
 
+  this.userSignup = function(){
+    var user = {
+      email: 'username@email.com',
+      password: 'password'
+    }
+    $http.post('/api/users', user).then(function success(res){
+      console.log("post success", res);
+      $location.path('/');
+    }, function failure(res){
+      console.log("post failure", res);
+    })
+  }
+
+  this.userLogin = function(){
+    var user = {
+      email: 'username@email.com',
+      password: 'password'
+    }
+    $http.post('/api/auth', user).then(function success(res){
+      console.log("success: ", res);
+      AuthServices.saveToken(res.data.token);
+      location.path('/');
+    }, function error(res){
+      console.log("error: ", res);
+    })
+  }
+
 }
 
-AuthServices.$inject = ['$window'];
+AuthServices.$inject = ['$window', '$http', '$location'];

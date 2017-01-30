@@ -33,8 +33,8 @@ function createStock(newStock){
   })
 }
 
-// createStock(appleStock);
-// createStock(googleStock);
+createStock(appleStock);
+createStock(googleStock);
 
 
 // CREATE USERS
@@ -69,8 +69,8 @@ function createUser(newUser){
   })
 }
 
-// createUser(user1);
-// createUser(user2);
+createUser(user1);
+createUser(user2);
 
 
 // CREATE PURCHASED
