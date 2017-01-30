@@ -11,9 +11,9 @@ function HomeCompCtrl(DataServices, AuthServices){
   // AuthServices.userSignup();
   // AuthServices.userLogin();
 
-  DataServices.searchStocks();
-  DataServices.details();
-  // DataServices.chart();
+  // DataServices.searchStocks();
+  // DataServices.details();
+  DataServices.chart();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];

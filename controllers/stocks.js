@@ -33,9 +33,15 @@ router.route('/quote/:query')
   })
 });
 
-
-
-
+router.route('/chart/:query')
+.get(function(req, res) {
+  console.log(req.params.query);
+  var url = "http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?parameters=" + req.params.query;
+  request.get(url, function(error, response, body) {
+    // var results = JSON.parse(body);
+    res.send(body);
+  })
+});
 
 
 module.exports = router;

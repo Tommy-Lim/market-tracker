@@ -38,14 +38,35 @@ function DataServices($http){
   }
 
   this.chart = function() {
-    var chart = "BA";
+    var chartDataObject = {
+      Normalized: true,
+      StartDate: "",
+      EndDate: "",
+      EndOffsetDays: "",
+      NumberOfDays: "",
+      DataPeriod: "",
+      DataInterval: "",
+      LabelPeriod: "",
+      LabelInterval: "",
+      Elements:[
+        {
+          Symbol: "AAPL",
+          Type: "price",
+          Params: []
+        }
+      ]
+    };
+    var json = JSON.stringify(chartDataObject);
+    var url = encodeURIComponent(json);
+    console.log(url);
     var req = {
-      url: 'http://dev.markitondemand.com/Api/v2/InteractiveChart/json',
+      url: '/api/stocks/chart/' + url,
       method: "GET",
-      }
+    }
 
     $http(req).then(function success(res) {
-      console.log("success")
+      console.log("success");
+      console.log(res);
     }, function failure(res) {
         console.log("failure");
     });
