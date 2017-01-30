@@ -9,13 +9,13 @@ function HomeCompCtrl(DataServices, AuthServices){
   var homeComp = this;
 
   // AuthServices.userSignup();
-  AuthServices.userLogin();
-  DataServices.test();
-  AuthServices.test();
+  // AuthServices.userLogin();
+  // DataServices.test();
+  // AuthServices.test();
 
   DataServices.searchStocks();
-  DataServices.details();
-  DataServices.chart();
+  // DataServices.details();
+  // DataServices.chart();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];
