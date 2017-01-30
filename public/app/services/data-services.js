@@ -42,12 +42,12 @@ function DataServices($http){
       Normalized: true,
       StartDate: "",
       EndDate: "",
-      EndOffsetDays: "",
-      NumberOfDays: "",
-      DataPeriod: "",
-      DataInterval: "",
-      LabelPeriod: "",
-      LabelInterval: "",
+      EndOffsetDays: 1,
+      NumberOfDays: 1,
+      DataPeriod: 1,
+      DataInterval: 1,
+      LabelPeriod: 1,
+      LabelInterval: 1,
       Elements:[
         {
           Symbol: "AAPL",
