@@ -19,6 +19,18 @@ angular.module('App', ['ui.router'])
       url: '/user',
       component: 'userComp'
     })
+    .state('stockState', {
+      url: '/stock',
+      component: 'stockComp'
+    })
+    .state('tickerState', {
+      url: '/ticker',
+      component: 'tickerComp'
+    })
+    .state('chartState', {
+      url: '/chart',
+      component: 'chartComp'
+    })
 
     $locationProvider.html5Mode(true);
 
