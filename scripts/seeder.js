@@ -96,18 +96,25 @@ var purchased2 = {
 function createPurchased(newPurchase){
   console.log("going to create purchase", newPurchase.stock.name, "for", newPurchase.userEmail);
   models.Purchased.findOne({
-    userEmail: newPurchase.userEmail,
-    stock: {
-      name: newPurchase.stock.name
-    }
-  }, function(err, purchase){
+    'userEmail': newPurchase.userEmail,
+    'stock.name': newPurchase.stock.name
+  }, 'userEmail stock', function(err, purchase){
     console.log("purchase error: ", err);
-    console.log("purchase: ", purchase);
+    console.log("purchase found: ", purchase);
     if(!purchase){
       models.Purchased.create(
         newPurchase,
         function(err, created){
-          console.log("purchase created: ", created);
+          console.log("purchase created: ", created.stock.name);
+          models.User.findOne({
+            email: newPurchase.userEmail
+          }, function(err, user){
+            console.log("found user: ", user.email);
+            console.log("add to user created:", created);
+            user.purchased.push(created);
+            user.save();
+          })
+
         }
       )
     } else{
