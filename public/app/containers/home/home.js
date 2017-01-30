@@ -10,6 +10,7 @@ function HomeCompCtrl(DataServices, AuthServices){
 
   // AuthServices.userSignup();
   // AuthServices.userLogin();
+  // AuthServices.userLogout();
 
   // DataServices.searchStocks();
   // DataServices.details();
