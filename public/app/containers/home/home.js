@@ -16,10 +16,10 @@ function HomeCompCtrl(DataServices, AuthServices){
   // DataServices.searchStocks();
   // DataServices.details();
 
-  DataServices.chart().then(function(data){
-    homeComp.foo = data;
-    console.log("homeComp results: ", homeComp.foo);
-  });
+  // DataServices.chart().then(function(data){
+  //   homeComp.foo = data;
+  //   console.log("homeComp results: ", homeComp.foo);
+  // });
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];
