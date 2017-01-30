@@ -15,7 +15,7 @@ function HomeCompCtrl(DataServices, AuthServices){
 
   // DataServices.searchStocks();
   // DataServices.details();
-  // DataServices.chart();
+  DataServices.chart();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];
