@@ -14,7 +14,7 @@ function HomeCompCtrl(DataServices, AuthServices, Auth){
   // Auth.userLogout();
 
   // DataServices.searchStocks();
-  // DataServices.details();
+  // DataServices.getStockDetails();
 
   // DataServices.getChartData().then(function(data){
   //   homeComp.foo = data;

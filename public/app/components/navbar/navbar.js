@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'navbarComp'
 });
 
-function NavbarCompCtrl(Auth){
+function NavbarCompCtrl($state, Auth){
   var navbarComp = this;
 
   navbarComp.logout = function(){
@@ -19,4 +19,4 @@ function NavbarCompCtrl(Auth){
 
 }
 
-NavbarCompCtrl.$inject = ['Auth'];
+NavbarCompCtrl.$inject = ['$state', 'Auth'];

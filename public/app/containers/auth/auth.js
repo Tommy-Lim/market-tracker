@@ -1,6 +1,6 @@
 angular.module('App')
 .component('authComp', {
-  templateUrl: 'app/components/auth/auth.html',
+  templateUrl: 'app/containers/auth/auth.html',
   controller: AuthCompCtrl,
   controllerAs: 'authComp'
 });

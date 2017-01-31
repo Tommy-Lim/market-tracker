@@ -3,10 +3,9 @@ angular.module('App')
 
 function DataServices($http){
 
-  this.searchStocks = function() {
-    var stock = "A";
+  this.searchStocks = function(query) {
     var req = {
-      url: '/api/stocks/lookup/' + stock,
+      url: '/api/stocks/lookup/' + query,
       method: "GET",
     }
 
@@ -17,12 +16,11 @@ function DataServices($http){
     });
   }
 
-  this.details = function() {
-    var oneStock = "BA";
+  this.getStockDetails = function(stockSymbol) {
     var req = {
-      url: '/api/stocks/quote/' + oneStock,
+      url: '/api/stocks/quote/' + stockSymbol,
       method: "GET",
-      }
+    }
 
     $http(req).then(function success(res) {
       console.log("success");

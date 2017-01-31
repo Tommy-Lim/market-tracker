@@ -18,9 +18,11 @@
     <!-- Angular containers -->
     <script src="app/containers/home/home.js"></script>
     <script src="app/containers/user/user.js"></script>
+    <script src="app/containers/auth/auth.js"></script>
+    <script src="app/containers/portfolio/portfolio.js"></script>
+    <script src="app/containers/search/search.js"></script>
     <!-- Angular components -->
     <script src="app/components/navbar/navbar.js"></script>
-    <script src="app/components/auth/auth.js"></script>
     <script src="app/components/chart/chart.js"></script>
     <script src="app/components/compositeChart/compositeChart.js"></script>
     <script src="app/components/stock/stock.js"></script>
@@ -36,12 +38,15 @@
 
     <!-- Style Sheets -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/navandfooter.css" />
 
   </head>
   <body ng-app="App">
     <navbar-comp></navbar-comp>
 
-    <div ui-view></div>
+    <div class="main-container">
+        <div ui-view></div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -50,5 +55,6 @@
     <!-- Highcharts -->
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="css/chart.js"></script>
   </body>
 </html>

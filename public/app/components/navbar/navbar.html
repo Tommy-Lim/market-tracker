@@ -1,3 +1,7 @@
-<h1>navbar</h1>
-<auth-comp ng-hide="navbarComp.isLoggedIn()"></auth-comp>
-<button ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button>
+<div>
+  <button ui-sref="homeState()">Home</button>
+  <button ui-sref="searchState">Search</button>
+  <button ui-sref="portfolioState">Portfolio</button>
+  <button ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button>
+  <button ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</button>
+</div>

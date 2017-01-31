@@ -20,6 +20,10 @@ angular.module('App', ['ui.router'])
       url: '/user',
       component: 'userComp'
     })
+    .state('authState', {
+      url: '/auth',
+      component: 'authComp'
+    })
     .state('stockState', {
       url: '/stock',
       component: 'stockComp'
@@ -31,6 +35,14 @@ angular.module('App', ['ui.router'])
     .state('chartState', {
       url: '/chart',
       component: 'chartComp'
+    })
+    .state('searchState', {
+      url: '/search',
+      component: 'searchComp'
+    })
+    .state('portfolioState', {
+      url: '/portfolio',
+      component: 'portfolioComp'
     })
 
   }
