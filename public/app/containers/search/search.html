@@ -1,5 +1,4 @@
 <div class="container search-container">
-  <h2>Search</h2>
   <form ng-submit="searchComp.search(searchComp.query)">
     <div class="form-group">
       <input name="search" class="form-control" placeholder="search" ng-model="searchComp.query" required />
@@ -7,7 +6,7 @@
     <input type="submit" />
   </form>
 
-  <h2 ng-hide="searchComp.results == null">{{searchComp.results.length}} Results</h2>
+  <h4 ng-hide="searchComp.results == null">{{searchComp.results.length}} Results</h4>
 
   <a ng-repeat="result in searchComp.results" ui-sref="stockState({symbol: result.Symbol})">
     <div class="panel">
