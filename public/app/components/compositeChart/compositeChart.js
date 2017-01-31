@@ -1,4 +1,5 @@
-angular.module('App').component('compositeChartComp', {
+angular.module('App')
+.component('compositeChartComp', {
     templateUrl: 'app/components/compositeChart/compositeChart.html',
     controller: CompositeChartCompCtrl,
     controllerAs: 'compositeChartComp'

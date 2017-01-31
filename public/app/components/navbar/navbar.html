@@ -1,7 +1,7 @@
 <div>
   <button ui-sref="homeState()">Home</button>
   <button ui-sref="searchState">Search</button>
-  <button ui-sref="portfolioState">Portfolio</button>
+  <button ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</button>
   <button ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button>
   <button ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</button>
 </div>

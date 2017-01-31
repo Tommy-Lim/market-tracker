@@ -17,9 +17,8 @@ function Auth($window, $location){
 
   this.userLogout = function(){
     var authScope = this;
-    console.log("My token before removing:", authScope.getToken());
     authScope.removeToken();
-    console.log("My token after removing:", authScope.getToken());
+    $location.path('/auth');
   }
 
   this.isLoggedIn =  function() {
@@ -57,7 +56,7 @@ function AuthServices($http, $location, Auth){
     $http.post('/api/auth', user).then(function success(res){
       console.log("success: ", res);
       Auth.saveToken(res.data.token);
-      $location.path('/');
+      $location.path('/portfolio');
     }, function error(res){
       console.log("error: ", res);
     })
