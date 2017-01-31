@@ -1,1 +1,6 @@
-<h1>chart list component</h1>
+<div class="row">
+  <div ng-repeat="symbol in chartListComp.arr track by $index" class="col-lg-4 col-sm-6">
+    <div class="chart-list-chart" id="container{{$index}}" style="height: 400px; min-width: 310px"></div>
+    <br />
+  </div>
+</div>
