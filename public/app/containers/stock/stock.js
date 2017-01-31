@@ -6,10 +6,12 @@ angular.module('App')
 });
 
 function StockCompCtrl($state, DataServices){
+  stockComp = this;
   console.log($state.params.symbol);
 
   DataServices.getStockDetails([$state.params.symbol], function(results) {
-    console.log("data:", results);
+    stockComp.stock = results[0];
+    console.log("stock: ", stockComp.stock)
   });
 }
 

@@ -1,1 +1,62 @@
-<h1>stock container</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel">
+        <div class="panel-heading">
+          <h4>{{stockComp.stock.Symbol}}</h4>
+          <p>{{stockComp.stock.Name}}</p>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th>Change:</th>
+                <td>{{stockComp.stock.Change.toFixed(2)}}</td>
+              </tr>
+              <tr>
+                <th>ChangePercent:</th>
+                <td>{{stockComp.stock.ChangePercent.toFixed(2)}}</td>
+              </tr>
+              <tr>
+                <th>ChangePercentYTD:</th>
+                <td>{{stockComp.stock.ChangePercentYTD.toFixed(2)}}</td>
+              </tr>
+              <tr>
+                <th>ChangeYTD:</th>
+                <td>{{stockComp.stock.ChangeYTD}}</td>
+              </tr>
+              <tr>
+                <th>High:</th>
+                <td>{{stockComp.stock.High}}</td>
+              </tr>
+              <tr>
+                <th>LastPrice:</th>
+                <td>{{stockComp.stock.LastPrice}}</td>
+              </tr>
+              <tr>
+                <th>Low:</th>
+                <td>{{stockComp.stock.Low}}</td>
+              </tr>
+              <tr>
+                <th>MarketCap:</th>
+                <td>{{stockComp.stock.MarketCap}}</td>
+              </tr>
+              <tr>
+                <th>Open:</th>
+                <td>{{stockComp.stock.Open}}</td>
+              </tr>
+              <tr>
+                <th>Volume:</th>
+                <td>{{stockComp.stock.Volume}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <chart-comp></chart-comp>
+      <p>{{stockComp.stock.Timestamp}}</p>
+    </div>
+  </div>
+</div>

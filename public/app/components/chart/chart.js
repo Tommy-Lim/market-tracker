@@ -5,12 +5,15 @@ angular.module('App')
   controllerAs: 'chartComp',
 });
 
-function ChartCompCtrl(DataServices){
+function ChartCompCtrl($state, DataServices){
   chartComp = this;
+
+  chartComp.symbol = $state.params.symbol;
+  console.log("symbol is: ", chartComp.symbol);
 
   arr = [
     {
-      Symbol: "AAPL",
+      Symbol: chartComp.symbol,
       Type: "price",
       Params: ["c"]
     }
@@ -54,4 +57,4 @@ function ChartCompCtrl(DataServices){
 
 };
 
-ChartCompCtrl.$inject = ['DataServices'];
+ChartCompCtrl.$inject = ['$state', 'DataServices'];
