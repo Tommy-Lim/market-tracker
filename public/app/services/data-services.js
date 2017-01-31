@@ -9,8 +9,9 @@ function DataServices($http){
       method: "GET",
     }
 
-    $http(req).then(function success(res) {
+    return $http(req).then(function success(res) {
       console.log("success");
+      return res;
     }, function failure(res) {
         console.log("failure");
     });

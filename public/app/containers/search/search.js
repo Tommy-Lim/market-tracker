@@ -8,10 +8,14 @@ angular.module('App')
 function SearchCompCtrl(DataServices){
   var searchComp = this;
 
-  searchComp.query = "";
+  searchComp.query = null;
+  searchComp.results = null;
 
   this.search = function(query){
-    console.log(query);
+    DataServices.searchStocks(query).then(function(data){
+      searchComp.results = data.data;
+      console.log("results: ", searchComp.results)
+    });
   }
 
 }
