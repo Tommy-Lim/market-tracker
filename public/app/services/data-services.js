@@ -33,7 +33,7 @@ function DataServices($http){
     var dataScope = this;
     var chartRequestObject = {
       Normalized: false,
-      NumberOfDays: 365,
+      NumberOfDays: 730,
       DataPeriod: "Day",
       Elements: symbolsArr
     };

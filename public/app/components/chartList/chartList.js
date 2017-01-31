@@ -33,6 +33,11 @@ function ChartListCompCtrl(DataServices){
       Symbol: "TSLA",
       Type: "price",
       Params: ["c"]
+    },
+    {
+      Symbol: "BMY",
+      Type: "price",
+      Params: ["c"]
     }
   ]
 
@@ -46,7 +51,7 @@ function ChartListCompCtrl(DataServices){
             selected: 1
           },
           title: {
-            text: stock.symbol + ' Stock Price, ' + stock.currency,
+            text: stock.symbol + ', ' + stock.currency,
           },
           series: [{
             name: stock.symbol,

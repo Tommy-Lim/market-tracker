@@ -25,7 +25,7 @@ function ChartCompCtrl(DataServices){
           selected: 1
         },
         title: {
-          text: data[0].symbol + ' Stock Price, ' + data[0].currency,
+          text: data[0].symbol + ', ' + data[0].currency,
         },
         series: [{
           name: data[0].symbol,
