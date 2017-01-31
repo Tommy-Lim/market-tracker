@@ -17,21 +17,29 @@ function DataServices($http){
     });
   }
 
-  this.getStockDetails = function(stockArray) {
+  this.getStockDetails = function(stockArray, cb) {
     var results = [];
+    var numErrors = 0;
     stockArray.forEach(function(stock) {
       var req = {
         url: '/api/stocks/quote/' + stock,
         method: "GET",
       }
       $http(req).then(function success(res) {
-        results.push(res);
+        results.push(res.data);
         console.log("success");
+        if (stockArray.length === (results.length+ numErrors)) {
+          cb(results);
+        }
       }, function failure(res) {
-          console.log("failure");
+        console.log("failure");
+        numErrors++;
+
+        if (stockArray.length === (results.length+ numErrors)) {
+          cb(results);
+        }
       });
     })
-    return results;
   }
 
 
