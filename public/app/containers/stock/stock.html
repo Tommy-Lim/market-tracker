@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>{{stockComp.stock.Symbol}}</h1>
+      <h1>
+        {{stockComp.stock.Symbol}}
+        <button class="btn btn-xs btn-success">Buy</button>
+        <button class="btn btn-xs btn-success">Watch</button>
+      </h1>
       <h4>{{stockComp.stock.Name}}</h4>
       <p>{{stockComp.stock.Timestamp}}</p>
     </div>
