@@ -1,12 +1,8 @@
 angular.module('App')
+.service('Auth', Auth)
 .service('AuthServices', AuthServices);
 
-function AuthServices($window, $http, $location){
-
-  this.test = function(){
-    console.log("Auth Services hit");
-  }
-
+function Auth($window, $location){
   this.saveToken =  function(token) {
     $window.localStorage['secret-token'] = token;
   }
@@ -42,12 +38,15 @@ function AuthServices($window, $http, $location){
       }
     }
   }
+}
 
+
+function AuthServices($http, $location, Auth){
   this.userSignup = function(user){
-    var authScope = this;
+    var AuthServices = this;
     $http.post('/api/users', user).then(function success(res){
       console.log("post success", res);
-      authScope.userLogin(user);
+      AuthServices.userLogin(user);
       // $location.path('/');
     }, function failure(res){
       console.log("post failure", res);
@@ -55,10 +54,9 @@ function AuthServices($window, $http, $location){
   }
 
   this.userLogin = function(user){
-    var authScope = this;
     $http.post('/api/auth', user).then(function success(res){
       console.log("success: ", res);
-      authScope.saveToken(res.data.token);
+      Auth.saveToken(res.data.token);
       $location.path('/');
     }, function error(res){
       console.log("error: ", res);
@@ -67,4 +65,5 @@ function AuthServices($window, $http, $location){
 
 }
 
-AuthServices.$inject = ['$window', '$http', '$location'];
+Auth.$inject = ['$window', '$location'];
+AuthServices.$inject = ['$http', '$location', 'Auth'];

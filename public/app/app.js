@@ -9,6 +9,7 @@ angular.module('App', ['ui.router'])
     $locationProvider
   ){
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
 
     $stateProvider
     .state('homeState', {
@@ -32,8 +33,8 @@ angular.module('App', ['ui.router'])
       component: 'chartComp'
     })
 
-    $locationProvider.html5Mode(true);
-
   }
 
-]);
+]).config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push('AuthInterceptor');
+}])

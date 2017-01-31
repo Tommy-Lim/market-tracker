@@ -5,21 +5,21 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl(DataServices, AuthServices){
+function HomeCompCtrl(DataServices, AuthServices, Auth){
   var homeComp = this;
 
   // AuthServices.userSignup();
   // AuthServices.userLogin();
-  // AuthServices.isLoggedIn();
-  // AuthServices.userLogout();
+  // Auth.isLoggedIn();
+  // Auth.userLogout();
 
   // DataServices.searchStocks();
   // DataServices.details();
 
-  DataServices.chart().then(function(data){
-    homeComp.foo = data;
-    console.log("homeComp results: ", homeComp.foo);
-  });
+  // DataServices.chart().then(function(data){
+  //   homeComp.foo = data;
+  //   console.log("homeComp results: ", homeComp.foo);
+  // });
 }
 
-HomeCompCtrl.$inject = ['DataServices', 'AuthServices'];
+HomeCompCtrl.$inject = ['DataServices', 'AuthServices', 'Auth'];

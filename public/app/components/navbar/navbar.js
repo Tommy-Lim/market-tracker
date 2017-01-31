@@ -5,18 +5,18 @@ angular.module('App')
   controllerAs: 'navbarComp'
 });
 
-function NavbarCompCtrl(AuthServices){
+function NavbarCompCtrl(Auth){
   var navbarComp = this;
 
   navbarComp.logout = function(){
     console.log("logging out");
-    AuthServices.userLogout();
+    Auth.userLogout();
   }
 
   navbarComp.isLoggedIn = function(){
-    return AuthServices.isLoggedIn();
+    return Auth.isLoggedIn();
   }
 
 }
 
-NavbarCompCtrl.$inject = ['AuthServices'];
+NavbarCompCtrl.$inject = ['Auth'];

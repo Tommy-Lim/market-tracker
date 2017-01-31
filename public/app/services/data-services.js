@@ -71,6 +71,14 @@ function DataServices($http){
     });
   }
 
+  this.dateArrayToMs = function(arr){
+    return arr = arr.map(function(item){
+      var date = new Date(item);
+      var ms = date.getTime();
+      return ms;
+    })
+  }
+
 
 }
 
