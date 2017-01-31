@@ -17,18 +17,25 @@ function DataServices($http){
     });
   }
 
-  this.getStockDetails = function(stockSymbol) {
-    var req = {
-      url: '/api/stocks/quote/' + stockSymbol,
-      method: "GET",
-    }
-
-    $http(req).then(function success(res) {
-      console.log("success");
-    }, function failure(res) {
-        console.log("failure");
-    });
+  this.getStockDetails = function(stockArray) {
+    var results = [];
+    stockArray.forEach(function(stock) {
+      var req = {
+        url: '/api/stocks/quote/' + stock,
+        method: "GET",
+      }
+      $http(req).then(function success(res) {
+        results.push(res);
+        console.log("success");
+      }, function failure(res) {
+          console.log("failure");
+      });
+    })
+    return results;
   }
+
+
+
 
   this.getChartData = function(symbolsArr) {
     var dataScope = this;

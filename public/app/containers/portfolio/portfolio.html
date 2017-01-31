@@ -1,2 +1,29 @@
-<h1>Portfolio</h1>
-<chart-list-comp></chart-list-comp>
+
+
+<div class="container text-center">
+  <h1>Portfolio</h1>
+  <div class="row">
+    <div class="col s12"><span class="center-align text-center">{{Username}}'s Watchlist</span></div>
+  </div>
+  <div class="row">
+   <div class="col s2"><span class="">Name</span></div>
+   <div class="col s2"><span class="">Symbol</span></div>
+   <div class="col s2"><span class="">Exchange</span></div>
+   <div class="col s2"><span class="">Market Cap</span></div>
+   <div class="col s2"><span class="">Change YTD</span></div>
+   <div class="col s2"><span class="">Change Percent YTD</span></div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row">
+   <div class="col s2"><span class="">{{name}}</span></div>
+   <div class="col s2"><span class="">{{symbol}}</span></div>
+   <div class="col s2"><span class="">{{exchange}}</span></div>
+   <div class="col s2"><span class="">{{marketCap}}</span></div>
+   <div class="col s2"><span class="">{{changeYTD}}</span></div>
+   <div class="col s2"><span class="">{{changePercentYTD}}</span></div>
+  </div>
+  <div class="row">
+    <chart-list-comp></chart-list-comp>
+  </div>
+</div>
