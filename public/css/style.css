@@ -12,6 +12,6 @@ body button, body input{
   margin: 5px 0;
 }
 
-.auth-container{
+.auth-container, .search-container{
   max-width: 300px;
 }

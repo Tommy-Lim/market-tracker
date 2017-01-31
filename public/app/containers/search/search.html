@@ -1,1 +1,9 @@
-<h1>search container</h1>
+<div class="container search-container">
+  <h2>Search</h2>
+  <form ng-submit="searchComp.search(searchComp.query)">
+    <div class="form-group">
+      <input name="search" class="form-control" placeholder="search" ng-model="searchComp.query" required />
+    </div>
+    <input type="submit" />
+  </form>
+</div>

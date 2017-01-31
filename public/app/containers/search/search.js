@@ -5,9 +5,15 @@ angular.module('App')
   controllerAs: 'searchComp'
 });
 
-function SearchCompCtrl(){
+function SearchCompCtrl(DataServices){
   var searchComp = this;
+
+  searchComp.query = "";
+
+  this.search = function(query){
+    console.log(query);
+  }
 
 }
 
-SearchCompCtrl.$inject = [];
+SearchCompCtrl.$inject = ['DataServices'];
