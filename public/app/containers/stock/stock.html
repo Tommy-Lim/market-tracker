@@ -7,12 +7,12 @@
       <h4>{{stockComp.stock.Name}}</h4>
     </div>
     <div class="col-xs-12">
-      <form ng-submit="stockComp.submitBuy(stockComp.quantity)">
-        <button class="btn btn-xs btn-info">Watch</button>
-        <button class="btn btn-xs btn-info" ng-click="stockComp.showForm()">Buy</button>
+      <button class="btn btn-xs btn-info" ng-click="stockComp.watch()">Watch</button>
+      <button class="btn btn-xs btn-info" ng-click="stockComp.showForm()">Buy</button>
+      <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
+      <form ng-submit="stockComp.submitBuy()">
         <input ng-show="stockComp.showBuy"ng-model="stockComp.quantity" type="number" required placeholder="quantity"/>
-        <input ng-show="stockComp.showBuy"type="submit" class="btn btn-xs btn-success" value = "Submit"/>
-        <span ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</span>
+        <input ng-show="stockComp.showBuy" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
       </form>
     </div>
     <div class="col-xs-12">

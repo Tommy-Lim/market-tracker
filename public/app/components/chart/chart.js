@@ -9,7 +9,6 @@ function ChartCompCtrl($state, DataServices){
   chartComp = this;
 
   chartComp.symbol = $state.params.symbol;
-  console.log("symbol is: ", chartComp.symbol);
 
   arr = [
     {

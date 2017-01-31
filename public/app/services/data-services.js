@@ -27,14 +27,12 @@ function DataServices($http){
       }
       $http(req).then(function success(res) {
         results.push(res.data);
-        console.log("success");
         if (stockArray.length === (results.length+ numErrors)) {
           cb(results);
         }
       }, function failure(res) {
         console.log("failure");
         numErrors++;
-
         if (stockArray.length === (results.length+ numErrors)) {
           cb(results);
         }
@@ -58,15 +56,12 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
-      console.log("get chart data success");
 
       var chartDataArray = [];
 
       var dates = res.data.Dates.map(function(date, dateIndex){
         return new Date(date).getTime();
       })
-
-      console.log(res.data);
 
       res.data.Elements.forEach(function(element, elemIndex){
         chartDataArray.push({
@@ -80,8 +75,6 @@ function DataServices($http){
           chartDataArray[elemIndex].data.push([date, value]);
         })
       })
-
-      console.log("chart data array: ", chartDataArray);
 
       return chartDataArray;
     }, function failure(res) {
@@ -97,8 +90,45 @@ function DataServices($http){
     })
   }
 
-  this.watchStock = function(symbol, quantity){
-    
+  this.watchStock = function(symbol){
+    var req = {
+      url: '/api/users/watch/' + symbol,
+      method: 'POST'
+    }
+
+    return $http(req).then(function success(res) {
+      return res;
+    }, function failure(res) {
+      console.log("failure");
+    });
+  }
+
+  this.buyStock = function(symbol, quantity, cb){
+    var dataScope = this;
+    var data = {};
+
+    this.getStockDetails([symbol], function(results){
+      data.stock = results[0];
+      delete data.stock['Status'];
+      data.quantity = quantity;
+
+        var req = {
+          url: '/api/users/buy',
+          method: 'POST',
+          data: {
+            data: data
+          }
+        }
+
+        return $http(req).then(function success(res) {
+          cb(res);
+        }, function failure(res) {
+          console.log("failure");
+        });
+
+    })
+
+
   }
 
 }

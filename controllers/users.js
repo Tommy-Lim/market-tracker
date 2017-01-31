@@ -27,9 +27,57 @@ router.route('/')
   })
 })
 
-router.route('/:id')
-.get(function(req, res){
-  return res.send({msg: "auth /:id get route hit", id: req.params.id});
+router.route('/watch/:symbol')
+.post(function(req, res){
+
+  models.User.findOne({
+    email: req.user.email
+  }, function(err, user){
+    if(!user){
+      console.log("user not found");
+    } else{
+      user.watchlist.push(req.params.symbol);
+      user.save();
+      res.send({
+        msg: req.params.symbol + " added to " + req.user.email + "'s watchlist"
+      });
+    }
+  })
+
+})
+
+router.route('/buy')
+.post(function(req, res){
+  console.log("buy stock: ", req.body.data.stock);
+  console.log("buy quantity: ", req.body.data.quantity);
+
+  var newPurchase = {
+    userEmail: req.user.email,
+    stock: req.body.data.stock
+  }
+
+  console.log(newPurchase);
+
+  models.Purchased.create(
+    newPurchase,
+    function(err, created){
+      console.log("purchase created: ", created.stock.Name);
+      models.User.findOne({
+        email: newPurchase.userEmail
+      }, function(err, user){
+        console.log("found user: ", user.email);
+        console.log("add to user created:", created);
+        user.purchased.push(created);
+        user.save();
+        res.send({
+          msg: req.body.data.quantity + " " + created.stock.Name + " shares bought by " + req.user.email + "'s watchlist"
+        })
+      })
+
+    }
+  )
+
+
 })
 
 
