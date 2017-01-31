@@ -37,7 +37,7 @@ angular.module('App', ['ui.router'])
       component: 'chartComp'
     })
     .state('searchState', {
-      url: '/search',
+      url: '/search/:query',
       component: 'searchComp'
     })
     .state('portfolioState', {

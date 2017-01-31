@@ -1,3 +1,11 @@
+body{
+  background-color: #d3d3d3;
+}
+
+.chartButton{
+  height: 1em;
+}
+
 .chart-list-chart{
   margin: 5px 0;
 }

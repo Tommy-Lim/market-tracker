@@ -7,6 +7,7 @@ angular.module('App')
 
 function NavbarCompCtrl($state, Auth){
   var navbarComp = this;
+  navbarComp.query = "";
 
   navbarComp.logout = function(){
     console.log("logging out");
@@ -15,6 +16,11 @@ function NavbarCompCtrl($state, Auth){
 
   navbarComp.isLoggedIn = function(){
     return Auth.isLoggedIn();
+  }
+
+  navbarComp.search = function() {
+    console.log(navbarComp.query);
+    $state.go('searchState({query: navbarComp.query})')
   }
 
 }

@@ -5,18 +5,18 @@
     <table class="table table-striped">
       <tbody>
        <tr>
-         <th class="col-sm-1">Symbol</th>
-         <th class="col-sm-1">Name</th>
-         <th class="col-sm-1">Change</th>
-         <th class="col-sm-1">ChangePercent</th>
-         <th class="col-sm-1">ChangePercentYTD</th>
-         <th class="col-sm-1">ChangeYTD</th>
-         <th class="col-sm-1">High</th>
-         <th class="col-sm-1">LastPrice</th>
-         <th class="col-sm-1">Low</th>
-         <th class="col-sm-1">MarketCap</th>
-         <th class="col-sm-1">Open</th>
-         <th class="col-sm-1">Volume</th>
+         <th class="col-lg-1">Symbol</th>
+         <th class="col-lg-1">Name</th>
+         <th class="col-lg-1">Change</th>
+         <th class="col-lg-1">Change %</th>
+         <th class="col-lg-1">Change % YTD</th>
+         <th class="col-lg-1">ChangeYTD</th>
+         <th class="col-lg-1">High</th>
+         <th class="col-lg-1">LastPrice</th>
+         <th class="col-lg-1">Low</th>
+         <th class="col-lg-1">MarketCap</th>
+         <th class="col-lg-1">Open</th>
+         <th class="col-lg-1">Volume</th>
        </tr>
       </tbody>
     </table>
@@ -29,9 +29,9 @@
           <tr>
            <td class="col-sm-1">{{stock.Symbol}}</td>
            <td class="col-sm-1">{{stock.Name}}</td>
-           <td class="col-sm-1">{{stock.Change}}</td>
-           <td class="col-sm-1">{{stock.ChangePercent}}</td>
-           <td class="col-sm-1">{{stock.ChangePercentYTD}}</td>
+           <td class="col-sm-1">{{stock.Change.toFixed(2)}}</td>
+           <td class="col-sm-1">{{stock.ChangePercent.toFixed(2)}}</td>
+           <td class="col-sm-1">{{stock.ChangePercentYTD.toFixed(2)}}</td>
            <td class="col-sm-1">{{stock.ChangeYTD}}</td>
            <td class="col-sm-1">{{stock.High}}</td>
            <td class="col-sm-1">{{stock.LastPrice}}</td>
@@ -40,9 +40,23 @@
            <td class="col-sm-1">{{stock.Open}}</td>
            <td class="col-sm-1">{{stock.Volume}}</td>
          </tr>
+        
         </tbody>
       </table>
+
+      <div class="row">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td class="text-center chartButton">Chart &#43</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
-    <chart-list-comp></chart-list-comp>
+
   </div>
+
+      <chart-list-comp></chart-list-comp>
 </div>

@@ -5,19 +5,21 @@ angular.module('App')
   controllerAs: 'searchComp'
 });
 
-function SearchCompCtrl(DataServices){
+
+function SearchCompCtrl($state, DataServices){
   var searchComp = this;
 
   searchComp.query = null;
   searchComp.results = null;
 
-  this.search = function(query){
+  searchComp.search = function(query){
     DataServices.searchStocks(query).then(function(data){
       searchComp.results = data.data;
       console.log("results: ", searchComp.results)
     });
   }
 
+  searchComp.search($state.params.query);
 }
 
-SearchCompCtrl.$inject = ['DataServices'];
+SearchCompCtrl.$inject = ['$state', 'DataServices'];
