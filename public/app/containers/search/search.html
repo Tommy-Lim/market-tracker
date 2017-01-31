@@ -6,4 +6,13 @@
     </div>
     <input type="submit" />
   </form>
+
+  <h2 ng-hide="searchComp.results == null">{{searchComp.results.length}} Results</h2>
+
+  <a ng-repeat="result in searchComp.results" ui-sref="stockState({symbol: result.Symbol})">
+    <div class="panel">
+      <p><strong>{{result.Symbol}}</strong>, {{result.Name}} - {{result.Exchange}}</p>
+    </div>
+  </a>
+
 </div>

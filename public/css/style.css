@@ -1,10 +1,10 @@
 body{
-  background: linear-gradient(#222, #333);
+  background: linear-gradient(#666, #777);
   background-repeat: no-repeat;
   color: white;
 }
 
-body button, body input{
+body button, body input, body .well, body .panel{
   color: black;
 }
 
@@ -12,6 +12,10 @@ body button, body input{
   margin: 5px 0;
 }
 
-.auth-container, .search-container{
+.auth-container{
   max-width: 300px;
+}
+
+.search-container{
+  max-width: 400px;
 }

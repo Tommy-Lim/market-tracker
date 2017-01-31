@@ -25,7 +25,7 @@ angular.module('App', ['ui.router'])
       component: 'authComp'
     })
     .state('stockState', {
-      url: '/stock',
+      url: '/stock/:symbol',
       component: 'stockComp'
     })
     .state('tickerState', {
