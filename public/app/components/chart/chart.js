@@ -8,32 +8,28 @@ angular.module('App')
 function ChartCompCtrl(DataServices){
   chartComp = this;
 
-  DataServices.chart().then(function(data){
-    chartComp.data = data;
-    console.log("chartComp data: ", chartComp.data);
-    chartComp.data.Dates = DataServices.dateArrayToMs(chartComp.data.Dates);
-    chartComp.chartData = [];
-    chartComp.data.Dates.forEach(function(date, index){
-      newDate = date;
-      newValue = chartComp.data.Elements[0].DataSeries.close.values[index];
-      newPair = [newDate, newValue];
-      chartComp.chartData.push(newPair);
-    })
-  }).then(function(){
+  arr = [
+    {
+      Symbol: "AAPL",
+      Type: "price",
+      Params: ["c"]
+    }
+  ]
+
+  DataServices.getChartData(arr).then(function(data){
 
     $(function () {
       // Create the chart
-      console.log("Chart data: ", chartComp.chartData);
       Highcharts.stockChart('container', {
         rangeSelector: {
           selected: 1
         },
         title: {
-          text: chartComp.data.Elements[0].Symbol+' Stock Price, ' + chartComp.data.Elements[0].Currency,
+          text: data[0].symbol + ' Stock Price, ' + data[0].currency,
         },
         series: [{
-          name: chartComp.data.Elements[0].Symbol+' Stock Price, ' + chartComp.data.Elements[0].Currency,
-          data: chartComp.chartData,
+          name: data[0].symbol,
+          data: data[0].data,
           type: 'area',
           threshold: null,
           tooltip: {
@@ -52,11 +48,9 @@ function ChartCompCtrl(DataServices){
             ]
           }
         }]
-      });
-    });
-
-  })
-
+      }); // end Highcharts.stockChart
+    }); // end $function
+  }) // end DataServices
 
 };
 

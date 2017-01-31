@@ -3,10 +3,6 @@ angular.module('App')
 
 function DataServices($http){
 
-  this.test = function(){
-    console.log("Data Services hit");
-  }
-
   this.searchStocks = function() {
     var stock = "A";
     var req = {
@@ -16,7 +12,6 @@ function DataServices($http){
 
     $http(req).then(function success(res) {
       console.log("success");
-      console.log(res);
     }, function failure(res) {
         console.log("failure");
     });
@@ -24,55 +19,62 @@ function DataServices($http){
 
   this.details = function() {
     var oneStock = "BA";
-      var req = {
-        url: '/api/stocks/quote/' + oneStock,
-        method: "GET",
-        }
+    var req = {
+      url: '/api/stocks/quote/' + oneStock,
+      method: "GET",
+      }
 
-      $http(req).then(function success(res) {
-        console.log("success");
-        console.log(res);
-      }, function failure(res) {
-          console.log("failure");
-      });
+    $http(req).then(function success(res) {
+      console.log("success");
+    }, function failure(res) {
+        console.log("failure");
+    });
   }
 
-  this.chart = function() {
-    var chartDataObject = {
+  this.getChartData = function(symbolsArr) {
+    var dataScope = this;
+    var chartRequestObject = {
       Normalized: false,
       NumberOfDays: 365,
       DataPeriod: "Day",
-      Elements:[
-        {
-          Symbol: "AAPL",
-          Type: "price",
-          Params: ["c"]
-        },
-        {
-          Symbol: "GOOGL",
-          Type: "price",
-          Params: ["c"]
-        },
-        {
-          Symbol: "BA",
-          Type: "price",
-          Params: ["c"]
-        }
-      ]
+      Elements: symbolsArr
     };
-    var json = JSON.stringify(chartDataObject);
+    var json = JSON.stringify(chartRequestObject);
     var url = encodeURIComponent(json);
-    console.log(url);
     var req = {
       url: '/api/stocks/chart/' + url,
-      method: "GET",
+      method: "GET"
     }
 
     return $http(req).then(function success(res) {
-      console.log("chart success");
-      return res.data;
+      console.log("get chart data success");
+
+      var chartDataArray = [];
+
+      var dates = res.data.Dates.map(function(date, dateIndex){
+        return new Date(date).getTime();
+      })
+
+      console.log(res.data);
+
+      res.data.Elements.forEach(function(element, elemIndex){
+        chartDataArray.push({
+          symbol: element.Symbol,
+          currency: element.Currency,
+          type: element.Type,
+          data: []
+        });
+        dates.forEach(function(date, dateIndex){
+          var value = res.data.Elements[elemIndex].DataSeries.close.values[dateIndex];
+          chartDataArray[elemIndex].data.push([date, value]);
+        })
+      })
+
+      console.log("chart data array: ", chartDataArray);
+
+      return chartDataArray;
     }, function failure(res) {
-        console.log("chart failure");
+        console.log("get chart data failure");
     });
   }
 
@@ -83,7 +85,6 @@ function DataServices($http){
       return ms;
     })
   }
-
 
 }
 
