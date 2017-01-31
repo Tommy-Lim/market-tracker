@@ -5,6 +5,10 @@ angular.module('App')
   controllerAs: 'stockComp',
 });
 
-function StockCompCtrl(){
+function StockCompCtrl($state, DataServices){
+  console.log($state.params.symbol);
 
+  
 }
+
+StockCompCtrl.$inject = ['$state', 'DataServices']
