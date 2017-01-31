@@ -9,7 +9,6 @@ function PortfolioCompCtrl(DataServices){
   var portfolioComp = this;
     var array = ['BA', 'AAPL'];
     DataServices.getStockDetails(array).then(function(data){
-      console.log(data);
     })
 
 }
