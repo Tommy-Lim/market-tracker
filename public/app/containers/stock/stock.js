@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'stockComp',
 });
 
-function StockCompCtrl($state, DataServices){
+function StockCompCtrl($state, $timeout,  DataServices){
   stockComp = this;
 
   stockComp.quantity = null;
@@ -22,9 +22,10 @@ function StockCompCtrl($state, DataServices){
     console.log("quantity: ", quantity);
     stockComp.showBuy = !stockComp.showBuy;
     stockComp.showPurchased = true;
-    setTimeout(function(){
+    $timeout(function(){
       stockComp.quantity = null;
       stockComp.showPurchased = false;
+      console.log("hide stuff");
     }, 3000);
   }
 
@@ -34,4 +35,4 @@ function StockCompCtrl($state, DataServices){
   });
 }
 
-StockCompCtrl.$inject = ['$state', 'DataServices']
+StockCompCtrl.$inject = ['$state', '$timeout', 'DataServices']
