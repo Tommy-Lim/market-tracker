@@ -1,15 +1,6 @@
 <div class="container search-container">
-  <form ng-submit="searchComp.search(searchComp.query)">
-    <div class="form-group">
-      <input name="search" class="form-control" placeholder="search" ng-model="searchComp.query" required />
-    </div>
-    <input type="submit" />
-  </form>
-
-  <br />
-
-  <h4 ng-hide="searchComp.results == null">{{searchComp.results.length}} Results</h4>
-
+  <h4 ng-hide="searchComp.results == null">({{searchComp.results.length}}) Results for "{{searchComp.query}}":</h4>
+  <h4 ng-show="searchComp.results == null">No search entered, search above</h4>
   <hr />
 
   <a ng-repeat="result in searchComp.results" ui-sref="stockState({symbol: result.Symbol})">

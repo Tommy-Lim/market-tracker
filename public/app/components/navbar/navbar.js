@@ -19,8 +19,7 @@ function NavbarCompCtrl($state, Auth){
   }
 
   navbarComp.search = function() {
-    console.log(navbarComp.query);
-    $state.go('searchState({query: navbarComp.query})')
+    $state.go('searchState', {query: navbarComp.query})
   }
 
 }

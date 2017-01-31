@@ -5,7 +5,7 @@
   <button ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button>
   <button ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</button>
   <form ng-submit="navbarComp.search()">
-    <input type="text" ng-model="navbarComp.query" />
+    <input type="text" ng-model="navbarComp.query" placeholder="search"/>
     <input type="submit" />
   </form>
 </div>

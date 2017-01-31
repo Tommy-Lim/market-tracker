@@ -9,7 +9,7 @@ angular.module('App')
 function SearchCompCtrl($state, DataServices){
   var searchComp = this;
 
-  searchComp.query = null;
+  searchComp.query = $state.params.query;
   searchComp.results = null;
 
   searchComp.search = function(query){
@@ -19,7 +19,13 @@ function SearchCompCtrl($state, DataServices){
     });
   }
 
-  searchComp.search($state.params.query);
+  if($state.params.query){
+    searchComp.search($state.params.query);
+  } else{
+    
+  }
+
+
 }
 
 SearchCompCtrl.$inject = ['$state', 'DataServices'];
