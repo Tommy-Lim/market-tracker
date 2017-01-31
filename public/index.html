@@ -21,11 +21,11 @@
     <script src="app/containers/auth/auth.js"></script>
     <script src="app/containers/portfolio/portfolio.js"></script>
     <script src="app/containers/search/search.js"></script>
+    <script src="app/containers/stock/stock.js"></script>
     <!-- Angular components -->
     <script src="app/components/navbar/navbar.js"></script>
     <script src="app/components/chart/chart.js"></script>
     <script src="app/components/compositeChart/compositeChart.js"></script>
-    <script src="app/components/stock/stock.js"></script>
     <script src="app/components/ticker/ticker.js"></script>
     <script src="app/components/chartList/chartList.js"></script>
     <!-- Angular services -->
@@ -45,9 +45,7 @@
   <body ng-app="App">
     <navbar-comp></navbar-comp>
 
-    <div class="main-container">
-        <div ui-view></div>
-    </div>
+    <div ui-view></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
