@@ -7,7 +7,26 @@ angular.module('App')
 
 function StockCompCtrl($state, DataServices){
   stockComp = this;
+
+  stockComp.quantity = null;
+  stockComp.showBuy = false;
+  stockComp.showPurchased = false;
+
   console.log($state.params.symbol);
+
+  this.showForm = function(){
+    stockComp.showBuy = !stockComp.showBuy;
+  }
+
+  this.submitBuy = function(quantity){
+    console.log("quantity: ", quantity);
+    stockComp.showBuy = !stockComp.showBuy;
+    stockComp.showPurchased = true;
+    setTimeout(function(){
+      stockComp.quantity = null;
+      stockComp.showPurchased = false;
+    }, 3000);
+  }
 
   DataServices.getStockDetails([$state.params.symbol], function(results) {
     stockComp.stock = results[0];

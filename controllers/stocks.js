@@ -7,11 +7,11 @@ var request = require('request');
 
 
 // Routes....
-
-router.route('/')
-.get(function(req, res){
-  return res.send({msg: "stocks / get route hit"});
-})
+//
+// router.route('/')
+// .get(function(req, res){
+//   return res.send({msg: "stocks / get route hit"});
+// })
 
 router.route('/lookup/:query')
 .get(function(req, res) {

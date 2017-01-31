@@ -42,9 +42,6 @@ function DataServices($http){
     })
   }
 
-
-
-
   this.getChartData = function(symbolsArr) {
     var dataScope = this;
     var chartRequestObject = {
@@ -98,6 +95,10 @@ function DataServices($http){
       var ms = date.getTime();
       return ms;
     })
+  }
+
+  this.watchStock = function(symbol, quantity){
+    
   }
 
 }
