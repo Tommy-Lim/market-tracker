@@ -12,26 +12,35 @@ function StockCompCtrl($state, $timeout,  DataServices){
   stockComp.showBuy = false;
   stockComp.showPurchased = false;
 
-  console.log($state.params.symbol);
-
   this.showForm = function(){
     stockComp.showBuy = !stockComp.showBuy;
   }
 
-  this.submitBuy = function(quantity){
-    console.log("quantity: ", quantity);
-    stockComp.showBuy = !stockComp.showBuy;
-    stockComp.showPurchased = true;
-    $timeout(function(){
-      stockComp.quantity = null;
-      stockComp.showPurchased = false;
-      console.log("hide stuff");
-    }, 3000);
+  this.submitBuy = function(){
+    console.log("buy hit for: ", $state.params.symbol);
+    DataServices.buyStock($state.params.symbol, stockComp.quantity, function(data){
+      console.log("buy data: ", data);
+      stockComp.showBuy = !stockComp.showBuy;
+      stockComp.showPurchased = true;
+
+      $timeout(function(){
+        stockComp.quantity = null;
+        stockComp.showPurchased = false;
+      }, 3000);
+
+    });
   }
+
+  this.watch = function(){
+    console.log("watch hit for: ", $state.params.symbol);
+    DataServices.watchStock($state.params.symbol).then(function(data){
+      console.log("watch data: ", data);
+    });
+  }
+
 
   DataServices.getStockDetails([$state.params.symbol], function(results) {
     stockComp.stock = results[0];
-    console.log("stock: ", stockComp.stock)
   });
 }
 

@@ -4,21 +4,20 @@ var bcrypt = require('bcrypt');
 // STOCK SCHEMA
 
 var StockSchema = new mongoose.Schema({
-  name: String,
-  symbol: String,
-  exchange: String,
-  lastPrice: Number,
-  change: Number,
-  changePercent: Number,
-  timestamp: String,
-  msDate: Number,
-  marketCap: Number,
-  volume: Number,
-  changeYTD: Number,
-  changePercentYTD: Number,
-  high: Number,
-  low: Number,
-  open: Number
+  Name: String,
+  Symbol: String,
+  LastPrice: Number,
+  Change: Number,
+  ChangePercent: Number,
+  Timestamp: String,
+  MSDate: Number,
+  MarketCap: Number,
+  Volume: Number,
+  ChangeYTD: Number,
+  ChangePercentYTD: Number,
+  High: Number,
+  Low: Number,
+  Open: Number
 },{
   collection: 'Stocks'
 });
@@ -50,7 +49,7 @@ var UserSchema = new mongoose.Schema({
     type:  String,
     required: true
   },
-  watchlist: [StockSchema],
+  watchlist: [String],
   purchased: [PurchasedSchema]
 },{
   collection: 'Users'

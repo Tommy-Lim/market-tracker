@@ -43,5 +43,4 @@ router.route('/chart/:query')
   })
 });
 
-
 module.exports = router;
