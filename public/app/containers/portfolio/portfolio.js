@@ -5,9 +5,13 @@ angular.module('App')
   controllerAs: 'portfolioComp'
 });
 
-function PortfolioCompCtrl(){
+function PortfolioCompCtrl(DataServices){
   var portfolioComp = this;
+    var array = ['BA', 'AAPL'];
+    DataServices.getStockDetails(array).then(function(data){
+      console.log(data);
+    })
 
 }
 
-PortfolioCompCtrl.$inject = [];
+PortfolioCompCtrl.$inject = ['DataServices'];
