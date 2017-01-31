@@ -8,7 +8,8 @@ angular.module('App')
 function PortfolioCompCtrl(DataServices){
   var portfolioComp = this;
     var array = ['BA', 'AAPL'];
-    DataServices.getStockDetails(array).then(function(data){
+    DataServices.getStockDetails(array, function(data) {
+      console.log(data);
     })
 
 }
