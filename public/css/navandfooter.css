@@ -1,5 +1,5 @@
 .footer{
-  position: sticky;
+  position: relative;
   bottom: 0;
   width: 100%;
   margin-top: 40px;
@@ -15,7 +15,7 @@
 }
 
 .footer-body{
-  background-color: #777;
+  background-color: #555;
   min-height: 100px;
 }
 
@@ -28,11 +28,23 @@
   padding-bottom: 10px;
 }
 
-.footer .blue{
-  color: #90CAF9;
+.footer .fa-1x{
+  font-size: 1.2em;
 }
 
-.footer .blue:hover{
+.footer .fa-2x{
+  font-size: 1.5em;
+}
+
+.footer .green-no-hover{
+  color: #5ccf5c;
+}
+
+.footer .green{
+  color: #5ccf5c;
+}
+
+.footer .green:hover{
   color: white;
 }
 
