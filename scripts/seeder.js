@@ -1,6 +1,6 @@
 var models = require('../models/schemas');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/markettracker');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/markettracker');
 
 // CREATE STOCKS
 

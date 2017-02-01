@@ -3,7 +3,6 @@ var router = express.Router();
 var models = require('../models/schemas');
 var mongoose = require('mongoose');
 var request = require('request');
-// mongoose.connect('mongodb://localhost/markettracker');
 
 router.route('/lookup/:query')
 .get(function(req, res) {

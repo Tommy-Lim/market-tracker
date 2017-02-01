@@ -12,7 +12,7 @@ var secret = process.env.JWT_SECRET;
 // Mongoose models and connection
 var mongoose = require('mongoose');
 var models = require('./models/schemas');
-mongoose.connect('mongodb://localhost/markettracker');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/markettracker');
 
 // Decode POST and PUT data in JSON and URL encoded formats
 app.use(bodyParser.json());
