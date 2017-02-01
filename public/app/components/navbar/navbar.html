@@ -1,18 +1,28 @@
-<nav class="navbar navbar-inverse well">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" ui-sref="homeState()">Market Tracker</a>
-    <a class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</a>
-    <a class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</a>
-    <a class="navbar-brand" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</a>
 
-    <!-- <button class="navbar-brand" ui-sref="homeState()">Home</button> -->
-    <!-- <button class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</button> -->
-    <!-- <button class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button> -->
-    <!-- <button class="navbar-brand" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</button> -->
+    <a class="navbar-brand nav-link" ui-sref="homeState()">Market Tracker</a>
 
-    <form class="nav navbar-nav navbar-right form-inline my-2 my-lg-0" ng-submit="navbarComp.search()">
-      <input class="form-control mr-sm-2" type="text" ng-model="navbarComp.query" placeholder="search"/>
-      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" />
-    </form>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-div" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-div" data-toggle="collapse" data-target="#navbar-collapse-div">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active"><a ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</a></li>
+        <li ui-sref-active="active"><a ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</a></li>
+        <li ui-sref-active="active"><a ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</a></li>
+      </ul>
+      <form class="nav navbar-nav navbar-right form-inline my-2 my-lg-0" ng-submit="navbarComp.search()">
+        <input class="form-control mr-auto mr-sm-2" type="text" ng-model="navbarComp.query" placeholder="search"/>
+        <input class="btn btn-outline-success mr-auto my-2 my-sm-0" type="submit" />
+      </form>
+    </div>
+
   </div>
-</nav>
+</div>
