@@ -1,0 +1,53 @@
+.footer{
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+  color: white;
+}
+
+.footer a{
+  color: white;
+}
+
+.footer a:hover{
+  text-decoration: none;
+}
+
+.footer-body{
+  background-color: #777;
+  min-height: 100px;
+}
+
+.footer-footer{
+  background-color: #444;
+  min-height: 50px;
+}
+
+.resources{
+  padding-bottom: 10px;
+}
+
+.footer .blue{
+  color: #90CAF9;
+}
+
+.footer .blue:hover{
+  color: white;
+}
+
+.footer .black{
+  color: black;
+}
+
+.footer .black:hover{
+  color: white;
+}
+
+.footer .lightgrey{
+  color: lightgrey;
+}
+
+.footer .lightgrey:hover{
+  color: white;
+}
