@@ -1,11 +1,18 @@
-<div>
-  <button ui-sref="homeState()">Home</button>
-  <button ui-sref="searchState">Search</button>
-  <button ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</button>
-  <button ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button>
-  <button ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</button>
-  <form ng-submit="navbarComp.search()">
-    <input type="text" ng-model="navbarComp.query" placeholder="search"/>
-    <input type="submit" />
-  </form>
-</div>
+<nav class="navbar navbar-inverse well">
+  <div class="container-fluid">
+    <a class="navbar-brand" ui-sref="homeState()">Home</a>
+    <a class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</a>
+    <a class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</a>
+    <a class="navbar-brand" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</a>
+
+    <!-- <button class="navbar-brand" ui-sref="homeState()">Home</button> -->
+    <!-- <button class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</button> -->
+    <!-- <button class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</button> -->
+    <!-- <button class="navbar-brand" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</button> -->
+
+    <form class="nav navbar-nav navbar-right form-inline my-2 my-lg-0" ng-submit="navbarComp.search()">
+      <input class="form-control mr-sm-2" type="text" ng-model="navbarComp.query" placeholder="search"/>
+      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" />
+    </form>
+  </div>
+</nav>
