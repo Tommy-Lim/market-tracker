@@ -8,19 +8,40 @@ angular.module('App')
 function PortfolioCompCtrl(DataServices){
   var portfolioComp = this;
 
-  portfolioComp.watchlist = [];
-  portfolioComp.purchased = [];
+  // DECLARE VARS
+  portfolioComp.watchlistSymbols = [];
+  portfolioComp.watchlistSymbolsData = [];
+  portfolioComp.purchasedPastData = [];
+  portfolioComp.purchasedSymbols = [];
+  portfolioComp.purchasedCurrentData = [];
 
-  DataServices.getWatchlist().then(function(data){
-    portfolioComp.watchlist = data;
 
-    DataServices.getStockDetails(portfolioComp.watchlist, function(data) {
-      portfolioComp.watchlistData = data;
+  // GET CURRENT DETAILS FOR WATCH LIST STOCKS
+  DataServices.getWatchlistSymbols().then(function(data){
+    portfolioComp.watchlistSymbols = data;
+
+    DataServices.getStockDetails(portfolioComp.watchlistSymbols, function(data) {
+      portfolioComp.watchlistSymbolsData = data;
     })
   });
 
+
+  // GET DETAILS FOR PURCHASED STOCKS AT TIME OF PURCHASE AND CURRENT
   DataServices.getPurchased().then(function(data){
-    portfolioComp.purchased = data;
+    // DATA FOR PURCHASED STOCKS AT TIME OF PURCHASE
+    portfolioComp.purchasedPastData = data;
+    console.log("purchased purchased data: ", portfolioComp.purchasedPastData);
+
+    // CURRENT DATA FOR PURCHASED STOCKS
+    portfolioComp.purchasedSymbols = portfolioComp.purchasedPastData.map(function(stock){
+      return stock.stock.Symbol;
+    })
+    DataServices.getStockDetails(portfolioComp.purchasedSymbols, function(data) {
+      portfolioComp.purchasedCurrentData = data;
+      console.log("current purchased data: ", portfolioComp.purchasedCurrentData);
+    })
+
+
   });
 
 

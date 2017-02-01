@@ -131,7 +131,7 @@ function DataServices($http){
     })
   }
 
-  this.getWatchlist = function(){
+  this.getWatchlistSymbols = function(){
     var req = {
       url: '/api/users/watchlist',
       method: 'GET'

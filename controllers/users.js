@@ -91,7 +91,8 @@ router.route('/buy')
 
   var newPurchase = {
     userEmail: req.user.email,
-    stock: req.body.data.stock
+    stock: req.body.data.stock,
+    quantity: req.body.data.quantity
   }
 
   console.log(newPurchase);

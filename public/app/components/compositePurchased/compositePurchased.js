@@ -9,7 +9,6 @@ function CompositePurchasedCompCtrl(DataServices) {
   compositePurchasedComp = this;
 
   DataServices.getPurchased().then(function(data){
-    console.log("PURCHASED DATA first", data);
 
     data = data.map(function(stock){
       return {
@@ -19,10 +18,8 @@ function CompositePurchasedCompCtrl(DataServices) {
       }
     })
 
-    console.log("DATA SENT", data);
 
     DataServices.getChartData(data).then(function(data) {
-      console.log("the data is....", data);
       $(function() {
         var seriesOptions = [];
 

@@ -1,53 +1,115 @@
-<div class="container text-center">
+<div class="container">
 
   <div class="row">
     <div class="col-xs-12">
-      <h2 ng-hide="!portfolioComp.watchlist">Watchlist <hr /></h2>
-      <h2 ng-show="!portfolioComp.watchlist">No Stocks Added to Watchlist <hr /></h2>
+      <h2 ng-show="portfolioComp.purchasedPastData.length>0">Purchased Stocks</h2>
+      <h2 ng-hide="portfolioComp.purchasedPastData.length>0">No Purchased Stocks</h2>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-3 portfolio-header">
+    <div class="col-xs-3 col-sm-2 col-md-1  portfolio-header">
       <table class="table table-striped">
         <tbody>
           <tr>
             <th>Symbol</th>
           </tr>
-          <tr ng-repeat="stock in portfolioComp.watchlistData track by $index">
-            <td class="col-sm-1">{{stock.Symbol}}</td>
+          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false">
+            <td>{{entry.stock.Symbol}}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-xs-9 portfolio-tables">
+    <div class="col-xs-9 col-sm-10 col-md-11 portfolio-tables">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Shares Owned</th>
+            <th>Change</th>
+            <th>Change %</th>
+            <th>Change % YTD</th>
+            <th>Change YTD</th>
+            <th>High</th>
+            <th>Last Price</th>
+            <th>Low</th>
+            <th>Market Cap</th>
+            <th>Open</th>
+            <th>Volume</th>
+          </tr>
+          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false">
+            <td>{{entry.stock.Name}}</td>
+            <td>{{entry.quantity}}</td>
+            <td>{{entry.stock.Change.toFixed(2)}}</td>
+            <td>{{entry.stock.ChangePercent.toFixed(2)}}</td>
+            <td>{{entry.stock.ChangePercentYTD.toFixed(2)}}</td>
+            <td>{{entry.stock.ChangeYTD}}</td>
+            <td>{{entry.stock.High}}</td>
+            <td>{{entry.stock.LastPrice}}</td>
+            <td>{{entry.stock.Low}}</td>
+            <td>{{entry.stock.MarketCap}}</td>
+            <td>{{entry.stock.Open}}</td>
+            <td>{{entry.stock.Volume}}</td>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <composite-purchased-comp ng-if="portfolioComp.purchasedPastData"></composite-purchased-comp>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 ng-show="portfolioComp.watchlistSymbolsData.length>0">Watchlist</h2>
+      <h2 ng-hide="portfolioComp.watchlistSymbolsData.length>0">No Stocks Added to Watchlist</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3 col-sm-2 col-md-1 portfolio-header">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>Symbol</th>
+          </tr>
+          <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData | orderBy:'Symbol':false">
+            <td>{{entry.Symbol}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-9 col-sm-10 col-md-11 portfolio-tables">
       <table class="table table-striped">
         <tbody>
          <tr>
-           <th class="col-lg-1">Name</th>
-           <th class="col-lg-1">Change</th>
-           <th class="col-lg-1">Change %</th>
-           <th class="col-lg-1">Change % YTD</th>
-           <th class="col-lg-1">Change YTD</th>
-           <th class="col-lg-1">High</th>
-           <th class="col-lg-1">Last Price</th>
-           <th class="col-lg-1">Low</th>
-           <th class="col-lg-1">Market Cap</th>
-           <th class="col-lg-1">Open</th>
-           <th class="col-lg-1">Volume</th>
+           <th>Name</th>
+           <th>Change</th>
+           <th>Change %</th>
+           <th>Change % YTD</th>
+           <th>Change YTD</th>
+           <th>High</th>
+           <th>Last Price</th>
+           <th>Low</th>
+           <th>Market Cap</th>
+           <th>Open</th>
+           <th>Volume</th>
          </tr>
-         <tr ng-repeat="stock in portfolioComp.watchlistData track by $index">
-          <td class="col-sm-1">{{stock.Name}}</td>
-          <td class="col-sm-1">{{stock.Change.toFixed(2)}}</td>
-          <td class="col-sm-1">{{stock.ChangePercent.toFixed(2)}}</td>
-          <td class="col-sm-1">{{stock.ChangePercentYTD.toFixed(2)}}</td>
-          <td class="col-sm-1">{{stock.ChangeYTD}}</td>
-          <td class="col-sm-1">{{stock.High}}</td>
-          <td class="col-sm-1">{{stock.LastPrice}}</td>
-          <td class="col-sm-1">{{stock.Low}}</td>
-          <td class="col-sm-1">{{stock.MarketCap}}</td>
-          <td class="col-sm-1">{{stock.Open}}</td>
-          <td class="col-sm-1">{{stock.Volume}}</td>
+         <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData  | orderBy:'Symbol':false">
+          <td>{{entry.Name}}</td>
+          <td>{{entry.Change.toFixed(2)}}</td>
+          <td>{{entry.ChangePercent.toFixed(2)}}</td>
+          <td>{{entry.ChangePercentYTD.toFixed(2)}}</td>
+          <td>{{entry.ChangeYTD}}</td>
+          <td>{{entry.High}}</td>
+          <td>{{entry.LastPrice}}</td>
+          <td>{{entry.Low}}</td>
+          <td>{{entry.MarketCap}}</td>
+          <td>{{entry.Open}}</td>
+          <td>{{entry.Volume}}</td>
         </tr>
         </tbody>
       </table>
@@ -56,67 +118,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <composite-watchlist-comp></composite-watchlist-comp>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <h2 ng-hide="!portfolioComp.purchased">Purchased Stocks <hr /></h2>
-      <h2 ng-show="!portfolioComp.purchased">No Purchased Stocks <hr /></h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-3 portfolio-header">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th>Symbol</th>
-          </tr>
-          <tr ng-repeat="stock in portfolioComp.purchased track by $index">
-            <td class="col-sm-1">{{stock.stock.Symbol}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-xs-9 portfolio-tables">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th class="col-lg-1">Name</th>
-            <th class="col-lg-1">Change</th>
-            <th class="col-lg-1">Change %</th>
-            <th class="col-lg-1">Change % YTD</th>
-            <th class="col-lg-1">Change YTD</th>
-            <th class="col-lg-1">High</th>
-            <th class="col-lg-1">Last Price</th>
-            <th class="col-lg-1">Low</th>
-            <th class="col-lg-1">Market Cap</th>
-            <th class="col-lg-1">Open</th>
-            <th class="col-lg-1">Volume</th>
-          </tr>
-          <tr ng-repeat="stock in portfolioComp.purchased track by $index">
-            <td class="col-sm-1">{{stock.stock.Name}}</td>
-            <td class="col-sm-1">{{stock.stock.Change.toFixed(2)}}</td>
-            <td class="col-sm-1">{{stock.stock.ChangePercent.toFixed(2)}}</td>
-            <td class="col-sm-1">{{stock.stock.ChangePercentYTD.toFixed(2)}}</td>
-            <td class="col-sm-1">{{stock.stock.ChangeYTD}}</td>
-            <td class="col-sm-1">{{stock.stock.High}}</td>
-            <td class="col-sm-1">{{stock.stock.LastPrice}}</td>
-            <td class="col-sm-1">{{stock.stock.Low}}</td>
-            <td class="col-sm-1">{{stock.stock.MarketCap}}</td>
-            <td class="col-sm-1">{{stock.stock.Open}}</td>
-            <td class="col-sm-1">{{stock.stock.Volume}}</td>
-         </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <composite-purchased-comp></composite-purchased-comp>
+      <composite-watchlist-comp ng-if="portfolioComp.watchlistSymbolsData"></composite-watchlist-comp>
     </div>
   </div>
 

@@ -5,14 +5,6 @@ var mongoose = require('mongoose');
 var request = require('request');
 // mongoose.connect('mongodb://localhost/markettracker');
 
-
-// Routes....
-//
-// router.route('/')
-// .get(function(req, res){
-//   return res.send({msg: "stocks / get route hit"});
-// })
-
 router.route('/lookup/:query')
 .get(function(req, res) {
   console.log(req.params.query);

@@ -8,7 +8,7 @@ angular.module('App')
 function CompositeWatchlistCompCtrl(DataServices) {
   compositeWatchlistComp = this;
 
-  DataServices.getWatchlist().then(function(data){
+  DataServices.getWatchlistSymbols().then(function(data){
 
     data = data.map(function(stock){
       return {

@@ -1,9 +1,13 @@
 body{
-  background-color: #d3d3d3;
+
 }
 
 .chartButton{
   height: 1em;
+}
+
+.title-content{
+  
 }
 
 .chart-list-chart{
@@ -25,7 +29,6 @@ body{
 .portfolio-tables{
   overflow-x: scroll;
   padding-left: 0;
-  text-align: left;
 }
 
 .portfolio-header{
