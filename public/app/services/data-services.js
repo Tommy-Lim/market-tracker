@@ -127,8 +127,32 @@ function DataServices($http){
         });
 
     })
+  }
 
+  this.getWatchlist = function(){
+    var req = {
+      url: '/api/users/watchlist',
+      method: 'GET'
+    }
 
+    return $http(req).then(function success(res) {
+      console.log("watchlist: ", res);
+    }, function failure(res) {
+      console.log("failure");
+    });
+  }
+
+  this.getPurchased = function(){
+    var req = {
+      url: '/api/users/purchased',
+      method: 'GET'
+    }
+
+    return $http(req).then(function success(res) {
+      console.log("purchased: ", res);
+    }, function failure(res) {
+      console.log("failure");
+    });
   }
 
 }
