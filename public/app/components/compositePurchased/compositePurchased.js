@@ -1,25 +1,28 @@
 angular.module('App')
-.component('compositeWatchlistComp', {
-    templateUrl: 'app/components/compositeWatchlist/compositeWatchlist.html',
-    controller: CompositeWatchlistCompCtrl,
-    controllerAs: 'compositeWatchlistComp'
+.component('compositePurchasedComp', {
+    templateUrl: 'app/components/compositePurchased/compositePurchased.html',
+    controller: CompositePurchasedCompCtrl,
+    controllerAs: 'compositePurchasedComp'
 });
 
-function CompositeWatchlistCompCtrl(DataServices) {
-  compositeWatchlistComp = this;
+function CompositePurchasedCompCtrl(DataServices) {
+  compositePurchasedComp = this;
 
-  DataServices.getWatchlist().then(function(data){
+  DataServices.getPurchased().then(function(data){
+    console.log("PURCHASED DATA first", data);
 
     data = data.map(function(stock){
       return {
-        Symbol: stock,
+        Symbol: stock.stock.Symbol,
         Type: "price",
         Params: ["c"]
       }
     })
 
+    console.log("DATA SENT", data);
 
     DataServices.getChartData(data).then(function(data) {
+      console.log("the data is....", data);
       $(function() {
         var seriesOptions = [];
 
@@ -28,7 +31,7 @@ function CompositeWatchlistCompCtrl(DataServices) {
         });
 
         function createChart() {
-          Highcharts.stockChart('composite-watchlist', {
+          Highcharts.stockChart('composite-purchased', {
             rangeSelector: {
               selected: 4
             },

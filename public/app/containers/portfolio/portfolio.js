@@ -12,16 +12,14 @@ function PortfolioCompCtrl(DataServices){
   portfolioComp.purchased = [];
 
   DataServices.getWatchlist().then(function(data){
-    console.log("watchlist here!", data);
     portfolioComp.watchlist = data;
-    
+
     DataServices.getStockDetails(portfolioComp.watchlist, function(data) {
       portfolioComp.watchlistData = data;
     })
   });
 
   DataServices.getPurchased().then(function(data){
-    console.log("purchased here!", data)
     portfolioComp.purchased = data;
   });
 

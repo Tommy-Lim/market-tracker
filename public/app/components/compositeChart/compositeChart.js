@@ -20,7 +20,7 @@ function CompositeChartCompCtrl(DataServices) {
       Params: ["c"]
     },
     {
-      Symbol: "BA",
+      Symbol: "NFLX",
       Type: "price",
       Params: ["c"]
     },
@@ -31,6 +31,11 @@ function CompositeChartCompCtrl(DataServices) {
     },
     {
       Symbol: "TSLA",
+      Type: "price",
+      Params: ["c"]
+    },
+    {
+      Symbol: "MSFT",
       Type: "price",
       Params: ["c"]
     }

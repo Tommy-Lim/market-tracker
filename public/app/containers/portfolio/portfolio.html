@@ -52,7 +52,7 @@
   </div>
 
   <div class="row">
-    <h2 ng-hide="!portfolioComp.purchased">Purchased</h2>
+    <h2 ng-hide="!portfolioComp.purchased">Purchased Stocks <hr /></h2>
     <h2 ng-show="!portfolioComp.purchased">No Purchased Stocks <hr /></h2>
 
     <div ng-repeat="stock in portfolioComp.purchased track by $index">
@@ -78,6 +78,8 @@
     </div>
   </div>
 
-  <chart-list-comp></chart-list-comp>
+  <div class="row">
+    <composite-purchased-comp></composite-purchased-comp>
+  </div>
 
 </div>

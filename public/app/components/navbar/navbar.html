@@ -1,9 +1,9 @@
 <nav class="navbar navbar-inverse well">
   <div class="container-fluid">
-    <a class="navbar-brand" ui-sref="homeState()">Home</a>
+    <a class="navbar-brand" ui-sref="homeState()">Market Tracker</a>
     <a class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</a>
     <a class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</a>
-    <a class="navbar-brand" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Sign up / log in</a>
+    <a class="navbar-brand" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()"><i class="fa fa-user" aria-hidden="true"></i></a>
 
     <!-- <button class="navbar-brand" ui-sref="homeState()">Home</button> -->
     <!-- <button class="navbar-brand" ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</button> -->
