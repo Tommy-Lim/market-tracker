@@ -8,19 +8,6 @@ angular.module('App')
 function HomeCompCtrl(DataServices, AuthServices, Auth){
   var homeComp = this;
 
-  // AuthServices.userSignup();
-  // AuthServices.userLogin();
-  // Auth.isLoggedIn();
-  // Auth.userLogout();
-
-  // DataServices.searchStocks();
-  // DataServices.getStockDetails();
-
-  // DataServices.getChartData().then(function(data){
-  //   homeComp.foo = data;
-  //   console.log("homeComp results: ", homeComp.foo);
-  // });
-
   DataServices.getNews().then(function(data){
     console.log("news data: ", data);
     homeComp.articles = data;
