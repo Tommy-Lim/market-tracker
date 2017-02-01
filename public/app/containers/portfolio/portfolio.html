@@ -1,5 +1,6 @@
 <div class="container text-center">
-  <h1>Portfolio</h1>
+
+  <h1>Portfolio <hr /></h1>
 
   <div class="row">
     <table class="table table-striped">
@@ -23,7 +24,8 @@
   </div>
 
   <div class="row">
-    <div ng-repeat="stock in portfolioComp.data track by $index">
+    <h2>Watchlist <hr /></h2>
+    <div ng-repeat="stock in portfolioComp.watchlistData track by $index">
       <table class="table table-striped">
         <tbody>
           <tr>
@@ -40,23 +42,42 @@
            <td class="col-sm-1">{{stock.Open}}</td>
            <td class="col-sm-1">{{stock.Volume}}</td>
          </tr>
-        
         </tbody>
       </table>
-
-      <div class="row">
-        <table class="table table-striped">
-          <tbody>
-            <tr>
-              <td class="text-center chartButton">Chart &#43</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
     </div>
-
   </div>
 
-      <chart-list-comp></chart-list-comp>
+  <div class="row">
+    <composite-watchlist-comp></composite-watchlist-comp>
+  </div>
+
+  <div class="row">
+    <h2 ng-hide="!portfolioComp.purchased">Purchased</h2>
+    <h2 ng-show="!portfolioComp.purchased">No Purchased Stocks <hr /></h2>
+
+    <div ng-repeat="stock in portfolioComp.purchased track by $index">
+      Purchased: {{stock.stock.Timestamp}}
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+           <td class="col-sm-1">{{stock.stock.Symbol}}</td>
+           <td class="col-sm-1">{{stock.stock.Name}}</td>
+           <td class="col-sm-1">{{stock.stock.Change.toFixed(2)}}</td>
+           <td class="col-sm-1">{{stock.stock.ChangePercent.toFixed(2)}}</td>
+           <td class="col-sm-1">{{stock.stock.ChangePercentYTD.toFixed(2)}}</td>
+           <td class="col-sm-1">{{stock.stock.ChangeYTD}}</td>
+           <td class="col-sm-1">{{stock.stock.High}}</td>
+           <td class="col-sm-1">{{stock.stock.LastPrice}}</td>
+           <td class="col-sm-1">{{stock.stock.Low}}</td>
+           <td class="col-sm-1">{{stock.stock.MarketCap}}</td>
+           <td class="col-sm-1">{{stock.stock.Open}}</td>
+           <td class="col-sm-1">{{stock.stock.Volume}}</td>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <chart-list-comp></chart-list-comp>
+
 </div>

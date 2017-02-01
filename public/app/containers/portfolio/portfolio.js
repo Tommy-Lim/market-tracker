@@ -8,14 +8,23 @@ angular.module('App')
 function PortfolioCompCtrl(DataServices){
   var portfolioComp = this;
 
-  var array = ['BA', 'AAPL'];
+  portfolioComp.watchlist = [];
+  portfolioComp.purchased = [];
 
-  DataServices.getStockDetails(array, function(data) {
-    portfolioComp.data = data;
-  })
+  DataServices.getWatchlist().then(function(data){
+    console.log("watchlist here!", data);
+    portfolioComp.watchlist = data;
+    
+    DataServices.getStockDetails(portfolioComp.watchlist, function(data) {
+      portfolioComp.watchlistData = data;
+    })
+  });
 
-  DataServices.getWatchlist();
-  DataServices.getPurchased();
+  DataServices.getPurchased().then(function(data){
+    console.log("purchased here!", data)
+    portfolioComp.purchased = data;
+  });
+
 
 }
 

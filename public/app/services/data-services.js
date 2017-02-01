@@ -58,8 +58,10 @@ function DataServices($http){
     return $http(req).then(function success(res) {
 
       var chartDataArray = [];
+      var UTCdates = res.data.Dates;
+      var dates = [];
 
-      var dates = res.data.Dates.map(function(date, dateIndex){
+      dates = UTCdates.map(function(date, dateIndex){
         return new Date(date).getTime();
       })
 
@@ -136,7 +138,7 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
-      console.log("watchlist: ", res);
+      return res.data.watchlist;
     }, function failure(res) {
       console.log("failure");
     });
@@ -149,7 +151,7 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
-      console.log("purchased: ", res);
+      return res.data.purchases;
     }, function failure(res) {
       console.log("failure");
     });
