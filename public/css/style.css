@@ -1,6 +1,6 @@
 body{
   line-height: normal;
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .chartButton{
@@ -51,12 +51,12 @@ body{
 }
 
 .fa-times{
-  color: darkred;
+  color: red;
 }
 
 .fa-times:hover{
   cursor: pointer;
-  color: red;
+  color: darkred;
 }
 
 .media-object{

@@ -15,7 +15,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <li ui-sref-active="active"><a ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</a></li>
-      <li ui-sref-active="active"><a ng-show="navbarComp.isLoggedIn()" ng-click="navbarComp.logout()">Logout</a></li>
+      <li ui-sref-active="active"><a ng-show="navbarComp.isLoggedIn()" ui-sref="authState()" ng-click="navbarComp.logout()">Logout</a></li>
       <li ui-sref-active="active"><a ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</a></li>
     </ul>
 

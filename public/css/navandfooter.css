@@ -10,6 +10,17 @@ navbar-comp .navbar-inverse{
   color: #5ccf5c;
 }
 
+.navbar-form input, .navbar-form button{
+  background-color: #555;
+  border: 1px solid #444;
+  color: #E0E0E3;
+}
+
+.navbar-form input:focus{
+  background-color: #EEE;
+  color: black;
+}
+
 .footer{
   position: relative;
   bottom: 0;
@@ -57,6 +68,14 @@ navbar-comp .navbar-inverse{
 }
 
 .footer .green:hover{
+  color: white;
+}
+
+.footer .blue{
+  color: lightskyblue;
+}
+
+.footer .blue:hover{
   color: white;
 }
 
