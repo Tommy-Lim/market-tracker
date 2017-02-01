@@ -7,12 +7,13 @@
       <h4>{{stockComp.stock.Name}}</h4>
     </div>
     <div class="col-xs-12">
-      <button class="btn btn-sm btn-primary" ng-click="stockComp.watch()">Watch</button>
-      <button class="btn btn-sm btn-primary" ng-click="stockComp.showForm()">Buy</button>
+      <button class="btn btn-sm btn-primary"  ng-class="{'disabled' : !navbarComp.isLoggedIn()}" ng-click="stockComp.watch()">Watch</button>
+      <button class="btn btn-sm btn-primary" ng-class="{'disabled' : !navbarComp.isLoggedIn()}" ng-click="stockComp.showForm()">Buy</button>
+      <button class="btn btn-sm btn-primary" ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</button>
 
-      <form ng-submit="stockComp.submitBuy()" class="buy-form">
+      <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-if="navbarComp.isLoggedIn()">
         <input class="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#"/>
-        <input ng-show="stockComp.showBuy" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
+        <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !navbarComp.isLoggedIn()}" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
         <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
       </form>
     </div>
