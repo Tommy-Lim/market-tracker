@@ -27,6 +27,44 @@ router.route('/')
   })
 })
 
+router.route('/watchlist')
+.get(function(req, res){
+  models.User.findOne({
+    email: req.user.email
+  }, function(err, user){
+    if(!user){
+      console.log("no user found");
+    } else{
+      if(!user.watchlist){
+        res.send({msg: "watchlist empty", watchlist: []});
+      } else{
+        res.send({watchlist: user.watchlist});
+      }
+    }
+  })
+
+})
+
+router.route('/purchased')
+.get(function(req, res){
+
+  models.User.findOne({
+    email: req.user.email
+  }, function(err, user){
+    console.log("user: ", user);
+    if(!user){
+      console.log("no user found");
+    } else{
+      if(!user.purchased){
+        res.send({msg: "purchases empty", purchases: []});
+      } else{
+        res.send({purchases: user.purchased});
+      }
+    }
+  })
+
+})
+
 router.route('/watch/:symbol')
 .post(function(req, res){
 
