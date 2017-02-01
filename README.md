@@ -2,9 +2,11 @@
 
 Check it out for yourself - [Market Tracker](#)!
 
-Market Tracker enables users to simulate playing the stock market; lookup, view, and chart stocks.  
+Market Tracker enables users to simulate playing the stock market; lookup, view, and visualize stocks.  
 
 Log in or sign up to save stocks to "Watchlist" or "Buy" stocks and save a snapshot of their current market value, then compare later to see your simulated gains (or losses).
+
+Inspired by [MarketWatch](http://www.marketwatch.com/).
 
 ## Why?
 
