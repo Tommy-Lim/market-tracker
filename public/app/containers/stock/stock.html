@@ -9,10 +9,11 @@
     <div class="col-xs-12">
       <button class="btn btn-sm btn-primary" ng-click="stockComp.watch()">Watch</button>
       <button class="btn btn-sm btn-primary" ng-click="stockComp.showForm()">Buy</button>
-      <strong class="text-success" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
-      <form ng-submit="stockComp.submitBuy()">
-        <input ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="quantity"/>
+
+      <form ng-submit="stockComp.submitBuy()" class="buy-form">
+        <input class="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#"/>
         <input ng-show="stockComp.showBuy" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
+        <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
       </form>
     </div>
   </div>

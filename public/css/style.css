@@ -24,7 +24,7 @@ body{
 }
 
 .green{
-  color: #15B942;
+  color: #5ccf5c;
 }
 
 .red{
@@ -62,4 +62,12 @@ body{
 .media-object{
   width: 70px;
   height: 70px;
+}
+
+.buy-form{
+  padding-top: 5px;
+}
+
+.quantity-input{
+  width: 56px;
 }
