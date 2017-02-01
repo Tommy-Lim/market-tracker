@@ -11,6 +11,16 @@ body{
 
 }
 
+.quote{
+  font-size: 28px;
+  font-style: italic;
+}
+
+.quote-signature{
+  font-size: 22px;
+  text-align: right;
+}
+
 .chart-list-chart{
   margin: 5px 0;
 }

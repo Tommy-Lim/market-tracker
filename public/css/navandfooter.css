@@ -71,6 +71,14 @@ navbar-comp .navbar-inverse{
   color: white;
 }
 
+.footer .grey{
+  color: #lightgrey;
+}
+
+.footer .grey:hover{
+  color: white;
+}
+
 .footer .blue{
   color: lightskyblue;
 }
