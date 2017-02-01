@@ -52,8 +52,8 @@ lorem
 
 ## In Progress
 
-* Add Google Flights API and integrate user and airport models to allow users to find and save flight cost data (min, avg, high).
-* Add Facebook authorization for sign up and log in.
+* thing 1
+* thing 2
 
 ## Contact  
 
