@@ -37,25 +37,19 @@ To demonstrate in a fun, usable way, the implementation of the MEAN stack: Mongo
 ## Challenges
 
 ### Challenge 1
-lorem
-
-lorem
-lorme
-
-### Challenge 2
-lorem  
-
 The Async "waterfall" function was helpful in passing data from one call to another while the "series" function also helped ensure sequencing of execution.  Lastly, the "concat" function helped improve code structure when passing over an array of urls for a given API call.
 
-### challenge 3
-lorem
+### Challenge 2
+Creation of the stock charts. The Highcharts API added much of the functionality. Once we were able to convert the date's into milliseconds since 1970 we had the data in a workable format for Highcharts which allowed us to implement an accurately timed stock chart.
 
-lorem
+### challenge 3
+The responsiveness of the site. Making the navbar collapse as the app becomes smaller and then having a dropdown with the same functionality prior to collapse.
 
 ## In Progress
 
-* thing 1
-* thing 2
+* Responsiveness and styling
+* Deployment
+* News items on your profile page based off of the stocks the user has purchased and watchlisted.
 
 ## Contact  
 
