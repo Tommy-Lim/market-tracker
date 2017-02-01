@@ -170,6 +170,26 @@ function DataServices($http){
     });
   }
 
+  this.getNews = function(){
+    var req = {
+      url: '/api/news',
+      method: "GET"
+    };
+
+    return $http(req).then(function success(res) {
+      console.log("HTTP success:", res.data.articles);
+      if (res.data.Error === "News not found!") {
+        console.log("News not found");
+      } else {
+        console.log("articles:", res.data.articles)
+        return res.data.articles;
+      }
+    }, function failure(res) {
+      $scope.results = [];
+      console.log("HTTP failed:", res);
+    });
+  }
+
 }
 
 DataServices.$inject = ['$http'];

@@ -20,6 +20,8 @@ function HomeCompCtrl(DataServices, AuthServices, Auth){
   //   homeComp.foo = data;
   //   console.log("homeComp results: ", homeComp.foo);
   // });
+
+  DataServices.getNews();
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices', 'Auth'];

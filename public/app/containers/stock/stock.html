@@ -7,8 +7,8 @@
       <h4>{{stockComp.stock.Name}}</h4>
     </div>
     <div class="col-xs-12">
-      <button class="btn btn-xs btn-info" ng-click="stockComp.watch()">Watch</button>
-      <button class="btn btn-xs btn-info" ng-click="stockComp.showForm()">Buy</button>
+      <button class="btn btn-sm btn-primary" ng-click="stockComp.watch()">Watch</button>
+      <button class="btn btn-sm btn-primary" ng-click="stockComp.showForm()">Buy</button>
       <strong ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
       <form ng-submit="stockComp.submitBuy()">
         <input ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="quantity"/>

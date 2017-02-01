@@ -29,6 +29,7 @@ app.use('/api/users', expressJWT({secret: secret}).unless({
   path: [{url: '/api/users', methods:['POST']}]
 }), require('./controllers/users'));
 app.use('/api/stocks', require('./controllers/stocks'));
+app.use('/api/news', require('./controllers/news'));
 app.use('/api/purchased', expressJWT({secret: secret}), require('./controllers/purchased'));
 
 
