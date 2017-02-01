@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'portfolioComp'
 });
 
-function PortfolioCompCtrl(DataServices){
+function PortfolioCompCtrl($state, DataServices){
   var portfolioComp = this;
 
   // DECLARE VARS
@@ -40,11 +40,17 @@ function PortfolioCompCtrl(DataServices){
       portfolioComp.purchasedCurrentData = data;
       console.log("current purchased data: ", portfolioComp.purchasedCurrentData);
     })
-
-
   });
+
+  portfolioComp.delete = function(symbol){
+    console.log(symbol);
+    DataServices.removeSymbolFromWatchlist(symbol).then(function(){
+      console.log("reloading");
+      $state.reload();
+    });
+  }
 
 
 }
 
-PortfolioCompCtrl.$inject = ['DataServices'];
+PortfolioCompCtrl.$inject = ['$state', 'DataServices'];

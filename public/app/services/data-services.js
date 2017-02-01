@@ -157,6 +157,19 @@ function DataServices($http){
     });
   }
 
+  this.removeSymbolFromWatchlist = function(symbol){
+    var req = {
+      url: '/api/users/watch/' + symbol,
+      method: 'DELETE'
+    }
+
+    return $http(req).then(function success(res) {
+      console.log("service side res", res);
+    }, function failure(res) {
+      console.log("failure");
+    });
+  }
+
 }
 
 DataServices.$inject = ['$http'];

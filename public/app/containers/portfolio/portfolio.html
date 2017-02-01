@@ -14,8 +14,10 @@
           <tr>
             <th>Symbol</th>
           </tr>
-          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false">
-            <td>{{entry.stock.Symbol}}</td>
+          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
+            <td>
+              <a ui-sref="stockState({symbol: entry.stock.Symbol})">{{entry.stock.Symbol}}</a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -25,7 +27,7 @@
         <tbody>
           <tr>
             <th>Name</th>
-            <th>Shares Owned</th>
+            <th>Shares</th>
             <th>Change</th>
             <th>Change %</th>
             <th>Change % YTD</th>
@@ -37,7 +39,7 @@
             <th>Open</th>
             <th>Volume</th>
           </tr>
-          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false">
+          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
             <td>{{entry.stock.Name}}</td>
             <td>{{entry.quantity}}</td>
             <td>{{entry.stock.Change.toFixed(2)}}</td>
@@ -58,9 +60,11 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <composite-purchased-comp ng-if="portfolioComp.purchasedPastData"></composite-purchased-comp>
+      <composite-purchased-comp ng-if="portfolioComp.purchasedPastData.length>0"></composite-purchased-comp>
     </div>
   </div>
+
+  <hr />
 
   <div class="row">
     <div class="col-xs-12">
@@ -76,8 +80,11 @@
           <tr>
             <th>Symbol</th>
           </tr>
-          <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData | orderBy:'Symbol':false">
-            <td>{{entry.Symbol}}</td>
+          <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData | orderBy:'Symbol':false track by $index">
+            <td>
+              <a ui-sref="stockState({symbol: entry.Symbol})">{{entry.Symbol}} </a> |
+              <i class="fa fa-times fa-0.5x" aria-hidden="true" ng-click="portfolioComp.delete(entry.Symbol)"></i>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -98,7 +105,7 @@
            <th>Open</th>
            <th>Volume</th>
          </tr>
-         <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData  | orderBy:'Symbol':false">
+         <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData  | orderBy:'Symbol':false track by $index">
           <td>{{entry.Name}}</td>
           <td>{{entry.Change.toFixed(2)}}</td>
           <td>{{entry.ChangePercent.toFixed(2)}}</td>
@@ -118,7 +125,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <composite-watchlist-comp ng-if="portfolioComp.watchlistSymbolsData"></composite-watchlist-comp>
+      <composite-watchlist-comp ng-if="portfolioComp.watchlistSymbolsData.length>0"></composite-watchlist-comp>
     </div>
   </div>
 

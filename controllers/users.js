@@ -83,11 +83,28 @@ router.route('/watch/:symbol')
   })
 
 })
+.delete(function(req, res){
+
+  models.User.findOne({
+    email: req.user.email
+  }, function(err, user){
+    if(!user){
+      console.log("user not found");
+    } else{
+      console.log("before", user.watchlist);
+      user.watchlist.splice(user.watchlist.indexOf(req.params.symbol), 1);
+      console.log("after", user.watchlist);
+      user.save();
+      res.send({
+        msg: req.params.symbol + " added to " + req.user.email + "'s watchlist"
+      });
+    }
+  })
+
+})
 
 router.route('/buy')
 .post(function(req, res){
-  console.log("buy stock: ", req.body.data.stock);
-  console.log("buy quantity: ", req.body.data.quantity);
 
   var newPurchase = {
     userEmail: req.user.email,

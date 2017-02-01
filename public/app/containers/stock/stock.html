@@ -11,12 +11,9 @@
       <button class="btn btn-xs btn-info" ng-click="stockComp.showForm()">Buy</button>
       <strong ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
       <form ng-submit="stockComp.submitBuy()">
-        <input ng-show="stockComp.showBuy"ng-model="stockComp.quantity" type="number" required placeholder="quantity"/>
+        <input ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="quantity"/>
         <input ng-show="stockComp.showBuy" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
       </form>
-    </div>
-    <div class="col-xs-12">
-      <p>{{stockComp.stock.Timestamp}}</p>
     </div>
   </div>
   <div class="row">
@@ -24,6 +21,7 @@
       <chart-comp></chart-comp>
     </div>
     <div class="col-md-4">
+      <p>Trade Day: {{stockComp.stock.Timestamp}}</p>
       <table class="table table-striped">
         <tbody>
           <tr>
