@@ -21,7 +21,10 @@ function HomeCompCtrl(DataServices, AuthServices, Auth){
   //   console.log("homeComp results: ", homeComp.foo);
   // });
 
-  DataServices.getNews();
+  DataServices.getNews().then(function(data){
+    console.log("news data: ", data);
+    homeComp.articles = data;
+  });
 }
 
 HomeCompCtrl.$inject = ['DataServices', 'AuthServices', 'Auth'];

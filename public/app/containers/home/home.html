@@ -2,21 +2,49 @@
   <div class="row">
 
     <div class="col-md-4 title-content">
-      <h1> Market-Tracker</h1>
+      <h1> Market Tracker</h1>
       <h4>
-        Search stocks right away. Or create an account and start adding and buying stocks
-        to your own personal watchlist.
+        Search stocks right away or create an account to start watching and buying stocks.
       </h4>
       <h4>
         Get customized charts and all the information you
-        need to be a skilled day trader. Everything at your fingertips just sign up and
+        need to be a skilled day trader.
+      </h4>
+      <h4>
+        Everything at your fingertips -  just sign up and
         watch your money grow.
       </h4>
+
     </div>
+
+    <hr class="visible-xs-* visible-sm-*"/>
 
     <div class="col-md-8">
       <composite-chart-comp></composite-chart-comp>
     </div>
 
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Bloomberg News</h2>
+    </div>
+    <div ng-repeat="article in homeComp.articles" class="col-md-6">
+      <div class="media panel">
+        <div class="media-left">
+          <a href="{{article.url}}">
+            <img class="media-object" src="{{article.urlToImage}}" alt="...">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">
+            {{article.title}}
+            <a href="{{article.url}}"><i class="fa fa-external-link fa-1x" aria-hidden="true"></i></a>
+          </h4>
+          <p>{{article.publishedAt}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

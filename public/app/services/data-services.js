@@ -181,7 +181,6 @@ function DataServices($http){
       if (res.data.Error === "News not found!") {
         console.log("News not found");
       } else {
-        console.log("articles:", res.data.articles)
         return res.data.articles;
       }
     }, function failure(res) {

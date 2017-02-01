@@ -57,3 +57,8 @@ body{
   cursor: pointer;
   color: red;
 }
+
+.media-object{
+  width: 70px;
+  height: 70px;
+}
