@@ -1,3 +1,15 @@
+navbar-comp .navbar-inverse{
+  background-color: #444;
+}
+
+.nav-search-submit{
+  display: none;
+}
+
+.navbar-inverse .navbar-brand{
+  color: #5ccf5c;
+}
+
 .footer{
   position: relative;
   bottom: 0;
