@@ -21,3 +21,19 @@ body{
 .green{
   color: lime;
 }
+
+.portfolio-tables{
+  overflow-x: scroll;
+  padding-left: 0;
+  text-align: left;
+}
+
+.portfolio-header{
+  padding-right: 0;
+  text-align: left;
+}
+
+.portfolio-tables th, .portfolio-tables td{
+  white-space: nowrap;
+  padding: 0;
+}
