@@ -9,6 +9,10 @@ body{
   min-height: 20px;
 }
 
+.alert-alert{
+  margin-bottom: 0;
+}
+
 .chartButton{
   height: 1em;
 }

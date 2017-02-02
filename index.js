@@ -46,14 +46,14 @@ app.post('/api/auth', function(req, res){
   models.User.findOne({email: req.body.email}, function(err, user){
     // return 401 error if error or no user
     if(err || !user){
-      return res.status(401).send({message: 'User not found'});
+      return res.status(401).send({message: 'Email not found'});
     }
 
     // attempt to authenticate a user
     var isAuthenticated = user.authenticated(req.body.password);
     // return 401 if invalid password or error
     if(err || !isAuthenticated){
-      return res.status(401).send({message: 'User not authenticated'});
+      return res.status(401).send({message: 'Invalid password'});
     }
 
     // sign the JWT with the user payload and secret, then return
