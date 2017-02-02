@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'navbarComp'
 });
 
-function NavbarCompCtrl($state, Auth){
+function NavbarCompCtrl($state, $window, Auth){
   var navbarComp = this;
   navbarComp.query = "";
 
@@ -24,4 +24,4 @@ function NavbarCompCtrl($state, Auth){
 
 }
 
-NavbarCompCtrl.$inject = ['$state', 'Auth'];
+NavbarCompCtrl.$inject = ['$state', '$window', 'Auth'];

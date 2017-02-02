@@ -38,6 +38,11 @@ function CompositeChartCompCtrl(DataServices) {
       Symbol: "MSFT",
       Type: "price",
       Params: ["c"]
+    },
+    {
+      Symbol: "FB",
+      Type: "price",
+      Params: ["c"]
     }
   ]
 

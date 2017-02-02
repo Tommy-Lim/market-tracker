@@ -1,6 +1,12 @@
 body{
   line-height: normal;
   padding-top: 70px;
+  min-height: 100vh;
+}
+
+.alerts-div{
+  margin-top: -20px;
+  min-height: 20px;
 }
 
 .chartButton{

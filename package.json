@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Tommy-Lim/market-tracker#readme",
   "dependencies": {
+    "angular-ui-bootstrap": "^2.5.0",
     "babel-eslint": "^7.1.1",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.16.0",

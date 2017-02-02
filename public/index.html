@@ -9,9 +9,13 @@
     <base href="/" />
 
     <!-- Angular Dependencies -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.1/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.1/angular-sanitize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
 
     <!-- Angular scripts -->
     <script src="app/app.js"></script>
@@ -25,6 +29,7 @@
     <!-- Angular components -->
     <script src="app/components/navbar/navbar.js"></script>
     <script src="app/components/footer/footer.js"></script>
+    <script src="app/components/alerts/alerts.js"></script>
     <script src="app/components/chart/chart.js"></script>
     <script src="app/components/compositeChart/compositeChart.js"></script>
     <script src="app/components/compositeWatchlist/compositeWatchlist.js"></script>
@@ -47,6 +52,8 @@
   </head>
   <body ng-app="App">
     <navbar-comp></navbar-comp>
+
+    <alerts-comp></alerts-comp>
 
     <div ui-view></div>
 
