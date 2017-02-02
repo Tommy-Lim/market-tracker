@@ -21,9 +21,13 @@ navbar-comp .navbar-inverse{
   color: black;
 }
 
-.footer{
-  position: relative;
+footer-comp{
+  position: relative;;
   bottom: 0;
+  width: 100%;
+}
+
+.footer{
   width: 100%;
   margin-top: 40px;
   color: white;
