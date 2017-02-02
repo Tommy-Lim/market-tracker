@@ -21,6 +21,11 @@ function PortfolioCompCtrl($state, $window, DataServices){
     portfolioComp.watchlistSymbols = data;
 
     DataServices.getStockDetails(portfolioComp.watchlistSymbols, function(data) {
+
+      if(data[0] == 'Request blockedExceeded requests/sec limit.'){
+        $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+      }
+
       portfolioComp.watchlistSymbolsData = data;
     })
   });
@@ -37,6 +42,9 @@ function PortfolioCompCtrl($state, $window, DataServices){
       return stock.stock.Symbol;
     })
     DataServices.getStockDetails(portfolioComp.purchasedSymbols, function(data) {
+      if(data[0] == 'Request blockedExceeded requests/sec limit.'){
+        $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+      }
       portfolioComp.purchasedCurrentData = data;
       console.log("purchasedCurrentData: ", portfolioComp.purchasedCurrentData);
     })
