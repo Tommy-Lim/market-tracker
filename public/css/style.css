@@ -111,7 +111,6 @@ body{
   width: 56px;
 }
 
-
 @media(max-width: 768px){
   .ui-view-div{
     min-height: calc(100vh - 380px);
@@ -122,4 +121,18 @@ body{
   .media-heading{
     font-size: 14px;
   }
+
+
+/*.fade-quote {
+opacity: 1;
+-webkit-transition: opacity 1.0s linear;
+-o-transition: opacity 1.0s linear;
+transition: opacity 1.0s linear;
+}*/
+
+.static {
+  height: 150px;
+  width: 100%;
+  overflow-x: scroll;
+  /*overflow-y: hidden;*/
 }
