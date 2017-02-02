@@ -32,7 +32,7 @@ function HomeCompCtrl($interval, DataServices, AuthServices, Auth){
 
     $interval(function (){
       getQuote(homeComp.quotes)
-    }, 1000);
+    }, 6000);
 
 }
 
