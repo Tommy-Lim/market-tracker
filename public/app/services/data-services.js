@@ -1,7 +1,7 @@
 angular.module('App')
 .service('DataServices', DataServices);
 
-function DataServices($http){
+function DataServices($http, $window, $location){
 
   this.searchStocks = function(query) {
     var req = {
@@ -10,10 +10,10 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
-      console.log("success");
       return res;
     }, function failure(res) {
-        console.log("failure");
+      $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+      $location.path('/');
     });
   }
 
@@ -31,7 +31,8 @@ function DataServices($http){
           cb(results);
         }
       }, function failure(res) {
-        console.log("failure");
+        $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+        $location.path('/');
         numErrors++;
         if (stockArray.length === (results.length+ numErrors)) {
           cb(results);
@@ -80,7 +81,8 @@ function DataServices($http){
 
       return chartDataArray;
     }, function failure(res) {
-        console.log("get chart data failure");
+      $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+      $location.path('/');
     });
   }
 
@@ -99,9 +101,13 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
+      var msg = symbol + ' added to Watchlist';
+      $window.alerts.push({msg: msg, type: 'success'});
+      $location.path('/portfolio');
       return res;
     }, function failure(res) {
-      console.log("failure");
+      $window.alerts.push({msg: 'Sorry, HTTP error. Please wait and try again.', type: 'danger'});
+      $location.path('/');
     });
   }
 
@@ -123,9 +129,13 @@ function DataServices($http){
         }
 
         return $http(req).then(function success(res) {
+          var msg = quantity + ' shares of ' + symbol + ' purchased';
+          $window.alerts.push({msg: msg, type: 'success'});
+          $location.path('/portfolio');
           cb(res);
         }, function failure(res) {
-          console.log("failure");
+          $window.alerts.push({msg: 'Sorry, API error. Please wait and try again.', type: 'danger'});
+          $location.path('/');
         });
 
     })
@@ -140,7 +150,8 @@ function DataServices($http){
     return $http(req).then(function success(res) {
       return res.data.watchlist;
     }, function failure(res) {
-      console.log("failure");
+      $window.alerts.push({msg: 'Sorry, Database error. Please wait and try again.', type: 'danger'});
+      $location.path('/');
     });
   }
 
@@ -153,7 +164,8 @@ function DataServices($http){
     return $http(req).then(function success(res) {
       return res.data.purchases;
     }, function failure(res) {
-      console.log("failure");
+      $window.alerts.push({msg: 'Sorry, Database error. Please wait and try again.', type: 'danger'});
+      $location.path('/');
     });
   }
 
@@ -164,9 +176,11 @@ function DataServices($http){
     }
 
     return $http(req).then(function success(res) {
-      console.log("service side res", res);
+      var msg = symbol + ' deleted from watchlist';
+      $window.alerts.push({msg: msg, type: 'success'});
     }, function failure(res) {
-      console.log("failure");
+      $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
+      $location.path('/portfolio');
     });
   }
 
@@ -177,18 +191,19 @@ function DataServices($http){
     };
 
     return $http(req).then(function success(res) {
-      console.log("HTTP success:", res.data.articles);
       if (res.data.Error === "News not found!") {
-        console.log("News not found");
+        $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
+        $location.path('/');
       } else {
         return res.data.articles;
       }
     }, function failure(res) {
       $scope.results = [];
-      console.log("HTTP failed:", res);
+      $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
+      $location.path('/');
     });
   }
 
 }
 
-DataServices.$inject = ['$http'];
+DataServices.$inject = ['$http', '$window', '$location'];

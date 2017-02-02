@@ -15,14 +15,13 @@ function SearchCompCtrl($state, DataServices){
   searchComp.search = function(query){
     DataServices.searchStocks(query).then(function(data){
       searchComp.results = data.data;
-      console.log("results: ", searchComp.results)
     });
   }
 
   if($state.params.query){
     searchComp.search($state.params.query);
   } else{
-    
+
   }
 
 

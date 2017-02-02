@@ -8,12 +8,6 @@ body{
   min-height: calc(100vh - 290px);
 }
 
-@media(max-width: 768px){
-  .ui-view-div{
-    min-height: calc(100vh - 380px);
-  }
-}
-
 .alerts-div{
   margin-top: -20px;
   min-height: 20px;
@@ -47,7 +41,7 @@ body{
 }
 
 .media-heading{
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -115,4 +109,17 @@ body{
 
 .quantity-input{
   width: 56px;
+}
+
+
+@media(max-width: 768px){
+  .ui-view-div{
+    min-height: calc(100vh - 380px);
+  }
+}
+
+@media(max-width: 991px){
+  .media-heading{
+    font-size: 14px;
+  }
 }
