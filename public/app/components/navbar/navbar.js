@@ -30,6 +30,10 @@ function NavbarCompCtrl($state, $window, Auth){
     navbarComp.showOverlayVar = false;
   }
 
+  navbarComp.toggleOverlay = function(){
+    navbarComp.showOverlayVar = !navbarComp.showOverlayVar;
+  }
+
 }
 
 NavbarCompCtrl.$inject = ['$state', '$window', 'Auth'];
