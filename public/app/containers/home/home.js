@@ -9,7 +9,6 @@ function HomeCompCtrl($interval, DataServices, AuthServices, Auth){
   var homeComp = this;
 
   DataServices.getNews().then(function(data){
-    console.log("news data: ", data);
     homeComp.articles = data;
   });
 

@@ -19,12 +19,10 @@ function AuthCompCtrl(AuthServices){
   }
 
   authComp.login = function(){
-    console.log("logging in");
     AuthServices.userLogin(authComp.loginUser);
   }
 
   authComp.signup = function(){
-    console.log("logging in");
     AuthServices.userSignup(authComp.signupUser);
   }
 

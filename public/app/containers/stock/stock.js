@@ -5,18 +5,22 @@ angular.module('App')
   controllerAs: 'stockComp',
 });
 
-function StockCompCtrl($state, $timeout,  DataServices){
+function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
   stockComp = this;
 
   stockComp.quantity = null;
   stockComp.showBuy = false;
   stockComp.showPurchased = false;
 
-  this.showForm = function(){
+  stockComp.isLoggedIn = function(){
+    return Auth.isLoggedIn();
+  }
+
+  stockComp.showForm = function(){
     stockComp.showBuy = !stockComp.showBuy;
   }
 
-  this.submitBuy = function(){
+  stockComp.submitBuy = function(){
     console.log("buy hit for: ", $state.params.symbol);
     DataServices.buyStock($state.params.symbol, stockComp.quantity, function(data){
       console.log("buy data: ", data);
@@ -31,7 +35,7 @@ function StockCompCtrl($state, $timeout,  DataServices){
     });
   }
 
-  this.watch = function(){
+  stockComp.watch = function(){
     console.log("watch hit for: ", $state.params.symbol);
     DataServices.watchStock($state.params.symbol).then(function(data){
       console.log("watch data: ", data);
@@ -44,4 +48,4 @@ function StockCompCtrl($state, $timeout,  DataServices){
   });
 }
 
-StockCompCtrl.$inject = ['$state', '$timeout', 'DataServices']
+StockCompCtrl.$inject = ['$state', '$timeout', '$window', 'DataServices', 'Auth']
