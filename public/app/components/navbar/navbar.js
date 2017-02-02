@@ -10,7 +10,6 @@ function NavbarCompCtrl($state, $window, Auth){
   navbarComp.query = "";
 
   navbarComp.logout = function(){
-    console.log("logging out");
     Auth.userLogout();
   }
 

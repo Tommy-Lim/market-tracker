@@ -9,6 +9,10 @@ body{
   min-height: 20px;
 }
 
+.alert-alert{
+  margin-bottom: 0;
+}
+
 .chartButton{
   height: 1em;
 }
@@ -88,11 +92,9 @@ body{
   width: 56px;
 }
 
-.fade.ng-enter {
-  transition:0.5s linear all;
-  opacity:1;
-}
-
-.fade.ng-enter.ng-enter-active {
-  opacity:1;
+.fade-quote {
+opacity: 1;
+-webkit-transition: opacity 1.0s linear;
+-o-transition: opacity 1.0s linear;
+transition: opacity 1.0s linear;
 }

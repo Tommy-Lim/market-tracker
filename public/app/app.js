@@ -47,6 +47,18 @@ angular.module('App', ['ui.router', 'ui.bootstrap'])
 
   }
 
-]).config(['$httpProvider', function($httpProvider) {
+])
+.config(['$httpProvider', function($httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
 }])
+.run(['$transitions', '$window', function($transitions, $window){
+  $window.alerts = [];
+  $transitions.onStart({ to: 'portfolioState'}, function(trans){
+    var Auth = trans.injector().get('Auth')
+    if(!Auth.isLoggedIn()){
+      $window.alerts.push({msg: 'Must be logged in to access', type: 'danger'});
+      console.log($window.alerts);
+      return trans.router.stateService.target('authState');
+    }
+  })
+}]);

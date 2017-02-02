@@ -12,7 +12,7 @@ router.route('/')
 .post(function(req, res){
   models.User.findOne({email: req.body.email}, function(err, user){
     if(user){
-      return res.status(400).send({message: "email already exists"});
+      return res.status(400).send({message: "Email already exists"});
     } else{
       models.User.create(req.body, function(err, created){
         if(err){
