@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl(DataServices, AuthServices, Auth){
+function HomeCompCtrl($interval, DataServices, AuthServices, Auth){
   var homeComp = this;
 
   DataServices.getNews().then(function(data){
@@ -23,13 +23,17 @@ function HomeCompCtrl(DataServices, AuthServices, Auth){
    "The investor of today does not profit from yesterday's growth."
     ];
 
-    function getQuote (array){
+    function getQuote (array, $interval){
       var index = Math.floor(Math.random()*(array.length));
       homeComp.quote = array[index];
     }
 
     getQuote(homeComp.quotes);
 
+    $interval(function (){
+      getQuote(homeComp.quotes)
+    }, 3000);
+
 }
 
-HomeCompCtrl.$inject = ['DataServices', 'AuthServices', 'Auth'];
+HomeCompCtrl.$inject = ['$interval', 'DataServices', 'AuthServices', 'Auth'];
