@@ -111,6 +111,13 @@ body{
   width: 56px;
 }
 
+.static {
+  height: 100px;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
 @media(max-width: 768px){
   .ui-view-div{
     min-height: calc(100vh - 380px);
@@ -121,10 +128,3 @@ body{
   .media-heading{
     font-size: 14px;
   }
-
-.static {
-  height: 100px;
-  width: 100%;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
