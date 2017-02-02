@@ -94,7 +94,7 @@ router.route('/watch/:symbol')
       console.log("after", user.watchlist);
       user.save();
       res.send({
-        msg: req.params.symbol + " added to " + req.user.email + "'s watchlist"
+        msg: req.params.symbol + " deleted from " + req.user.email + "'s watchlist"
       });
     }
   })

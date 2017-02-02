@@ -8,15 +8,6 @@ body{
   min-height: calc(100vh - 290px);
 }
 
-.alerts-div{
-  margin-top: -20px;
-  min-height: 20px;
-}
-
-.alert-alert{
-  margin-bottom: 0;
-}
-
 .chartButton{
   height: 1em;
 }

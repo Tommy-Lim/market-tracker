@@ -10,6 +10,14 @@ navbar-comp .navbar-inverse{
   color: #5ccf5c;
 }
 
+.navbar-inverse .navbar-nav>.active>a{
+  background-color: #333;
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover{
+  background-color: #222;
+}
+
 .navbar-form input, .navbar-form button{
   background-color: #555;
   border: 1px solid #444;
@@ -19,6 +27,17 @@ navbar-comp .navbar-inverse{
 .navbar-form input:focus{
   background-color: #EEE;
   color: black;
+}
+
+.alerts-div{
+  margin-top: -20px;
+  min-height: 20px;
+  background-color: white;
+  width: 100vw;
+}
+
+.alert-alert{
+  margin-bottom: 0;
 }
 
 footer-comp{
