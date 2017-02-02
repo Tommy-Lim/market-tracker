@@ -12,7 +12,7 @@ function DataServices($http, $window, $location){
     return $http(req).then(function success(res) {
       return res;
     }, function failure(res) {
-      $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+      $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
       $location.path('/');
     });
   }
@@ -31,7 +31,7 @@ function DataServices($http, $window, $location){
           cb(results);
         }
       }, function failure(res) {
-        $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+        $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
         $location.path('/');
         numErrors++;
         if (stockArray.length === (results.length+ numErrors)) {
@@ -81,7 +81,7 @@ function DataServices($http, $window, $location){
 
       return chartDataArray;
     }, function failure(res) {
-      $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 3 min and try again', type: 'danger'});
+      $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
       $location.path('/');
     });
   }

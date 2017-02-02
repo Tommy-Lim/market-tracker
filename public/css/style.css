@@ -36,7 +36,7 @@ body{
 }
 
 .quote{
-  font-size: 28px;
+  font-size: 18px;
   font-style: italic;
 }
 
@@ -46,7 +46,7 @@ body{
 }
 
 .quote-signature{
-  font-size: 22px;
+  font-size: 16px;
   text-align: right;
 }
 
@@ -117,7 +117,7 @@ body{
   }
 }
 
-@media(max-width: 991px){
+@media(max-width: 1300px){
   .media-heading{
     font-size: 14px;
   }

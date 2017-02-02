@@ -48,6 +48,14 @@ function CompositeChartCompCtrl(DataServices) {
 
   DataServices.getChartData(arr).then(function(data) {
 
+    if(data[0] == 'Request blockedExceeded requests/sec limit.'){
+      if($window.alerts[0] && $window.alerts[0].msg == 'Sorry, Stock API request limit exceeded, please wait 1 min and try again'){
+        // already exists
+      } else{
+        $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
+      }
+    }
+
     $(function() {
       var seriesOptions = [];
 
