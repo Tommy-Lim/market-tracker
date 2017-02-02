@@ -48,7 +48,6 @@ The responsiveness of the site. Making the navbar collapse as the app becomes sm
 ## In Progress
 
 * Responsiveness and styling
-* Deployment
 * News items on your profile page based off of the stocks the user has purchased and watchlisted.
 
 ## Contact  

@@ -117,9 +117,16 @@ body{
   width: 56px;
 }
 
-.fade-quote {
+/*.fade-quote {
 opacity: 1;
 -webkit-transition: opacity 1.0s linear;
 -o-transition: opacity 1.0s linear;
 transition: opacity 1.0s linear;
+}*/
+
+.static {
+  height: 150px;
+  width: 100%;
+  overflow-x: scroll;
+  /*overflow-y: hidden;*/
 }
