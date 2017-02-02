@@ -4,6 +4,16 @@ body{
   min-height: 100vh;
 }
 
+.ui-view-div{
+  min-height: calc(100vh - 290px);
+}
+
+@media(max-width: 768px){
+  .ui-view-div{
+    min-height: calc(100vh - 380px);
+  }
+}
+
 .alerts-div{
   margin-top: -20px;
   min-height: 20px;
@@ -15,6 +25,16 @@ body{
 
 .chartButton{
   height: 1em;
+}
+
+.unfocus-body{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(150, 150, 150, 0.5);
 }
 
 .title-content{

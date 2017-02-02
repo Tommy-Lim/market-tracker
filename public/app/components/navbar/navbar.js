@@ -18,7 +18,20 @@ function NavbarCompCtrl($state, $window, Auth){
   }
 
   navbarComp.search = function() {
+    navbarComp.showOverlayVar = false;
     $state.go('searchState', {query: navbarComp.query})
+  }
+
+  navbarComp.showOverlay = function(){
+    navbarComp.showOverlayVar = true;
+  }
+
+  navbarComp.hideOverlay = function(){
+    navbarComp.showOverlayVar = false;
+  }
+
+  navbarComp.toggleOverlay = function(){
+    navbarComp.showOverlayVar = !navbarComp.showOverlayVar;
   }
 
 }
