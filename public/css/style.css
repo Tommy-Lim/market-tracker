@@ -40,6 +40,10 @@ body{
   font-style: italic;
 }
 
+.media.panel{
+  height: 79px;
+}
+
 .media-heading{
   font-size: 18px;
   font-weight: bold;
