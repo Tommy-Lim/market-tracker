@@ -46,6 +46,11 @@ body{
   font-style: italic;
 }
 
+.media-heading{
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .quote-signature{
   font-size: 22px;
   text-align: right;
