@@ -111,11 +111,12 @@ body{
   width: 56px;
 }
 
-.static {
+.quote-container {
   height: 100px;
   width: 100%;
-  overflow-x: scroll;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media(max-width: 768px){
