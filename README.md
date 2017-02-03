@@ -62,13 +62,7 @@ Please feel free to reach out with any questions and/or comments!
 * [GitHub](https://github.com/1CTWgha)
 * [LinkedIn](https://www.linkedin.com/in/christopher-whitaker-37528397)
 
-## Travel Easy in Action
+## Market Tracker in Action
 
-### photo1 [Screenshot]
-![Profile Home](./public/img/screenshots/profile.png)
-
-### photo2 [Screenshot]
-![Search Results](./public/img/screenshots/search-results.png)
-
-### photo3 [Screenshot]
-![Historical Weather](./public/img/screenshots/historical-weather.png)
+### Desktop and Mobile Friendly
+![Demo](./public/img/screenshots/mobile-desktop-demo-3.jpg)
