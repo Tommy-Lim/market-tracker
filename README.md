@@ -36,19 +36,28 @@ To demonstrate in a fun, usable way, the implementation of the MEAN stack: Mongo
 
 ## Challenges
 
-### Challenge 1
-The Async "waterfall" function was helpful in passing data from one call to another while the "series" function also helped ensure sequencing of execution.  Lastly, the "concat" function helped improve code structure when passing over an array of urls for a given API call.
+### Integrating Stock API with Chart API
+The Stock API response is robust but requires complex object inputs.  Additionally, transforming the response into usable data for the Chart API required multiple steps.  
 
-### Challenge 2
-Creation of the stock charts. The Highcharts API added much of the functionality. Once we were able to convert the date's into milliseconds since 1970 we had the data in a workable format for Highcharts which allowed us to implement an accurately timed stock chart.
+Getting the Data.  We first entered the request URL in our browser to successfully obtain JSON data. Then we decoded the URL string to return a request object input which we could pass into our HTTP requests server-side. Hugely helpful here was URL to object decoding. With this object, we used Angular $http to hit our own controller API layer then the Stock API itself.
 
-### challenge 3
-The responsiveness of the site. Making the navbar collapse as the app becomes smaller and then having a dropdown with the same functionality prior to collapse.
+Converting the Data.  To identify the required data structures, we began by researching the Chart API documentation and looking into the examples they had.  We then began drawing out how the data would need to be manipulated and which parts were repeatable so that we could reuse these functions in our services component.
+
+### Front and Back-End Data Processing
+While instrumental to the security and function of our site, having front-end components and services, and a back-end API layer, proved to be challenging. We relied heavily on the promise and callback functions to ensure that had all functions processed fully before moving to the next.
+
+Angular was extremely helpful in accomplishing front-end data manipulation and processing.  The component structure we used enabled us to use services and maintain our desired scope effectively.
+
+MongoDB and Mongoose were especially fit for our data structures.  We were able to create schemas and populate our collections with related documents as necessary. This functionality was great for saving current stock data as a stock schema within the purchased schemas also including quantity and owner email for later retrieval.
+
+### Responsiveness
+A value in our site is the amount of data displayed; this makes responsiveness particularly challenging.  We ended up "freezing" the first column in our portfolio tables, ensuring the charts scaled to screen width, added a collapsing navigation bar, and created simple templates to ensure all views are viewed properly on mobile devices.
 
 ## In Progress
 
-* Responsiveness and styling
-* News items on your profile page based off of the stocks the user has purchased and watchlisted.
+* Save and rewrite daily stock close values to reduce repeated stock API requests.
+* Calculate and show in profile losses/gains since "purchasing" a stock.
+* When logged in, populate news articles based on stocks watching and purchased.
 
 ## Contact  
 
