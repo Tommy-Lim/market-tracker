@@ -4,8 +4,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h2 ng-show="portfolioComp.purchasedPastData.length>0">Purchased Stocks</h2>
-      <h2 ng-hide="portfolioComp.purchasedPastData.length>0">Purchased Stocks Empty</h2>
+      <h2>Purchased</h2>
     </div>
   </div>
 
@@ -23,7 +22,6 @@
           </tr>
         </tbody>
       </table>
-      <p ng-hide="portfolioComp.purchasedPastData.length>0">Search then click "Buy" to purchase stocks.</p>
     </div>
     <div class="col-xs-9 col-sm-10 portfolio-tables">
       <table class="table table-striped">
@@ -59,6 +57,9 @@
         </tbody>
       </table>
     </div>
+    <div class="col-xs-12">
+      <p class="text-danger" ng-hide="portfolioComp.purchasedPastData.length>0">Search then click "Buy" to purchase stocks.</p>
+    </div>
   </div>
 
   <div class="row">
@@ -71,8 +72,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h2 ng-show="portfolioComp.watchlistSymbolsData.length>0">Watchlist</h2>
-      <h2 ng-hide="portfolioComp.watchlistSymbolsData.length>0">Watchlist Empty</h2>
+      <h2>Watchlist</h2>
     </div>
   </div>
 
@@ -91,7 +91,6 @@
           </tr>
         </tbody>
       </table>
-      <p ng-hide="portfolioComp.watchlistSymbolsData.length>0">Search stocks then click "Watch" to add to Watchlist.</p>
     </div>
     <div class="col-xs-8 col-sm-10 portfolio-tables">
       <table class="table table-striped">
@@ -125,6 +124,9 @@
         </tbody>
       </table>
 
+    </div>
+    <div class="col-xs-12">
+      <p class="text-danger" ng-hide="portfolioComp.watchlistSymbolsData.length>0">Search stocks then click "Watch" to add to Watchlist.</p>
     </div>
   </div>
 

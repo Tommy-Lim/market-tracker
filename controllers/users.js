@@ -5,10 +5,9 @@ var mongoose = require('mongoose');
 
 // Routes...
 
+
+// POST - USER SIGN UP
 router.route('/')
-.get(function(req, res){
-  return res.send({msg: "auth / get route hit"});
-})
 .post(function(req, res){
   models.User.findOne({email: req.body.email}, function(err, user){
     if(user){
@@ -25,6 +24,7 @@ router.route('/')
   })
 })
 
+// GET - GET USER WATCHLIST SYMBOLS
 router.route('/watchlist')
 .get(function(req, res){
   models.User.findOne({
@@ -43,6 +43,7 @@ router.route('/watchlist')
 
 })
 
+// GET - GET USER PURCHASED OBJECTS {STOCK, QUANTITY}
 router.route('/purchased')
 .get(function(req, res){
 
@@ -63,6 +64,8 @@ router.route('/purchased')
 
 })
 
+// POST - ADD SYMBOL TO USER WATCHLIST
+// DELETE - REMOVE SYMBOL FROM USER WATCHLIST
 router.route('/watch/:symbol')
 .post(function(req, res){
 
@@ -101,6 +104,7 @@ router.route('/watch/:symbol')
 
 })
 
+// POST - BUY STOCK AND SAVE CURRENT STOCK AND QUANTITY IN PURCHASES
 router.route('/buy')
 .post(function(req, res){
 
