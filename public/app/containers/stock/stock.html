@@ -54,20 +54,20 @@
       <table class="table table-striped">
         <tbody>
           <tr>
+            <th>LastPrice:</th>
+            <td>{{stockComp.stock.LastPrice.toFixed(2)}}</td>
+          </tr>
+          <tr>
+            <th>Open:</th>
+            <td>{{stockComp.stock.Open.toFixed(2)}}</td>
+          </tr>
+          <tr>
             <th>High:</th>
             <td>{{stockComp.stock.High.toFixed(2)}}</td>
           </tr>
           <tr>
             <th>Low:</th>
-            <td>{{stockComp.stock.Low}}</td>
-          </tr>
-          <tr>
-            <th>Open:</th>
-            <td>{{stockComp.stock.Open}}</td>
-          </tr>
-          <tr>
-            <th>LastPrice:</th>
-            <td>{{stockComp.stock.LastPrice}}</td>
+            <td>{{stockComp.stock.Low.toFixed(2)}}</td>
           </tr>
           <tr>
             <th>Change:</th>
@@ -75,14 +75,6 @@
               {{stockComp.stock.Change.toFixed(2)}}
               <i ng-if="stockComp.stock.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
               <i ng-if="stockComp.stock.Change<0" class="fa fa-caret-down red" aria-hidden="true"></i>
-            </td>
-          </tr>
-          <tr>
-            <th>Start Price YTD:</th>
-            <td>
-              {{stockComp.stock.ChangeYTD}}
-              <i ng-if="stockComp.stock.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="stockComp.stock.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
             </td>
           </tr>
           <tr>
@@ -94,6 +86,14 @@
             </td>
           </tr>
           <tr>
+            <th>Change YTD:</th>
+            <td>
+              {{(stockComp.stock.LastPrice - stockComp.stock.ChangeYTD).toFixed(2)}}
+              <i ng-if="stockComp.stock.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="stockComp.stock.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+          </tr>
+          <tr>
             <th>Change % YTD:</th>
             <td>
               {{stockComp.stock.ChangePercentYTD.toFixed(2)}} %
@@ -102,12 +102,12 @@
             </td>
           </tr>
           <tr>
-            <th>MarketCap:</th>
-            <td>{{stockComp.stock.MarketCap}}</td>
-          </tr>
-          <tr>
             <th>Volume:</th>
             <td>{{stockComp.stock.Volume}}</td>
+          </tr>
+          <tr>
+            <th>MarketCap:</th>
+            <td>{{stockComp.stock.MarketCap}}</td>
           </tr>
         </tbody>
       </table>
