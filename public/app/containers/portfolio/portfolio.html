@@ -44,10 +44,26 @@
           <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
             <td>{{entry.stock.Name}}</td>
             <td>{{entry.quantity}}</td>
-            <td>{{entry.stock.Change.toFixed(2)}}</td>
-            <td>{{entry.stock.ChangePercent.toFixed(2)}}</td>
-            <td>{{entry.stock.ChangePercentYTD.toFixed(2)}}</td>
-            <td>{{entry.stock.ChangeYTD}}</td>
+            <td>
+              {{entry.stock.Change.toFixed(2)}}
+              <i ng-if="entry.stock.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="entry.stock.Change<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+            <td>
+              {{entry.stock.ChangePercent.toFixed(2)}} %
+              <i ng-if="entry.stock.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="entry.stock.ChangePercent<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+            <td>
+              {{entry.stock.ChangePercentYTD.toFixed(2)}} %
+              <i ng-if="entry.stock.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="entry.stock.ChangePercentYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+            <td>
+              {{entry.stock.ChangeYTD}}
+              <i ng-if="entry.stock.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="entry.stock.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
             <td>{{entry.stock.High}}</td>
             <td>{{entry.stock.LastPrice}}</td>
             <td>{{entry.stock.Low}}</td>
@@ -111,10 +127,26 @@
          </tr>
          <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData  | orderBy:'Symbol':false track by $index">
           <td>{{entry.Name}}</td>
-          <td>{{entry.Change.toFixed(2)}}</td>
-          <td>{{entry.ChangePercent.toFixed(2)}}</td>
-          <td>{{entry.ChangePercentYTD.toFixed(2)}}</td>
-          <td>{{entry.ChangeYTD}}</td>
+          <td>
+            {{entry.Change.toFixed(2)}}
+            <i ng-if="entry.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+            <i ng-if="entry.Change<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+          </td>
+          <td>
+            {{entry.ChangePercent.toFixed(2)}} %
+            <i ng-if="entry.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+            <i ng-if="entry.ChangePercent<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+          </td>
+          <td>
+            {{entry.ChangePercentYTD.toFixed(2)}} %
+            <i ng-if="entry.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+            <i ng-if="entry.ChangePercentYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+          </td>
+          <td>
+            {{entry.ChangeYTD}}
+            <i ng-if="entry.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+            <i ng-if="entry.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+          </td>
           <td>{{entry.High}}</td>
           <td>{{entry.LastPrice}}</td>
           <td>{{entry.Low}}</td>

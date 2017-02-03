@@ -67,7 +67,6 @@ function PortfolioCompCtrl($state, $window, DataServices){
 
   // DELETE PURCHASE
   portfolioComp.deletePurchase = function(purchaseId){
-    console.log("front end id: ", purchaseId);
     DataServices.removePurchase(purchaseId).then(function(){
       $state.reload();
     });

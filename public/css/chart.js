@@ -19,9 +19,6 @@ Highcharts.theme = {
             [1, '#3e3e40']
          ]
       },
-      style: {
-         fontFamily: '\'Unica One\', sans-serif'
-      },
       plotBorderColor: '#606063'
    },
    title: {

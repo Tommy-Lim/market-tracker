@@ -193,7 +193,6 @@ function DataServices($http, $window, $location){
     return $http(req).then(function success(res) {
       var msg = 'Success, purchase ID ' + purchase_Id + ' sold.';
       $window.alerts.push({msg: msg, type: 'success'});
-      console.log("service response:", res);
     }, function failure(res) {
       $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
       $location.path('/portfolio');

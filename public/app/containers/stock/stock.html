@@ -71,19 +71,35 @@
           </tr>
           <tr>
             <th>Change:</th>
-            <td>{{stockComp.stock.Change.toFixed(2)}}</td>
+            <td>
+              {{stockComp.stock.Change.toFixed(2)}}
+              <i ng-if="stockComp.stock.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="stockComp.stock.Change<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
           </tr>
           <tr>
             <th>Start Price YTD:</th>
-            <td>{{stockComp.stock.ChangeYTD}}</td>
+            <td>
+              {{stockComp.stock.ChangeYTD}}
+              <i ng-if="stockComp.stock.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="stockComp.stock.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
           </tr>
           <tr>
             <th>Change %:</th>
-            <td>{{stockComp.stock.ChangePercent.toFixed(2)}}</td>
+            <td>
+              {{stockComp.stock.ChangePercent.toFixed(2)}} %
+              <i ng-if="stockComp.stock.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="stockComp.stock.ChangePercent<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
           </tr>
           <tr>
             <th>Change % YTD:</th>
-            <td>{{stockComp.stock.ChangePercentYTD.toFixed(2)}}</td>
+            <td>
+              {{stockComp.stock.ChangePercentYTD.toFixed(2)}} %
+              <i ng-if="stockComp.stock.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="stockComp.stock.ChangePercentYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
           </tr>
           <tr>
             <th>MarketCap:</th>
