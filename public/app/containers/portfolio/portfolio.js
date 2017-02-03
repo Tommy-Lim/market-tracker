@@ -66,8 +66,8 @@ function PortfolioCompCtrl($state, $window, DataServices){
   }
 
   // DELETE PURCHASE
-  portfolioComp.deletePurchase = function(purchaseId){
-    DataServices.removePurchase(purchaseId).then(function(){
+  portfolioComp.deletePurchase = function(purchaseId, symbol, quantity){
+    DataServices.removePurchase(purchaseId, symbol, quantity).then(function(){
       $state.reload();
     });
   }

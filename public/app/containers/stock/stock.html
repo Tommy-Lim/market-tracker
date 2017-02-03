@@ -50,8 +50,8 @@
       <chart-comp></chart-comp>
     </div>
     <div class="col-md-4">
-      <p>Trade Day: {{stockComp.stock.Timestamp.split('00')[0]}}, {{stockComp.stock.Timestamp.split(" ")[stockComp.stock.Timestamp.split(" ").length-1]}}</p>
-      <table class="table table-striped">
+      <p>{{stockComp.stock.Timestamp}}</p>
+      <table class="table table-striped table-bordered">
         <tbody>
           <tr>
             <th>LastPrice:</th>
@@ -89,8 +89,8 @@
             <th>Change YTD:</th>
             <td>
               {{(stockComp.stock.LastPrice - stockComp.stock.ChangeYTD).toFixed(2)}}
-              <i ng-if="stockComp.stock.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="stockComp.stock.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              <i ng-if="(stockComp.stock.LastPrice - stockComp.stock.ChangeYTD)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="(stockComp.stock.LastPrice - stockComp.stock.ChangeYTD)<0" class="fa fa-caret-down red" aria-hidden="true"></i>
             </td>
           </tr>
           <tr>

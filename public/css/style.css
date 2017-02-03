@@ -12,6 +12,16 @@ body{
   height: 1em;
 }
 
+.btn-primary{
+  background-color: #2b908f;
+  border-color: #2b8e8e;
+}
+
+.btn-primary:hover{
+  background-color: #09706e;
+  border-color: #09706e;
+}
+
 .unfocus-body{
   position: fixed;
   left: 0;

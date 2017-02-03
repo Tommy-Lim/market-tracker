@@ -41,14 +41,6 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
 
   stockComp.submitBuy = function(){
     DataServices.buyStock($state.params.symbol, stockComp.quantity, function(data){
-      stockComp.showBuy = !stockComp.showBuy;
-      stockComp.showPurchased = true;
-
-      $timeout(function(){
-        stockComp.quantity = null;
-        stockComp.showPurchased = false;
-      }, 3000);
-
     });
   }
 
@@ -58,7 +50,8 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
         $window.alerts.push({msg: $state.params.symbol + ' already in Watchlist.'})
       } else{
         DataServices.watchStock($state.params.symbol).then(function(data){
-          $state.reload();
+          // $state.reload();
+          stockComp.isWatchingBoolean = true;
         });
       }
     })
@@ -66,8 +59,8 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
 
   stockComp.delete = function(symbol){
     DataServices.removeSymbolFromWatchlist($state.params.symbol);
-    // $location.path('/portfolio');
-    $state.reload();
+    stockComp.isWatchingBoolean = false;
+    // $state.reload();
   }
 
   stockComp.isWatching();

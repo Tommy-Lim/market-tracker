@@ -18,7 +18,7 @@
           <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
             <td>
               <a ui-sref="stockState({symbol: entry.stock.Symbol})">{{entry.stock.Symbol}}</a> |
-              <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deletePurchase(entry._id)"></i>
+              <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deletePurchase(entry._id, entry.stock.Symbol, entry.quantity)"></i>
             </td>
           </tr>
         </tbody>
@@ -60,8 +60,8 @@
             </td>
             <td>
               {{(entry.stock.LastPrice - entry.stock.ChangeYTD).toFixed(2)}}
-              <i ng-if="entry.stock.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="entry.stock.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              <i ng-if="(entry.stock.LastPrice - entry.stock.ChangeYTD)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="(entry.stock.LastPrice - entry.stock.ChangeYTD)<0" class="fa fa-caret-down red" aria-hidden="true"></i>
             </td>
             <td>
               {{entry.stock.ChangePercentYTD.toFixed(2)}} %
@@ -143,8 +143,8 @@
           </td>
           <td>
             {{(entry.LastPrice - entry.ChangeYTD).toFixed(2)}}
-            <i ng-if="entry.ChangeYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-            <i ng-if="entry.ChangeYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            <i ng-if="(entry.LastPrice - entry.ChangeYTD)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+            <i ng-if="(entry.LastPrice - entry.ChangeYTD)<0" class="fa fa-caret-down red" aria-hidden="true"></i>
           </td>
           <td>
             {{entry.ChangePercentYTD.toFixed(2)}} %
