@@ -135,19 +135,29 @@ router.route('/buy/')
     }
   )
 })
+
+// DELETE - DELETE PURCHASE WITH OBJECTID
+router.route('/buy/:id')
 .delete(function(req, res){
 
   models.User.findOne({
     email: req.user.email
   }, function(err, user){
     if(!user){
-      console.log("user not found");
+      res.send({message: 'User not found'})
     } else{
-      console.log("PURCHASEID: ", req.params.id);
-      user.save();
-      res.send({
-        msg: "ID is: " + req.params.id
-      });
+      user.purchased.forEach(function(purchase, index){
+        if(purchase._id == req.params.id){
+          user.purchased.splice(index, 1);
+          user.save(function(err, updatedUser){
+            if(err) return handleError(err);
+            res.send(updatedUser);
+          })
+        } else if(purchase._id != req.params.id && index == user.purchased.length-1){
+          res.send({message: 'Error, no matching purchase found.'})
+        }
+      })
+
     }
   })
 

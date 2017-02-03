@@ -58,15 +58,19 @@ function PortfolioCompCtrl($state, $window, DataServices){
     })
   });
 
+  // DELETE WATCHLIST ITEM
   portfolioComp.deleteWatchlistItem = function(symbol){
     DataServices.removeSymbolFromWatchlist(symbol).then(function(){
       $state.reload();
     });
   }
 
+  // DELETE PURCHASE
   portfolioComp.deletePurchase = function(purchaseId){
     console.log("front end id: ", purchaseId);
-    
+    DataServices.removePurchase(purchaseId).then(function(){
+      $state.reload();
+    });
   }
 
 

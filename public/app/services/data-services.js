@@ -177,10 +177,10 @@ function DataServices($http, $window, $location){
 
     return $http(req).then(function success(res) {
       var msg = symbol + ' removed from Watchlist.';
-      $window.alerts.push({msg: msg, type: 'danger'});
+      $window.alerts.push({msg: msg, type: 'success'});
     }, function failure(res) {
       $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
-      $location.path('/portfolio');
+      // $location.path('/portfolio');
     });
   }
 
@@ -191,12 +191,12 @@ function DataServices($http, $window, $location){
     }
 
     return $http(req).then(function success(res) {
-      // var msg = symbol + ' removed from Watchlist.';
-      // $window.alerts.push({msg: msg, type: 'danger'});
-      console.log(res);
+      var msg = 'Success, purchase ID ' + purchase_Id + ' sold.';
+      $window.alerts.push({msg: msg, type: 'success'});
+      console.log("service response:", res);
     }, function failure(res) {
-      // $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
-      // $location.path('/portfolio');
+      $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
+      $location.path('/portfolio');
     });
   }
 
