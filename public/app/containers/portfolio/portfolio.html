@@ -31,23 +31,20 @@
             <th>Name</th>
             <th>Shares</th>
             <th>Last Price</th>
-            <th>Open</th>
-            <th>High</th>
-            <th>Low</th>
             <th>Change</th>
             <th>% Change</th>
             <th>Change YTD</th>
             <th>% Change YTD</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
             <th>Volume</th>
             <th>Market Cap</th>
           </tr>
           <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
             <td>{{entry.stock.Name}}</td>
-            <td>{{entry.quantity}}</td>
+            <td>{{entry.quantity.toFixed(2)}}</td>
             <td>{{entry.stock.LastPrice.toFixed(2)}}</td>
-            <td>{{entry.stock.Open.toFixed(2)}}</td>
-            <td>{{entry.stock.High.toFixed(2)}}</td>
-            <td>{{entry.stock.Low.toFixed(2)}}</td>
             <td>
               {{entry.stock.Change.toFixed(2)}}
               <i ng-if="entry.stock.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
@@ -68,6 +65,9 @@
               <i ng-if="entry.stock.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
               <i ng-if="entry.stock.ChangePercentYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
             </td>
+            <td>{{entry.stock.Open.toFixed(2)}}</td>
+            <td>{{entry.stock.High.toFixed(2)}}</td>
+            <td>{{entry.stock.Low.toFixed(2)}}</td>
             <td>{{entry.stock.Volume}}</td>
             <td>{{entry.stock.MarketCap}}</td>
          </tr>
@@ -115,22 +115,19 @@
          <tr>
            <th>Name</th>
            <th>Last Price</th>
-           <th>Open</th>
-           <th>High</th>
-           <th>Low</th>
            <th>Change</th>
            <th>% Change</th>
            <th>Change YTD</th>
            <th>% Change YTD</th>
+           <th>Open</th>
+           <th>High</th>
+           <th>Low</th>
            <th>Volume</th>
            <th>Market Cap</th>
          </tr>
          <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData  | orderBy:'Symbol':false track by $index">
           <td>{{entry.Name}}</td>
           <td>{{entry.LastPrice}}</td>
-          <td>{{entry.Open}}</td>
-          <td>{{entry.High}}</td>
-          <td>{{entry.Low}}</td>
           <td>
             {{entry.Change.toFixed(2)}}
             <i ng-if="entry.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
@@ -151,6 +148,9 @@
             <i ng-if="entry.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
             <i ng-if="entry.ChangePercentYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
           </td>
+          <td>{{entry.Open}}</td>
+          <td>{{entry.High}}</td>
+          <td>{{entry.Low}}</td>
           <td>{{entry.Volume}}</td>
           <td>{{entry.MarketCap}}</td>
         </tr>

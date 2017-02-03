@@ -188,7 +188,7 @@ function DataServices($http, $window, $location){
     }
 
     return $http(req).then(function success(res) {
-      var msg = 'Success,' + quantity + ' ' + symbol + ' shares sold.';
+      var msg = quantity + ' ' + symbol + ' shares sold.';
       $window.alerts.push({msg: msg, type: 'success'});
     }, function failure(res) {
       $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
