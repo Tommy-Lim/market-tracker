@@ -5,24 +5,21 @@ angular.module('App')
   controllerAs: 'stockComp',
 });
 
-function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
+function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth){
   stockComp = this;
   stockComp.document = document;
 
   stockComp.quantity = null;
   stockComp.showBuy = false;
   stockComp.showPurchased = false;
-
-
+  stockComp.isWatchingBoolean = false;
 
   stockComp.isWatching = function(){
     return DataServices.getWatchlistSymbols().then(function(data){
-      console.log("data: ", data);
       if(data.indexOf($state.params.symbol)>=0){
-        console.log("true");
+        stockComp.isWatchingBoolean = true;
         return true
       } else{
-        console.log("false");
         return false;
       }
     })
@@ -38,7 +35,6 @@ function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
 
   stockComp.submitBuy = function(){
     DataServices.buyStock($state.params.symbol, stockComp.quantity, function(data){
-      console.log("buy data: ", data);
       stockComp.showBuy = !stockComp.showBuy;
       stockComp.showPurchased = true;
 
@@ -52,17 +48,23 @@ function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
 
   stockComp.watch = function(){
     DataServices.getWatchlistSymbols().then(function(data){
-      console.log("data: ", data);
       if(data.indexOf($state.params.symbol)>=0){
         $window.alerts.push({msg: $state.params.symbol + ' already in Watchlist.'})
       } else{
         DataServices.watchStock($state.params.symbol).then(function(data){
-          console.log("watch data: ", data);
+          $state.reload();
         });
       }
     })
   }
 
+  stockComp.delete = function(symbol){
+    DataServices.removeSymbolFromWatchlist($state.params.symbol);
+    // $location.path('/portfolio');
+    $state.reload();
+  }
+
+  stockComp.isWatching();
 
   DataServices.getStockDetails([$state.params.symbol], function(data) {
     if(data[0] == 'Request blockedExceeded requests/sec limit.'){
@@ -76,4 +78,4 @@ function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
   });
 }
 
-StockCompCtrl.$inject = ['$state', '$timeout', '$window', 'DataServices', 'Auth']
+StockCompCtrl.$inject = ['$state', '$timeout', '$window', '$location', 'DataServices', 'Auth']

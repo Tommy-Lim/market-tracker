@@ -84,11 +84,11 @@ body{
   margin: 0 0 5px 0;
 }
 
-.fa-times{
+.fa-times .red{
   color: red;
 }
 
-.fa-times:hover{
+.fa-times.red:hover{
   cursor: pointer;
   color: darkred;
 }

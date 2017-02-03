@@ -176,7 +176,7 @@ function DataServices($http, $window, $location){
     }
 
     return $http(req).then(function success(res) {
-      var msg = symbol + ' deleted from watchlist';
+      var msg = symbol + ' removed from watchlist';
       $window.alerts.push({msg: msg, type: 'danger'});
     }, function failure(res) {
       $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});

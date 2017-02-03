@@ -9,13 +9,35 @@
       <h4>{{stockComp.stock.Name}}</h4>
     </div>
     <div class="col-xs-12">
-      <button class="btn btn-sm btn-primary"  ng-class="{'disabled' : !stockComp.isLoggedIn()}" ng-disabled="!stockComp.isLoggedIn()" ng-click="stockComp.watch()">Watch</button>
-      <button class="btn btn-sm btn-primary" ng-class="{'disabled' : !stockComp.isLoggedIn()}" ng-disabled="!stockComp.isLoggedIn()" ng-click="stockComp.showForm()">Buy</button>
-      <button class="btn btn-sm btn-primary" ng-hide="stockComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</button>
-
+      <button class="btn btn-sm btn-primary"
+          ng-hide="stockComp.isWatchingBoolean"
+          ng-class="{'disabled' : !stockComp.isLoggedIn()}"
+          ng-disabled="!stockComp.isLoggedIn()"
+          ng-click="stockComp.watch()"
+          >Watch</button>
+      <button class="btn btn-sm btn-success"
+          ng-hide="!stockComp.isWatchingBoolean"
+          ng-class="{'disabled' : !stockComp.isLoggedIn()}"
+          ng-click="stockComp.watch()"
+          >Watching</button>
+      <button class="btn btn-sm btn-danger"
+          ng-hide="!stockComp.isWatchingBoolean"
+          ng-class="{'disabled' : !stockComp.isLoggedIn()}"
+          ng-disabled="!stockComp.isLoggedIn()"
+          ng-click="stockComp.delete()"
+          ><i class="fa fa-times text-white" aria-hidden="true"></i> Remove</button>
+      <button class="btn btn-sm btn-primary"
+          ng-class="{'disabled' : !stockComp.isLoggedIn()}"
+          ng-disabled="!stockComp.isLoggedIn()"
+          ng-click="stockComp.showForm()"
+          >Buy</button>
+      <button class="btn btn-sm btn-primary"
+          ng-hide="stockComp.isLoggedIn()"
+          ui-sref="authState()"
+          >Log in / Sign up</button>
       <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-show="stockComp.isLoggedIn()">
         <input class="quantity-input" id="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#" autofocus/>
-        <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !stockComp.isLoggedIn()}" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
+        <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !stockComp.isLoggedIn()}" type="submit" class="btn btn-sm btn-success" value = "Submit"/>
         <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
       </form>
     </div>
@@ -25,7 +47,7 @@
       <chart-comp></chart-comp>
     </div>
     <div class="col-md-4">
-      <p>Trade Day: {{stockComp.stock.Timestamp}}</p>
+      <p>Trade Day: {{stockComp.stock.Timestamp.split('00')[0]}}</p>
       <table class="table table-striped">
         <tbody>
           <tr>
