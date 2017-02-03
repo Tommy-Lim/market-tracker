@@ -17,7 +17,8 @@
           </tr>
           <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
             <td>
-              <a ui-sref="stockState({symbol: entry.stock.Symbol})">{{entry.stock.Symbol}}</a>
+              <a ui-sref="stockState({symbol: entry.stock.Symbol})">{{entry.stock.Symbol}}</a> |
+              <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deletePurchase(entry._id)"></i>
             </td>
           </tr>
         </tbody>
@@ -86,7 +87,7 @@
           <tr ng-repeat="entry in portfolioComp.watchlistSymbolsData | orderBy:'Symbol':false track by $index">
             <td>
               <a ui-sref="stockState({symbol: entry.Symbol})">{{entry.Symbol}} </a> |
-              <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.delete(entry.Symbol)"></i>
+              <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deleteWatchlistItem(entry.Symbol)"></i>
             </td>
           </tr>
         </tbody>

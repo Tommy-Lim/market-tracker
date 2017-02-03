@@ -14,7 +14,6 @@ body{
 
 .unfocus-body{
   position: fixed;
-  top: 0;
   left: 0;
   z-index: 100;
   height: 100vh;
@@ -103,7 +102,9 @@ body{
 }
 
 .quantity-input{
-  width: 56px;
+  width: 75px;
+  height: 29px;
+  display: inline-block;
 }
 
 .quote-container {

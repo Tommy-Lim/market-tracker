@@ -101,7 +101,7 @@ function DataServices($http, $window, $location){
     }
 
     return $http(req).then(function success(res) {
-      var msg = symbol + ' added to Watchlist';
+      var msg = symbol + ' added to Watchlist. View in Portfolio.';
       $window.alerts.push({msg: msg, type: 'success'});
       $location.path('/portfolio');
       return res;
@@ -129,7 +129,7 @@ function DataServices($http, $window, $location){
         }
 
         return $http(req).then(function success(res) {
-          var msg = quantity + ' shares of ' + symbol + ' purchased';
+          var msg = quantity + ' shares of ' + symbol + ' purchased. View in Portfolio.';
           $window.alerts.push({msg: msg, type: 'success'});
           $location.path('/portfolio');
           cb(res);
@@ -176,11 +176,27 @@ function DataServices($http, $window, $location){
     }
 
     return $http(req).then(function success(res) {
-      var msg = symbol + ' removed from watchlist';
+      var msg = symbol + ' removed from Watchlist.';
       $window.alerts.push({msg: msg, type: 'danger'});
     }, function failure(res) {
       $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
       $location.path('/portfolio');
+    });
+  }
+
+  this.removePurchase = function(purchase_Id){
+    var req = {
+      url: '/api/users/buy/' + purchase_Id,
+      method: 'DELETE'
+    }
+
+    return $http(req).then(function success(res) {
+      // var msg = symbol + ' removed from Watchlist.';
+      // $window.alerts.push({msg: msg, type: 'danger'});
+      console.log(res);
+    }, function failure(res) {
+      // $window.alerts.push({msg: 'Database error. Try again.', type: 'danger'});
+      // $location.path('/portfolio');
     });
   }
 

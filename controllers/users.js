@@ -105,7 +105,7 @@ router.route('/watch/:symbol')
 })
 
 // POST - BUY STOCK AND SAVE CURRENT STOCK AND QUANTITY IN PURCHASES
-router.route('/buy')
+router.route('/buy/')
 .post(function(req, res){
 
   var newPurchase = {
@@ -134,7 +134,22 @@ router.route('/buy')
 
     }
   )
+})
+.delete(function(req, res){
 
+  models.User.findOne({
+    email: req.user.email
+  }, function(err, user){
+    if(!user){
+      console.log("user not found");
+    } else{
+      console.log("PURCHASEID: ", req.params.id);
+      user.save();
+      res.send({
+        msg: "ID is: " + req.params.id
+      });
+    }
+  })
 
 })
 

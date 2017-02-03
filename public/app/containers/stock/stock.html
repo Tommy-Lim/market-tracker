@@ -35,10 +35,13 @@
           ng-hide="stockComp.isLoggedIn()"
           ui-sref="authState()"
           >Log in / Sign up</button>
-      <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-show="stockComp.isLoggedIn()">
-        <input class="quantity-input" id="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#" autofocus/>
-        <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !stockComp.isLoggedIn()}" type="submit" class="btn btn-sm btn-success" value = "Submit"/>
-        <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
+      <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-show="stockComp.isLoggedIn() && stockComp.showBuy">
+        <div class="well">
+          <label for="quantity">No. Shares: </label>
+          <input name="quantity" class="quantity-input form-control" id="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#" autofocus/>
+          <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !stockComp.isLoggedIn()}" type="submit" class="btn btn-sm btn-success" value = "Submit"/>
+          <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
+        </div>
       </form>
     </div>
   </div>
@@ -47,7 +50,7 @@
       <chart-comp></chart-comp>
     </div>
     <div class="col-md-4">
-      <p>Trade Day: {{stockComp.stock.Timestamp.split('00')[0]}}</p>
+      <p>Trade Day: {{stockComp.stock.Timestamp.split('00')[0]}}, {{stockComp.stock.Timestamp.split(" ")[stockComp.stock.Timestamp.split(" ").length-1]}}</p>
       <table class="table table-striped">
         <tbody>
           <tr>

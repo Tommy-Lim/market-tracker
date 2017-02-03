@@ -58,11 +58,15 @@ function PortfolioCompCtrl($state, $window, DataServices){
     })
   });
 
-  portfolioComp.delete = function(symbol){
-    console.log(symbol);
+  portfolioComp.deleteWatchlistItem = function(symbol){
     DataServices.removeSymbolFromWatchlist(symbol).then(function(){
       $state.reload();
     });
+  }
+
+  portfolioComp.deletePurchase = function(purchaseId){
+    console.log("front end id: ", purchaseId);
+    
   }
 
 

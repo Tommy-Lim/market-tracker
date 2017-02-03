@@ -15,14 +15,20 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
   stockComp.isWatchingBoolean = false;
 
   stockComp.isWatching = function(){
-    return DataServices.getWatchlistSymbols().then(function(data){
-      if(data.indexOf($state.params.symbol)>=0){
-        stockComp.isWatchingBoolean = true;
-        return true
-      } else{
-        return false;
-      }
-    })
+    if(Auth.isLoggedIn()){
+      return DataServices.getWatchlistSymbols().then(function(data){
+        if(data.indexOf($state.params.symbol)>=0){
+          stockComp.isWatchingBoolean = true;
+          return true
+        } else{
+          stockComp.isWatchingBoolean = false;
+          return false;
+        }
+      })
+    } else{
+      stockComp.isWatchingBoolean = false;
+      return false;
+    }
   }
 
   stockComp.isLoggedIn = function(){
