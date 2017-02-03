@@ -13,17 +13,30 @@ function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
   stockComp.showBuy = false;
   stockComp.showPurchased = false;
 
+
+
+  stockComp.isWatching = function(){
+    return DataServices.getWatchlistSymbols().then(function(data){
+      console.log("data: ", data);
+      if(data.indexOf($state.params.symbol)>=0){
+        console.log("true");
+        return true
+      } else{
+        console.log("false");
+        return false;
+      }
+    })
+  }
+
   stockComp.isLoggedIn = function(){
     return Auth.isLoggedIn();
   }
 
   stockComp.showForm = function(){
     stockComp.showBuy = !stockComp.showBuy;
-    stockComp.document.getElementById("quantity-input").focus();
   }
 
   stockComp.submitBuy = function(){
-    console.log("buy hit for: ", $state.params.symbol);
     DataServices.buyStock($state.params.symbol, stockComp.quantity, function(data){
       console.log("buy data: ", data);
       stockComp.showBuy = !stockComp.showBuy;
@@ -38,10 +51,16 @@ function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
   }
 
   stockComp.watch = function(){
-    console.log("watch hit for: ", $state.params.symbol);
-    DataServices.watchStock($state.params.symbol).then(function(data){
-      console.log("watch data: ", data);
-    });
+    DataServices.getWatchlistSymbols().then(function(data){
+      console.log("data: ", data);
+      if(data.indexOf($state.params.symbol)>=0){
+        $window.alerts.push({msg: $state.params.symbol + ' already in Watchlist.'})
+      } else{
+        DataServices.watchStock($state.params.symbol).then(function(data){
+          console.log("watch data: ", data);
+        });
+      }
+    })
   }
 
 
