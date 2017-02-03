@@ -1,5 +1,6 @@
 navbar-comp .navbar-inverse{
   background-color: #444;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
 }
 
 .nav-search-submit{
