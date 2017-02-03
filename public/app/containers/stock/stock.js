@@ -7,6 +7,7 @@ angular.module('App')
 
 function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
   stockComp = this;
+  stockComp.document = document;
 
   stockComp.quantity = null;
   stockComp.showBuy = false;
@@ -18,6 +19,7 @@ function StockCompCtrl($state, $timeout, $window, DataServices, Auth){
 
   stockComp.showForm = function(){
     stockComp.showBuy = !stockComp.showBuy;
+    stockComp.document.getElementById("quantity-input").focus();
   }
 
   stockComp.submitBuy = function(){

@@ -13,8 +13,8 @@
       <button class="btn btn-sm btn-primary" ng-class="{'disabled' : !stockComp.isLoggedIn()}" ng-disabled="!stockComp.isLoggedIn()" ng-click="stockComp.showForm()">Buy</button>
       <button class="btn btn-sm btn-primary" ng-hide="stockComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</button>
 
-      <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-if="stockComp.isLoggedIn()">
-        <input class="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#"/>
+      <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-show="stockComp.isLoggedIn()">
+        <input class="quantity-input" id="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#" autofocus/>
         <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !stockComp.isLoggedIn()}" type="submit" class="btn btn-xs btn-success" value = "Submit"/>
         <strong class="green" ng-show="stockComp.showPurchased">{{stockComp.quantity}} purchased</strong>
       </form>

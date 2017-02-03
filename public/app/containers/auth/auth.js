@@ -8,6 +8,8 @@ angular.module('App')
 function AuthCompCtrl(AuthServices){
   var authComp = this;
 
+  document.getElementById("login-email").focus();
+
   authComp.loginUser = {
     email: "",
     password: ""
