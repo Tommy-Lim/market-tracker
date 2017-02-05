@@ -14,6 +14,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="nav-collapse-target">
     <ul class="nav navbar-nav navbar-right">
+      <li ui-sref-active="active" data-toggle="collapse" data-target="#nav-collapse-target" ng-click="navbarComp.hideOverlay()"><a ng-show="navbarComp.isLoggedIn()" ui-sref="newsState">News</a></li>
       <li ui-sref-active="active" data-toggle="collapse" data-target="#nav-collapse-target" ng-click="navbarComp.hideOverlay()"><a ng-show="navbarComp.isLoggedIn()" ui-sref="portfolioState">Portfolio</a></li>
       <li ui-sref-active="active" data-toggle="collapse" data-target="#nav-collapse-target" ng-click="navbarComp.hideOverlay()"><a ng-show="navbarComp.isLoggedIn()" ui-sref="authState()" ng-click="navbarComp.logout()">Logout</a></li>
       <li ui-sref-active="active" data-toggle="collapse" data-target="#nav-collapse-target" ng-click="navbarComp.hideOverlay()"><a ng-hide="navbarComp.isLoggedIn()" ui-sref="authState()">Log in / Sign up</a></li>

@@ -12,6 +12,17 @@ body{
   height: 1em;
 }
 
+.stock-symbol{
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.stock-name{
+  font-size: 14px;
+  color: grey;
+}
+
+
 .btn-primary{
   background-color: #2b908f;
   border-color: #2b8e8e;
