@@ -127,6 +127,10 @@ footer-comp{
   color: lightgrey;
 }
 
+.footer .lightgrey-no-hover{
+  color: lightgrey;
+}
+
 .footer .lightgrey:hover{
   color: white;
 }
