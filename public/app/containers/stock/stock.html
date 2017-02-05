@@ -31,6 +31,7 @@
           ng-disabled="!stockComp.isLoggedIn()"
           ng-click="stockComp.showForm()"
           >Buy</button>
+      <strong class="text-success">{{stockComp.ownedShares}} shares owned</strong>
       <button class="btn btn-sm btn-primary"
           ng-hide="stockComp.isLoggedIn()"
           ui-sref="authState()"

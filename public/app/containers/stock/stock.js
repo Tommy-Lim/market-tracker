@@ -7,12 +7,28 @@ angular.module('App')
 
 function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth){
   stockComp = this;
-  stockComp.document = document;
 
   stockComp.quantity = null;
   stockComp.showBuy = false;
   stockComp.showPurchased = false;
   stockComp.isWatchingBoolean = false;
+  stockComp.ownedShares = 0;
+
+  stockComp.numberOwned = function(){
+    if(Auth.isLoggedIn()){
+      DataServices.getPurchased().then(function(data){
+        console.log("purchases: ", data);
+        stockComp.ownedShares = 0;
+        data.forEach(function(entry){
+          if(entry.stock.Symbol == $state.params.symbol){
+            stockComp.ownedShares = stockComp.ownedShares + entry.quantity;
+          }
+        })
+      })
+    } else{
+      // do nothing because not logged in
+    }
+  }
 
   stockComp.isWatching = function(){
     if(Auth.isLoggedIn()){
@@ -41,6 +57,7 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
 
   stockComp.submitBuy = function(){
     DataServices.buyStock($state.params.symbol, stockComp.quantity, function(data){
+      stockComp.numberOwned();
     });
   }
 
@@ -64,6 +81,7 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
   }
 
   stockComp.isWatching();
+  stockComp.numberOwned();
 
   DataServices.getStockDetails([$state.params.symbol], function(data) {
     if(data[0] == 'Request blockedExceeded requests/sec limit.'){
