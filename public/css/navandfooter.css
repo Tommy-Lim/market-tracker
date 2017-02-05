@@ -130,3 +130,23 @@ footer-comp{
 .footer .lightgrey:hover{
   color: white;
 }
+
+.mongo-logo{
+  width: 110px;
+  padding-right: 5px;
+}
+
+.express-logo{
+  width: 110px;
+  padding-right: 5px;
+}
+
+.angular-logo{
+  width: 110px;
+  padding-right: 5px;
+}
+
+.node-logo{
+  width: 110px;
+  padding-right: 5px;
+}

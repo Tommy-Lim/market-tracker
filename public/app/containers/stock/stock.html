@@ -71,7 +71,7 @@
             <td>{{stockComp.stock.Low.toFixed(2)}}</td>
           </tr>
           <tr>
-            <th>Change, USD:</th>
+            <th>Change:</th>
             <td>
               {{stockComp.stock.Change.toFixed(2)}}
               <i ng-if="stockComp.stock.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
@@ -79,7 +79,7 @@
             </td>
           </tr>
           <tr>
-            <th>Change, %:</th>
+            <th>% Change:</th>
             <td>
               {{stockComp.stock.ChangePercent.toFixed(2)}} %
               <i ng-if="stockComp.stock.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
@@ -87,7 +87,7 @@
             </td>
           </tr>
           <tr>
-            <th>Change YTD, USD:</th>
+            <th>Change YTD:</th>
             <td>
               {{(stockComp.stock.LastPrice - stockComp.stock.ChangeYTD).toFixed(2)}}
               <i ng-if="(stockComp.stock.LastPrice - stockComp.stock.ChangeYTD)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
@@ -95,7 +95,7 @@
             </td>
           </tr>
           <tr>
-            <th>Change YTD, %:</th>
+            <th>% Change YTD:</th>
             <td>
               {{stockComp.stock.ChangePercentYTD.toFixed(2)}} %
               <i ng-if="stockComp.stock.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
