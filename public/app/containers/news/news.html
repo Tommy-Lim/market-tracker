@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Bloomberg News</h2>
+  </div>
+  <div ng-repeat="article in homeComp.articles" class="col-md-6">
+    <div class="media panel">
+      <div class="media-left">
+        <a href="{{article.url}}">
+          <img class="media-object" src="{{article.urlToImage}}" alt="...">
+        </a>
+      </div>
+      <div class="media-body">
+        <p class="media-heading">
+          {{article.title}}
+        </p>
+        <p><a href="{{article.url}}"><i class="fa fa-external-link fa-1x" aria-hidden="true"></i></a> {{article.publishedAt.split("T")[0] + " T " + article.publishedAt.split("T")[1].split(".")[0]}}</p>
+      </div>
+    </div>
+  </div>
+</div>

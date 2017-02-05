@@ -44,6 +44,10 @@ angular.module('App', ['ui.router', 'ui.bootstrap'])
       url: '/portfolio',
       component: 'portfolioComp'
     })
+    .state('newsState', {
+      url: '/news',
+      component: 'newsComp'
+    })
 
   }
 
