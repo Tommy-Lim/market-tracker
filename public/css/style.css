@@ -22,6 +22,11 @@ body{
   color: grey;
 }
 
+.mean-logo{
+  width: 200px;
+  height: 80px;
+}
+
 
 .btn-primary{
   background-color: #2b908f;
