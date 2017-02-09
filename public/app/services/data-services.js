@@ -216,6 +216,27 @@ function DataServices($http, $window, $location){
     });
   }
 
+  this.searchNews = function(){
+    var req = {
+      url: '/api/news',
+      method: "POST"
+    };
+
+    return $http(req).then(function success(res) {
+      if (res.data.Error === "News not found!") {
+        $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
+        $location.path('/');
+      } else {
+        return res.data.articles;
+      }
+    }, function failure(res) {
+      $scope.results = [];
+      $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
+      $location.path('/');
+    });
+  }
+
+
 }
 
 DataServices.$inject = ['$http', '$window', '$location'];
