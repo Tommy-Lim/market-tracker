@@ -10,7 +10,9 @@ function NewsCompCtrl(DataServices){
 
   newsComp.query = "";
 
-  DataServices.searchNews();
+  DataServices.searchNews().then(function(data){
+    newsComp.articles = data;
+  });
 }
 
 NewsCompCtrl.$inject = ['DataServices'];

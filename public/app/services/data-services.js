@@ -229,8 +229,8 @@ function DataServices($http, $window, $location){
         $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
         $location.path('/');
       } else {
-        console.log(res.data.articles)
-        return res.data.articles;
+        console.log(res.data.posts)
+        return res.data.posts;
       }
     }, function failure(res) {
       $scope.results = [];

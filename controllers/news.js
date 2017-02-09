@@ -14,7 +14,7 @@ router.route('/')
 })
 .post(function(req, res) {
   console.log("post route hit")
-  var url = 'https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=' + process.env.NEWS_API_KEY;
+  var url = 'http://webhose.io/search?token='+ process.env.WEBHOSE_API_KEY +'&format=json&q=(AAPL%20OR%20NFLX)%20language%3A(english)%20(site_type%3Anews)';
   request.get(url, function(error, response, body) {
     res.send(body);
   })
