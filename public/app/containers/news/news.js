@@ -7,6 +7,8 @@ angular.module('App')
 
 function NewsCompCtrl(){
   newsComp = this;
+
+  newsComp.query = ""
 }
 
 NewsCompCtrl.$inject = [];
