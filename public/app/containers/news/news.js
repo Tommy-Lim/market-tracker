@@ -5,10 +5,12 @@ angular.module('App')
   controllerAs: 'newsComp'
 })
 
-function NewsCompCtrl(){
+function NewsCompCtrl(DataServices){
   newsComp = this;
 
-  newsComp.query = ""
+  newsComp.query = "";
+
+  DataServices.searchNews();
 }
 
-NewsCompCtrl.$inject = [];
+NewsCompCtrl.$inject = ['DataServices'];

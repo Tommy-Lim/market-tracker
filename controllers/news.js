@@ -13,6 +13,7 @@ router.route('/')
   })
 })
 .post(function(req, res) {
+  console.log("post route hit")
   var url = 'https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=' + process.env.NEWS_API_KEY;
   request.get(url, function(error, response, body) {
     res.send(body);

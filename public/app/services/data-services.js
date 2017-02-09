@@ -217,16 +217,19 @@ function DataServices($http, $window, $location){
   }
 
   this.searchNews = function(){
+    console.log("search news hit")
     var req = {
       url: '/api/news',
       method: "POST"
     };
 
     return $http(req).then(function success(res) {
+      console.log("http request hit")
       if (res.data.Error === "News not found!") {
         $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
         $location.path('/');
       } else {
+        console.log(res.data.articles)
         return res.data.articles;
       }
     }, function failure(res) {
