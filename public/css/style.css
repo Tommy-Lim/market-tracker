@@ -4,6 +4,10 @@ body{
   min-height: 100vh;
 }
 
+a:hover, a:focus{
+  text-decoration: none;
+}
+
 .ui-view-div{
   min-height: calc(100vh - 290px);
 }
@@ -15,6 +19,10 @@ body{
 .stock-symbol{
   font-size: 34px;
   font-weight: 500;
+}
+
+.search-result-number{
+  margin-bottom: 20px;
 }
 
 .stock-name{
@@ -52,6 +60,14 @@ body{
 
 .media.panel{
   height: 79px;
+}
+
+.media.panel .media-heading{
+  color: black;
+}
+
+.media.panel .media-body{
+  color: grey;
 }
 
 .media-heading{

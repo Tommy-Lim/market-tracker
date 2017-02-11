@@ -216,11 +216,16 @@ function DataServices($http, $window, $location){
     });
   }
 
-  this.searchNews = function(){
+  this.searchNews = function(query){
+    if(!query){
+      query = "tech";
+    }
+
     console.log("search news hit")
+
     var req = {
-      url: '/api/news',
-      method: "POST"
+      url: '/api/news/' + query,
+      method: "GET"
     };
 
     return $http(req).then(function success(res) {

@@ -69,6 +69,13 @@ footer-comp{
 .footer-footer{
   background-color: #444;
   min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-footer .row .col-sm-4{
+  margin-bottom: 0px;
 }
 
 .resources{
@@ -135,22 +142,7 @@ footer-comp{
   color: white;
 }
 
-.mongo-logo{
-  width: 110px;
-  padding-right: 5px;
-}
-
-.express-logo{
-  width: 110px;
-  padding-right: 5px;
-}
-
-.angular-logo{
-  width: 110px;
-  padding-right: 5px;
-}
-
-.node-logo{
-  width: 110px;
+.mongo-logo, .express-logo, .angular-logo, .node-logo{
+  width: 80px;
   padding-right: 5px;
 }

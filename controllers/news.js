@@ -12,9 +12,12 @@ router.route('/')
     res.send(body);
   })
 })
-.post(function(req, res) {
-  console.log("post route hit")
-  var url = 'http://webhose.io/search?token='+ process.env.WEBHOSE_API_KEY +'&format=json&q=(AAPL%20OR%20NFLX)%20language%3A(english)%20(site_type%3Anews)';
+
+router.route('/:query')
+.get(function(req, res) {
+  req.params.query = encodeURIComponent(req.params.query);
+  console.log("get route hit: ", req.params.query)
+  var url = 'http://webhose.io/search?token='+ process.env.WEBHOSE_API_KEY +'&format=json&q=%22' + req.params.query + '%22%20language%3A(english)%20thread.country%3AUS%20site%3Amarketwatch.com%20(site_type%3Anews)&sort=relevancy&ts=1486418270339';
   request.get(url, function(error, response, body) {
     res.send(body);
   })

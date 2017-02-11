@@ -8,11 +8,16 @@ angular.module('App')
 function NewsCompCtrl(DataServices){
   newsComp = this;
 
-  newsComp.query = "";
+  newsComp.query = null;
 
-  DataServices.searchNews().then(function(data){
-    newsComp.articles = data;
-  });
+  newsComp.search = function(query){
+    query = encodeURIComponent(query);
+    DataServices.searchNews(query).then(function(data){
+      newsComp.articles = data;
+      newsComp.queryResult = newsComp.query;
+    });
+  }
+
 }
 
 NewsCompCtrl.$inject = ['DataServices'];
