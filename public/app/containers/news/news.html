@@ -5,7 +5,7 @@
       <h2>Search News</h2>
       <form ng-submit="newsComp.search(newsComp.query)">
         <div class="form-group">
-          <input type="search" class="form-control" id="search" placeholder="Search News: 'AAPL' or 'Netflix' or 'Finance'" ng-model="newsComp.query">
+          <input type="search" class="form-control" id="search" placeholder="Search News: 'AAPL' or 'Netflix' or 'Finance'" ng-model="newsComp.query" autofocus="true">
         </div>
       </form>
     </div>
@@ -37,7 +37,7 @@
             <p class="media-heading">
               {{article.thread.title}}
             </p>
-            <p>{{article.thread.published.split("T")[0] + " T " + article.thread.published.split("T")[1].split(".")[0]}}</p>
+            <p>{{article.thread.published.split("T")[0]}}</p>
           </div>
         </div>
       </a>
