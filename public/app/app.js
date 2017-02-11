@@ -45,7 +45,7 @@ angular.module('App', ['ui.router', 'ui.bootstrap'])
       component: 'portfolioComp'
     })
     .state('newsState', {
-      url: '/news',
+      url: '/news/:query',
       component: 'newsComp'
     })
 

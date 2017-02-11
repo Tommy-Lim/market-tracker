@@ -16,6 +16,21 @@ a:hover, a:focus{
   height: 1em;
 }
 
+.loading-gif{
+
+}
+
+.loading-gif.news{
+  height: 34px;
+}
+
+.input-group-addon-news{
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
 .stock-symbol{
   font-size: 34px;
   font-weight: 500;
@@ -60,6 +75,11 @@ a:hover, a:focus{
 
 .media.panel{
   height: 79px;
+}
+
+.media.panel:hover{
+  background-color: #EEE;
+  transform: scale(1.02,1.02);
 }
 
 .media.panel .media-heading{
