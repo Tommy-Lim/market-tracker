@@ -2,15 +2,15 @@
 
 Check it out for yourself - [Market Tracker](#)!
 
-Market Tracker enables users to simulate playing the stock market; lookup, view, and visualize stocks.  
+Market Tracker enables users to simulate playing the stock market; lookup, view, and visualize stocks data, as well as research financial news.  
 
-Log in or sign up to save stocks to "Watchlist" or "Buy" stocks and save a snapshot of their current market value, then compare later to see your simulated gains (or losses).
+Log in or sign up to build a Portfolio by "Watching" and "Buying" stocks. Save a snapshot of their current market value, then compare later to see your simulated gains (or losses).
 
 Inspired by [MarketWatch](http://www.marketwatch.com/).
 
 ## Why?
 
-To demonstrate in a fun, usable way, the implementation of the MEAN stack: MongoDB, Express, AngularJS, and Node.
+To demonstrate in a fun, usable way, the implementation of the ![MEAN](./public/img/logos/mean-logo.jpg) stack: MongoDB, Express, AngularJS, and Node.
 
 ## User stories
 
@@ -74,4 +74,4 @@ Please feel free to reach out with any questions and/or comments!
 ## Market Tracker in Action
 
 ### Desktop and Mobile Friendly
-![Demo](./public/img/screenshots/mobile-desktop-demo-3.jpg)
+![Demo](./public/img/screenshots/mobile-and-desktop-demo.png)
