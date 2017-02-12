@@ -7,22 +7,23 @@
       <img class="home-demo-img" src="img/screenshots/mobile-and-desktop-demo.png" />
     </div>
   </div>
-  <div class="row signup-container">
-    <div class="col-xs-12" ng-if="!homeComp.DataServices.isLoggedin()">
-      <a class="green sign-up-text" ui-sref="authState()">Sign up / Log in</a></h1>
-    </div>
+
+  <div class="row signup-container" ng-if="!homeComp.Auth.isLoggedIn()">
+    <a class="" ui-sref="authState()">
+      <div class="col-xs-12 sign-up-text" >Sign up / Log in</div>
+    </a>
   </div>
 
   <div class="row feature-container fluid-container">
     <div class="container">
       <div class="col-xs-6 col-sm-4">
-        <h4><span class="green"><i class="fa fa-search fa-4x" aria-hidden="true"> </i></span><br />Research financial news</h4>
+        <h4><span class="green"><i class="fa fa-search fa-3x" aria-hidden="true"> </i></span><br />Research financial news</h4>
       </div>
       <div class="col-xs-6 col-sm-4">
-        <h4><span class="green"><i class="fa fa-money fa-4x" aria-hidden="true"> </i></span><br />Buy and watch stocks</h4>
+        <h4><span class="green"><i class="fa fa-money fa-3x" aria-hidden="true"> </i></span><br />Buy and watch stocks</h4>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <h4><span class="green"><i class="fa fa-line-chart fa-4x" aria-hidden="true"> </i></span><br />Portfolio analysis and graphs</h4>
+        <h4><span class="green"><i class="fa fa-line-chart fa-3x" aria-hidden="true"> </i></span><br />Portfolio analysis and graphs</h4>
       </div>
     </div>
   </div>
@@ -31,14 +32,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <hr/>
         <composite-chart-comp></composite-chart-comp>
       </div>
     </div>
 
-    <hr />
-
-    <div class="row">
+    <div class="row home-news">
       <div ng-repeat="article in homeComp.articles" class="col-md-6">
         <a href="{{article.url}}">
           <div class="media panel">

@@ -5,8 +5,18 @@ angular.module('App')
     controllerAs: 'compositePurchasedComp'
 });
 
-function CompositePurchasedCompCtrl(DataServices) {
+function CompositePurchasedCompCtrl($timeout, DataServices) {
   compositePurchasedComp = this;
+
+  compositePurchasedComp.chartLoading = true;
+  compositePurchasedComp.chartLoaded = false
+  compositePurchasedComp.message1 = "Loading chart";
+
+  $timeout(function (){
+    compositePurchasedComp.message1 = "Loading chart failure: Too many API data requests/min";
+    compositePurchasedComp.message2 = "  Please wait 1 min and try again."
+    compositePurchasedComp.chartLoading = false;
+  }, 2000);
 
   DataServices.getPurchased().then(function(data){
     if(data.length>0){
@@ -90,4 +100,4 @@ function CompositePurchasedCompCtrl(DataServices) {
 
 }; // end compositeChartCompCtrl
 
-CompositeWatchlistCompCtrl.$inject = ['DataServices'];
+CompositeWatchlistCompCtrl.$inject = ['$timeout', 'DataServices'];

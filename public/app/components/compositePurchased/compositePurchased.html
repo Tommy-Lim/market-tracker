@@ -1,1 +1,8 @@
-<div id="composite-purchased" style="height: 400px; min-width: 310px"></div>
+<div id="composite-purchased" style="height: 400px; min-width: 310px">
+  <div ng-if="!compositePurchasedComp.chartLoaded" class="chart-background">
+    <h4>{{compositePurchasedComp.message1}}</h4>
+    <p>{{compositePurchasedComp.message2}}</p>
+    <i ng-if="!compositePurchasedComp.chartLoading" class="fa fa-ban fa-5x text-danger" aria-hidden="true"></i>
+    <img ng-if="compositePurchasedComp.chartLoading" class="loading-gif" src="img/loading.gif" />
+  </div>
+</div>

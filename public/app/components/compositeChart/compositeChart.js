@@ -5,8 +5,18 @@ angular.module('App')
     controllerAs: 'compositeChartComp'
 });
 
-function CompositeChartCompCtrl(DataServices) {
+function CompositeChartCompCtrl($timeout, DataServices) {
   compositeChartComp = this;
+
+  compositeChartComp.chartLoading = true;
+  compositeChartComp.chartLoaded = false
+  compositeChartComp.message1 = "Loading chart";
+
+  $timeout(function (){
+    compositeChartComp.message1 = "Loading chart failure: Too many API data requests/min";
+    compositeChartComp.message2 = "  Please wait 1 min and try again."
+    compositeChartComp.chartLoading = false;
+  }, 2000);
 
   arr = [
     {
@@ -114,4 +124,4 @@ function CompositeChartCompCtrl(DataServices) {
 
 }; // end compositeChartCompCtrl
 
-CompositeChartCompCtrl.$inject = ['DataServices'];
+CompositeChartCompCtrl.$inject = ['$timeout', 'DataServices'];

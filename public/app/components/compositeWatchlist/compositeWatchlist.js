@@ -5,8 +5,18 @@ angular.module('App')
     controllerAs: 'compositeWatchlistComp'
 });
 
-function CompositeWatchlistCompCtrl(DataServices) {
+function CompositeWatchlistCompCtrl($timeout, DataServices) {
   compositeWatchlistComp = this;
+
+  compositeWatchlistComp.chartLoading = true;
+  compositeWatchlistComp.chartLoaded = false
+  compositeWatchlistComp.message1 = "Loading chart";
+
+  $timeout(function (){
+    compositeWatchlistComp.message1 = "Loading chart failure: Too many API data requests/min";
+    compositeWatchlistComp.message2 = "  Please wait 1 min and try again."
+    compositeWatchlistComp.chartLoading = false;
+  }, 2000);
 
   DataServices.getWatchlistSymbols().then(function(data){
 
@@ -90,4 +100,4 @@ function CompositeWatchlistCompCtrl(DataServices) {
 
 }; // end compositeChartCompCtrl
 
-CompositeWatchlistCompCtrl.$inject = ['DataServices'];
+CompositeWatchlistCompCtrl.$inject = ['$timeout', 'DataServices'];

@@ -8,7 +8,7 @@ angular.module('App')
 function HomeCompCtrl($interval, DataServices, AuthServices, Auth){
   var homeComp = this;
 
-  homeComp.DataServices = DataServices;
+  homeComp.Auth = Auth;
 
   DataServices.getNews().then(function(data){
     homeComp.articles = data;

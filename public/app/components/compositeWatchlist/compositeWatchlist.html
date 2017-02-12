@@ -1,1 +1,8 @@
-<div id="composite-watchlist" style="height: 400px; min-width: 310px"></div>
+<div id="composite-watchlist" style="height: 400px; min-width: 310px">
+  <div ng-if="!compositeWatchlistComp.chartLoaded" class="chart-background">
+    <h4>{{compositeWatchlistComp.message1}}</h4>
+    <p>{{compositeWatchlistComp.message2}}</p>
+    <i ng-if="!compositeWatchlistComp.chartLoading" class="fa fa-ban fa-5x text-danger" aria-hidden="true"></i>
+    <img ng-if="compositeWatchlistComp.chartLoading" class="loading-gif" src="img/loading.gif" />
+  </div>
+</div>

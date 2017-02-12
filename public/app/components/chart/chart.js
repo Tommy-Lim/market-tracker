@@ -5,10 +5,19 @@ angular.module('App')
   controllerAs: 'chartComp',
 });
 
-function ChartCompCtrl($state, DataServices){
+function ChartCompCtrl($state, $timeout, DataServices){
   chartComp = this;
 
   chartComp.symbol = $state.params.symbol;
+  chartComp.chartLoading = true;
+  chartComp.chartLoaded = false
+  chartComp.message1 = "Loading chart";
+
+  $timeout(function (){
+    chartComp.message1 = "Loading chart failure: Too many API data requests/min";
+    chartComp.message2 = "  Please wait 1 min and try again."
+    chartComp.chartLoading = false;
+  }, 2000);
 
   arr = [
     {
@@ -19,7 +28,8 @@ function ChartCompCtrl($state, DataServices){
   ]
 
   DataServices.getChartData(arr).then(function(data){
-
+    console.log(data);
+    chartComp.chartLoaded = true;
     $(function () {
       // Create the chart
       Highcharts.stockChart('container', {
@@ -56,4 +66,4 @@ function ChartCompCtrl($state, DataServices){
 
 };
 
-ChartCompCtrl.$inject = ['$state', 'DataServices'];
+ChartCompCtrl.$inject = ['$state', '$timeout', 'DataServices'];
