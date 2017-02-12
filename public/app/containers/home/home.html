@@ -1,55 +1,59 @@
 <alerts-comp></alerts-comp>
 
-<div class="container">
+<div class="fluid-container">
+
   <div class="row">
-
-    <div class="col-md-4 title-content">
-      <h1> Market Tracker</h1>
-      <h4>
-        <i class="fa fa-search" aria-hidden="true"></i> <span class="green">Search stocks right away and create an account to start watching and buying stocks.</span>
-      </h4>
-      <h4>
-        Create customized charts and track all the information you
-        need to be a skilled day-trader.
-      </h4>
-      <h4>
-        Everything at your fingertips -  just sign up and
-        watch your money grow.
-      </h4>
-
-      <hr/>
-
-      <div class="quote-container">
-        <div class="quote">"{{homeComp.quote}}"</div>
-        <p class="quote-signature">- Warren Buffett</p>
-      </div>
-
-      <hr class="hidden-md hidden-lg"/>
-
+    <div class="col-xs-12 flex-center">
+      <img class="home-demo-img" src="img/screenshots/mobile-and-desktop-demo.png" />
     </div>
-
-    <div class="col-md-8">
-      <composite-chart-comp></composite-chart-comp>
-    </div>
-
   </div>
-  <hr />
+  <div class="row signup-container">
+    <div class="col-xs-12" ng-if="!homeComp.DataServices.isLoggedin()">
+      <a class="green sign-up-text" ui-sref="authState()">Sign up / Log in</a></h1>
+    </div>
+  </div>
 
-  <div class="row">
-    <div ng-repeat="article in homeComp.articles" class="col-md-6">
-      <a href="{{article.url}}">
-        <div class="media panel">
-          <div class="media-left">
+  <div class="row feature-container fluid-container">
+    <div class="container">
+      <div class="col-xs-6 col-sm-4">
+        <h4><span class="green"><i class="fa fa-search fa-4x" aria-hidden="true"> </i></span><br />Research financial news</h4>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <h4><span class="green"><i class="fa fa-money fa-4x" aria-hidden="true"> </i></span><br />Buy and watch stocks</h4>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <h4><span class="green"><i class="fa fa-line-chart fa-4x" aria-hidden="true"> </i></span><br />Portfolio analysis and graphs</h4>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <hr/>
+        <composite-chart-comp></composite-chart-comp>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+      <div ng-repeat="article in homeComp.articles" class="col-md-6">
+        <a href="{{article.url}}">
+          <div class="media panel">
+            <div class="media-left">
               <img class="media-object" src="{{article.urlToImage}}" alt="...">
+            </div>
+            <div class="media-body">
+              <p class="media-heading">
+                {{article.title}}
+              </p>
+              <p>{{article.publishedAt.split("T")[0] + " T " + article.publishedAt.split("T")[1].split(".")[0]}}</p>
+            </div>
           </div>
-          <div class="media-body">
-            <p class="media-heading">
-              {{article.title}}
-            </p>
-            <p>{{article.publishedAt.split("T")[0] + " T " + article.publishedAt.split("T")[1].split(".")[0]}}</p>
-          </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   </div>
 </div>

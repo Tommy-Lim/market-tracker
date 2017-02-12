@@ -72,6 +72,7 @@ footer-comp{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 10px 0px;
 }
 
 .footer-footer .row .col-sm-4{

@@ -4,6 +4,14 @@ body{
   min-height: 100vh;
 }
 
+.container{
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 a:hover, a:focus{
   text-decoration: none;
 }
@@ -14,6 +22,63 @@ a:hover, a:focus{
 
 .ui-view-div{
   min-height: calc(100vh - 290px);
+}
+
+.home-demo-img{
+  max-width: 60vw;
+  max-height: calc(60vw/1.72);
+}
+
+
+.feature-container{
+  width: 100vw;
+  text-align: center;
+  padding: 20px 0px;
+  margin: 40px 0px;
+  background-color: #555;
+  color: white;
+}
+
+.feature-container div{
+  height: 140px;
+}
+
+.signup-container{
+  width: 100vw;
+  text-align: center;
+  padding: 20px 0px;
+  margin: 20px 0px;
+  margin-bottom: -50px;
+  background-color: #666;
+  color: white;
+}
+
+.sign-up-text{
+  font-size: 25px;
+}
+
+.sign-up-text:hover{
+  color: white;
+}
+
+.flex-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.flex-middle{
+  display: flex;
+  flex-direction: column;;
+  justify-content: center;
+}
+
+.flex-between{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .chartButton{
@@ -178,6 +243,10 @@ a:hover, a:focus{
 @media(max-width: 768px){
   .ui-view-div{
     min-height: calc(100vh - 380px);
+  }
+  .home-demo-img{
+    max-width: 90vw;
+    max-height: calc(90vw/1.72);
   }
 }
 
