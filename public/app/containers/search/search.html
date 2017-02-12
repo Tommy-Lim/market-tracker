@@ -1,8 +1,9 @@
 <alerts-comp></alerts-comp>
 
 <div class="container search-container">
-  <h4 ng-hide="searchComp.results == null">({{searchComp.results.length}}) Results for "{{searchComp.query}}":</h4>
-  <h4 ng-show="searchComp.results == null">No search entered, search above</h4>
+  <h4 ng-show="searchComp.results.length >0">({{searchComp.results.length}}) Results for "{{searchComp.query}}":</h4>
+  <h4 ng-show="searchComp.results == null && !searchComp.query">No search entered, search above</h4>
+  <h4 ng-show="searchComp.results == 0">No results found for "{{searchComp.query}}".</h4>
   <hr />
   <a ng-repeat="result in searchComp.results track by $index" ui-sref="stockState({symbol: result.Symbol})">
     <div class="panel">
