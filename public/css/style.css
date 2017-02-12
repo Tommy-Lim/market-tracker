@@ -8,6 +8,10 @@ a:hover, a:focus{
   text-decoration: none;
 }
 
+#buy-well{
+  width: 280px;
+}
+
 .ui-view-div{
   min-height: calc(100vh - 290px);
 }
@@ -92,7 +96,7 @@ a:hover, a:focus{
 
 .media-heading{
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .quote-signature{

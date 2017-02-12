@@ -1,0 +1,43 @@
+<div class="container">
+  <hr />
+  <div  ng-if="stockNewsComp.isLoading == true" >
+    Loading news
+    <img class="loading-gif news" src="img/loading.gif" />
+  </div>
+  <h4 ng-show="stockNewsComp.articles.length == 0 && stockNewsComp.symbol !== null">No articles found for {{stockNewsComp.symbolResult}}.</h4>
+  <div ng-show="stockNewsComp.articles.length > 0">
+    <h4 class="search-result-number">({{stockNewsComp.articles.length}}) articles related to {{stockNewsComp.symbolResult}}:</h4>
+    <form>
+      <div class="form-group">
+        <label for="mySelect">Show </label>
+        <select name="mySelect" id="mySelect"
+          ng-options="option.num for option in stockNewsComp.limits.availableOptions track by option.id"
+          ng-model="stockNewsComp.limits.selectedOption"></select>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div ng-repeat="article in stockNewsComp.articles | limitTo:stockNewsComp.limits.selectedOption.num" class="col-md-6">
+      <a href="{{article.thread.url}}">
+        <div class="media panel">
+          <div class="media-left">
+            <img class="media-object" src="{{article.thread.main_image}}" alt="...">
+          </div>
+          <div class="media-body">
+            <p class="media-heading">
+              {{article.thread.title}}
+            </p>
+            <p>
+              {{article.crawled.split("T")[0] + " T " +
+              article.crawled.split("T")[1].split(".")[0].split(":")[0] + ":" +
+              article.crawled.split("T")[1].split(".")[0].split(":")[1] + " +" +
+              article.crawled.split("T")[1].split(".")[1].split("+")[1]}}
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>

@@ -37,7 +37,7 @@
           ui-sref="authState()"
           >Log in / Sign up</button>
       <form ng-submit="stockComp.submitBuy()" class="buy-form" ng-show="stockComp.isLoggedIn() && stockComp.showBuy">
-        <div class="well">
+        <div class="well" id="buy-well">
           <label for="quantity">No. Shares: </label>
           <input name="quantity" class="quantity-input form-control" id="quantity-input" ng-show="stockComp.showBuy" ng-model="stockComp.quantity" type="number" required placeholder="#" autofocus/>
           <input ng-show="stockComp.showBuy" ng-class="{'disabled' : !stockComp.isLoggedIn()}" type="submit" class="btn btn-sm btn-success" value = "Submit"/>
@@ -115,3 +115,5 @@
     </div>
   </div>
 </div>
+
+<stock-news-comp></stock-news-comp>

@@ -15,7 +15,7 @@
   <img ng-if="newsComp.isLoading == true" class="loading-gif news" src="img/loading.gif" />
   <h4 ng-show="newsComp.articles.length == 0 && newsComp.query !== null">No articles found for "{{newsComp.queryResult}}".</h4>
   <div ng-show="newsComp.articles.length > 0">
-    <h4 class="search-result-number">({{newsComp.articles.length}}) articles found for "{{newsComp.queryResult}}":</h4>
+    <h4 class="search-result-number">({{newsComp.articles.length}}) articles related to "{{newsComp.queryResult}}":</h4>
     <form>
       <div class="form-group">
         <label for="mySelect">Show </label>
@@ -37,7 +37,12 @@
             <p class="media-heading">
               {{article.thread.title}}
             </p>
-            <p>{{article.thread.published.split("T")[0]}}</p>
+            <p>
+              {{article.crawled.split("T")[0] + " T " +
+              article.crawled.split("T")[1].split(".")[0].split(":")[0] + ":" +
+              article.crawled.split("T")[1].split(".")[0].split(":")[1] + " +" +
+              article.crawled.split("T")[1].split(".")[1].split("+")[1]}}
+            </p>
           </div>
         </div>
       </a>
