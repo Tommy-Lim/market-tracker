@@ -15,20 +15,17 @@ To demonstrate in a fun, usable way, the implementation of the ![MEAN](./public/
 ## User stories
 
 * As a user, I want to search by symbol or name and find a given stock's key stats.
-
 * As a user, I want to save stocks I'm most interested in so I can view again later in one place.
-
 * As a user, I want to simulate buying stocks and see how they're performing so I can see how I've done.
-
 * As a user, I want to see feature-rich charts for single and multiple stocks at once.
 
 ## Key Technologies
 
-* HTML, CSS, JavaScript
 * AngularJS
 * Node: Express, Express-JWT, bcrypt
 * MongoDB, Mongoose
 * Bootstrap
+* HTML, CSS, JavaScript
 * APIs
   * [Markit On Demand API](http://dev.markitondemand.com/MODApis/)
   * [Highcharts API](http://www.highcharts.com/)
@@ -57,7 +54,6 @@ A value in our site is the amount of data displayed; this makes responsiveness p
 
 * Save and rewrite daily stock close values to reduce repeated stock API requests.
 * Calculate and show in profile losses/gains since "purchasing" a stock.
-* When logged in, populate news articles based on stocks watching and purchased.
 
 ## Contact  
 
