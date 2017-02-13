@@ -71,5 +71,4 @@ Please feel free to reach out with any questions and/or comments!
 
 ## Market Tracker in Action
 
-### Desktop and Mobile Friendly
 ![Demo](./public/img/screenshots/mobile-and-desktop-demo.png)
