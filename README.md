@@ -1,6 +1,6 @@
 # Market Tracker
 
-Check it out for yourself - [Market Tracker](#)!
+Check it out for yourself - [Market Tracker](https://the-market-tracker.herokuapp.com/)!
 
 Market Tracker enables users to simulate playing the stock market; lookup, view, and visualize stocks data, as well as research financial news.  
 
@@ -18,6 +18,7 @@ To demonstrate in a fun, usable way, the implementation of the ![MEAN](./public/
 * As a user, I want to save stocks I'm most interested in so I can view again later in one place.
 * As a user, I want to simulate buying stocks and see how they're performing so I can see how I've done.
 * As a user, I want to see feature-rich charts for single and multiple stocks at once.
+* As a user, I want to search financial news outlets to educate myself on investing.
 
 ## Key Technologies
 
@@ -30,6 +31,7 @@ To demonstrate in a fun, usable way, the implementation of the ![MEAN](./public/
   * [Markit On Demand API](http://dev.markitondemand.com/MODApis/)
   * [Highcharts API](http://www.highcharts.com/)
   * [News API](https://newsapi.org/)
+  * [Webhose.io API](https://webhose.io/)
 
 ## Challenges
 
