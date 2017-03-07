@@ -5,12 +5,20 @@ angular.module('App')
   controllerAs: 'portfolioComp'
 });
 
-function PortfolioCompCtrl($state, $window, DataServices){
+function PortfolioCompCtrl($state, $window, $rootScope, DataServices){
   var portfolioComp = this;
+  console.log($rootScope.purchasedData);
 
-  // DECLARE VARS
+  // WATCHLIST VARS
   portfolioComp.watchlistSymbols = [];
-  portfolioComp.watchlistSymbolsData = [];
+  if(!$rootScope.watchData){
+    $rootScope.watchData = [];
+  }
+
+  // PURCHASED VARS
+  if(!$rootScope.purchasedData){
+    $rootScope.purchasedData = [];
+  }
   portfolioComp.purchasedPastData = [];
   portfolioComp.purchasedSymbols = [];
   portfolioComp.purchasedCurrentData = [];
@@ -19,49 +27,83 @@ function PortfolioCompCtrl($state, $window, DataServices){
   // GET CURRENT DETAILS FOR WATCH LIST STOCKS
   DataServices.getWatchlistSymbols().then(function(data){
     portfolioComp.watchlistSymbols = data;
-
-    DataServices.getStockDetails(portfolioComp.watchlistSymbols, function(data) {
-
-      if(data[0] == 'Request blockedExceeded requests/sec limit.'){
-        if($window.alerts[0] && $window.alerts[0].msg == 'Sorry, Stock API request limit exceeded, please wait 1 min and try again'){
-          // already exists
-        } else{
-          $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
+    // REMOVE STOCKS ALREADY STORED IN LOCAL STORAGE
+    if($rootScope.watchData.length>0){
+      $rootScope.watchData.forEach(function(stock, index){
+        if(data.indexOf(stock.Symbol)<0){
+          $rootScope.watchData.splice(index, 1);
         }
-      }
-
-      portfolioComp.watchlistSymbolsData = data;
-    })
+        portfolioComp.watchlistSymbols.splice(portfolioComp.watchlistSymbols.indexOf(stock.Symbol), 1);
+      })
+    }
+    // GET STOCKS NOT STORED IN LOCAL STORAGE
+    if(portfolioComp.watchlistSymbols.length>0){
+      DataServices.getStockDetails(portfolioComp.watchlistSymbols, function(data) {
+        if(data[0] == 'Request blockedExceeded requests/sec limit.'){
+          if($window.alerts[0] && $window.alerts[0].msg == 'Sorry, Stock API request limit exceeded, please wait 1 min and try again'){
+            // already exists
+          } else{
+            $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
+          }
+        }
+        $rootScope.watchData = $rootScope.watchData.concat(data);
+        portfolioComp.watchlistSymbolsData = $rootScope.watchData;
+      })
+    } else{
+      portfolioComp.watchlistSymbolsData = $rootScope.watchData;
+    }
   });
 
 
   // GET DETAILS FOR PURCHASED STOCKS AT TIME OF PURCHASE AND CURRENT
   DataServices.getPurchased().then(function(data){
     // DATA FOR PURCHASED STOCKS AT TIME OF PURCHASE
-    portfolioComp.purchased = data;
-
-    // CURRENT DATA FOR PURCHASED STOCKS
-    portfolioComp.purchasedSymbols = portfolioComp.purchased.map(function(stock){
-      return stock.stock.Symbol;
-    })
-    DataServices.getStockDetails(portfolioComp.purchasedSymbols, function(data) {
-      if(data[0] == 'Request blocked. Exceeded requests/sec limit.'){
-        if($window.alerts[0] && $window.alerts[0].msg == 'Sorry, Stock API request limit exceeded, please wait 1 min and try again'){
-          // already exists
-        } else{
-          $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
-        }
-      }
-      portfolioComp.purchasedCurrentData = data;
-      portfolioComp.purchased.forEach(function(item1, index){
-        portfolioComp.purchasedCurrentData.forEach(function(item2, index){
-          if(item1.stock.Symbol == item2.Symbol){
-            item1.current = item2;
+    if($rootScope.purchasedData.length == 0){
+      $rootScope.purchasedData = data;
+      portfolioComp.purchased = $rootScope.purchasedData;
+    } else{
+      data.forEach(function(stockFound, index){
+        var pushStock = true;
+        $rootScope.purchasedData.forEach(function(stockSaved, index2){
+          if(stockFound.stock.Symbol == stockSaved.stock.Symbol){
+            pushStock = false;
           }
         })
+        if(pushStock){
+          $rootScope.purchasedData.push(data[index]);
+        }
+        portfolioComp.purchased = $rootScope.purchasedData;
       })
-      console.log("purchased: ", portfolioComp.purchased);
+    }
+    // CURRENT DATA FOR PURCHASED STOCKS
+    $rootScope.purchasedData.forEach(function(stock){
+      if(!stock.current){
+        portfolioComp.purchasedSymbols.push(stock.stock.Symbol);
+      }
     })
+
+    if(portfolioComp.purchasedSymbols.length>0){
+      DataServices.getStockDetails(portfolioComp.purchasedSymbols, function(data) {
+        if(data[0] == 'Request blocked. Exceeded requests/sec limit.'){
+          if($window.alerts[0] && $window.alerts[0].msg == 'Sorry, Stock API request limit exceeded, please wait 1 min and try again'){
+            // already exists
+          } else{
+            $window.alerts.push({msg: 'Sorry, Stock API request limit exceeded, please wait 1 min and try again', type: 'danger'});
+          }
+        }
+        // portfolioComp.purchasedCurrentData = data;
+        data.forEach(function(stockFound){
+          $rootScope.purchasedData.forEach(function(stockSaved, index){
+            if(stockFound.Symbol == stockSaved.stock.Symbol){
+              $rootScope.purchasedData[index].current = stockFound;
+              portfolioComp.purchased = $rootScope.purchasedData;
+              console.log($rootScope.purchasedData);
+            }
+          })
+        })
+      })
+    }
+
   });
 
   // DELETE WATCHLIST ITEM
@@ -79,6 +121,8 @@ function PortfolioCompCtrl($state, $window, DataServices){
   }
 
 
+
+
 }
 
-PortfolioCompCtrl.$inject = ['$state', '$window', 'DataServices'];
+PortfolioCompCtrl.$inject = ['$state', '$window', '$rootScope', 'DataServices'];
