@@ -7,7 +7,6 @@ angular.module('App')
 
 function PortfolioCompCtrl($state, $window, $rootScope, DataServices){
   var portfolioComp = this;
-  console.log($rootScope.purchasedData);
 
   // WATCHLIST VARS
   portfolioComp.watchlistSymbols = [];
@@ -109,14 +108,30 @@ function PortfolioCompCtrl($state, $window, $rootScope, DataServices){
             if(stockFound.Symbol == stockSaved.stock.Symbol){
               $rootScope.purchasedData[index].current = stockFound;
               portfolioComp.purchased = $rootScope.purchasedData;
-              console.log($rootScope.purchasedData);
             }
           })
         })
+        console.log($rootScope.purchasedData);
+        portfolioComp.calculateTotalGains($rootScope.purchasedData);
       })
     }
 
+    portfolioComp.calculateTotalGains($rootScope.purchasedData);
+
   });
+
+  portfolioComp.calculateTotalGains = function(arr){
+    portfolioComp.totalGains = 0;
+    portfolioComp.totalSpent = 0;
+    portfolioComp.totalOwned = 0;
+
+    if(arr.length>0){
+      arr.forEach(function(stock){
+        portfolioComp.totalGains += (stock.current.LastPrice - stock.stock.LastPrice)*stock.quantity;
+        portfolioComp.totalSpent += stock.stock.LastPrice*stock.quantity;
+      })
+    }
+  }
 
   // DELETE WATCHLIST ITEM
   portfolioComp.deleteWatchlistItem = function(symbol){

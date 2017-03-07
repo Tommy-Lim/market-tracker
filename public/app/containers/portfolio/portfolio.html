@@ -21,6 +21,9 @@
               <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deletePurchase(entry._id, entry.stock.Symbol, entry.quantity)"></i>
             </td>
           </tr>
+          <tr>
+            <th><strong> <br /></strong></th>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -117,7 +120,32 @@
               <!-- STOCK MARKET CAP -->
               {{entry.stock.MarketCap}}
             </td>
-         </tr>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+              <strong>Total</strong>
+            </th>
+            <th>
+              {{portfolioComp.totalGains.toFixed(2)}}
+              <i ng-if="(portfolioComp.totalGains)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="(portfolioComp.totalGains)<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </th>
+            <th>
+              {{(portfolioComp.totalGains/portfolioComp.totalSpent*100).toFixed(2)}} %
+              <i ng-if="(portfolioComp.totalGains/portfolioComp.totalSpent*100)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="(portfolioComp.totalGains/portfolioComp.totalSpent*100)<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
         </tbody>
       </table>
     </div>
