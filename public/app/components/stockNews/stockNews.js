@@ -29,7 +29,7 @@ function StockNewsCompCtrl($state, DataServices){
       stockNewsComp.symbolResult = symbol;
     });
   }
-  console.log("STATE:", $state.params.symbol)
+  // console.log("STATE:", $state.params.symbol)
   if($state.params.symbol){
     stockNewsComp.getResults($state.params.symbol)
   }

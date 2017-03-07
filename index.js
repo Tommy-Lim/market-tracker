@@ -42,7 +42,7 @@ app.use(function(err, req, res, next){
 
 // POST API layers
 app.post('/api/auth', function(req, res){
-  console.log(req.body.email);
+  // console.log(req.body.email);
   models.User.findOne({email: req.body.email}, function(err, user){
     // return 401 error if error or no user
     if(err || !user){
@@ -61,15 +61,6 @@ app.post('/api/auth', function(req, res){
 
     return res.send({user: user, token: token});
   })
-})
-
-// Test routes:
-app.get('/api/users', function(req, res){
-  console.log("res: ", res);
-})
-
-app.get('/api/stocks', function(req, res){
-  console.log("res: ", res);
 })
 
 

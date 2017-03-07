@@ -18,17 +18,17 @@ function createStock(newStock){
   models.Stock.findOne({
     name: newStock.name
   }, function(err, stock){
-    console.log("err: ", err);
-    console.log("stock: ", stock);
+    // console.log("err: ", err);
+    // console.log("stock: ", stock);
     if(!stock){
       models.Stock.create(
         newStock,
         function(err, created){
-          console.log("created stock: ", created.name);
+          // console.log("created stock: ", created.name);
         }
       )
     } else{
-      console.log("stock found: ", stock.name);
+      // console.log("stock found: ", stock.name);
     }
   })
 }
@@ -53,18 +53,18 @@ function createUser(newUser){
   models.User.findOne({
     email: newUser.email
   }, function(err, user){
-    console.log("err: ", err);
-    console.log("user: ", user);
+    // console.log("err: ", err);
+    // console.log("user: ", user);
     if(!user){
-      console.log("going to create new user");
+      // console.log("going to create new user");
       models.User.create(
         newUser,
         function(err, created){
-          console.log("created user: ", created.email);
+          // console.log("created user: ", created.email);
         }
       )
     } else{
-      console.log("user found: ", user.email);
+      // console.log("user found: ", user.email);
     }
   })
 }
@@ -94,23 +94,23 @@ var purchased2 = {
 }
 
 function createPurchased(newPurchase){
-  console.log("going to create purchase", newPurchase.stock.name, "for", newPurchase.userEmail);
+  // console.log("going to create purchase", newPurchase.stock.name, "for", newPurchase.userEmail);
   models.Purchased.findOne({
     'userEmail': newPurchase.userEmail,
     'stock.name': newPurchase.stock.name
   }, 'userEmail stock', function(err, purchase){
-    console.log("purchase error: ", err);
-    console.log("purchase found: ", purchase);
+    // console.log("purchase error: ", err);
+    // console.log("purchase found: ", purchase);
     if(!purchase){
       models.Purchased.create(
         newPurchase,
         function(err, created){
-          console.log("purchase created: ", created.stock.name);
+          // console.log("purchase created: ", created.stock.name);
           models.User.findOne({
             email: newPurchase.userEmail
           }, function(err, user){
-            console.log("found user: ", user.email);
-            console.log("add to user created:", created);
+            // console.log("found user: ", user.email);
+            // console.log("add to user created:", created);
             user.purchased.push(created);
             user.save();
           })
@@ -118,7 +118,7 @@ function createPurchased(newPurchase){
         }
       )
     } else{
-      console.log("purchase found: ", newPurchase.stock.name, "for", newPurchase.userEmail);
+      // console.log("purchase found: ", newPurchase.stock.name, "for", newPurchase.userEmail);
     }
   })
 }

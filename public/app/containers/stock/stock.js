@@ -17,7 +17,7 @@ function StockCompCtrl($state, $timeout, $window, $location, DataServices, Auth)
   stockComp.numberOwned = function(){
     if(Auth.isLoggedIn()){
       DataServices.getPurchased().then(function(data){
-        console.log("purchases: ", data);
+        // console.log("purchases: ", data);
         stockComp.ownedShares = 0;
         data.forEach(function(entry){
           if(entry.stock.Symbol == $state.params.symbol){

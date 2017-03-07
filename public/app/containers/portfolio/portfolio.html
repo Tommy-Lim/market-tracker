@@ -13,9 +13,9 @@
       <table class="table table-striped table-bordered">
         <tbody>
           <tr>
-            <th>Symbol</th>
+            <th>Symbol<br /><br /></th>
           </tr>
-          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
+          <tr ng-repeat="entry in portfolioComp.purchased | orderBy:'stock.Symbol':false track by $index">
             <td>
               <a ui-sref="stockState({symbol: entry.stock.Symbol})">{{entry.stock.Symbol}}</a> |
               <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deletePurchase(entry._id, entry.stock.Symbol, entry.quantity)"></i>
@@ -30,58 +30,105 @@
           <tr>
             <th>Name</th>
             <th>Shares</th>
-            <th>Last Price</th>
+            <th>Last<br />Price</th>
             <th>Change</th>
             <th>% Change</th>
-            <th>Change YTD</th>
-            <th>% Change YTD</th>
-            <th>Open</th>
-            <th>High</th>
-            <th>Low</th>
+            <th>Current<br />Value</th>
+            <th>Today's<br />Gain/Loss</th>
+            <th>Today's %<br />Gain/Loss</th>
+            <th>Total<br />Gain/Loss</th>
+            <th>Total %<br />Gain/Loss</th>
+            <th>Purchase<br />Price</th>
             <th>Volume</th>
-            <th>Market Cap</th>
+            <th>Market<br />Cap</th>
           </tr>
-          <tr ng-repeat="entry in portfolioComp.purchasedPastData | orderBy:'stock.Symbol':false track by $index">
-            <td>{{entry.stock.Name}}</td>
-            <td>{{entry.quantity.toFixed(2)}}</td>
-            <td>{{entry.stock.LastPrice.toFixed(2)}}</td>
+          <tr ng-repeat="entry in portfolioComp.purchased | orderBy:'stock.Symbol':false track by $index">
             <td>
-              {{entry.stock.Change.toFixed(2)}}
-              <i ng-if="entry.stock.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="entry.stock.Change<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              <!-- NAMES -->
+              {{entry.stock.Name}}
             </td>
             <td>
-              {{entry.stock.ChangePercent.toFixed(2)}} %
-              <i ng-if="entry.stock.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="entry.stock.ChangePercent<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              <!-- SHARES -->
+              {{entry.quantity.toFixed(2)}}
             </td>
             <td>
-              {{(entry.stock.LastPrice - entry.stock.ChangeYTD).toFixed(2)}}
-              <i ng-if="(entry.stock.LastPrice - entry.stock.ChangeYTD)>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="(entry.stock.LastPrice - entry.stock.ChangeYTD)<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              <!-- LAST PRICE -->
+              {{entry.current.LastPrice.toFixed(2)}}
             </td>
             <td>
-              {{entry.stock.ChangePercentYTD.toFixed(2)}} %
-              <i ng-if="entry.stock.ChangePercentYTD>0" class="fa fa-caret-up green" aria-hidden="true"></i>
-              <i ng-if="entry.stock.ChangePercentYTD<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              <!-- CHANGE -->
+              {{entry.current.Change.toFixed(2)}}
+              <i ng-if="entry.current.Change>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="entry.current.Change<0" class="fa fa-caret-down red" aria-hidden="true"></i>
             </td>
-            <td>{{entry.stock.Open.toFixed(2)}}</td>
-            <td>{{entry.stock.High.toFixed(2)}}</td>
-            <td>{{entry.stock.Low.toFixed(2)}}</td>
-            <td>{{entry.stock.Volume}}</td>
-            <td>{{entry.stock.MarketCap}}</td>
+            <td>
+              <!-- % CHANGE -->
+              {{entry.current.ChangePercent.toFixed(2)}} %
+              <i ng-if="entry.current.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="entry.current.ChangePercent<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+            <td>
+              <!-- CURRENT VALUE -->
+              {{(entry.current.LastPrice*entry.quantity).toFixed(2)}}
+            </td>
+            <td>
+              <!-- TODAYS GAIN/LOSS -->
+              <span ng-if="entry.current.LastPrice != entry.stock.LastPrice">
+                {{(entry.current.Change*entry.quantity).toFixed(2)}}
+                <i ng-if="entry.current.Change*entry.quantity>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+                <i ng-if="entry.current.Change*entry.quantity<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              </span>
+              <span ng-if="entry.current.LastPrice == entry.stock.LastPrice">
+                0.00
+              </span>
+            </td>
+            <td>
+              <!-- TODAYS % GAIN/LOSS -->
+              <span ng-if="entry.current.LastPrice != entry.stock.LastPrice">
+                {{entry.current.ChangePercent.toFixed(2)}} %
+                <i ng-if="entry.current.ChangePercent>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+                <i ng-if="entry.current.ChangePercent<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+              </span>
+              <span ng-if="entry.current.LastPrice == entry.stock.LastPrice">
+                0.00
+              </span>
+            </td>
+            <td>
+              <!-- TOTAL GAIN/LOSS -->
+              {{((entry.current.LastPrice - entry.stock.LastPrice)*entry.quantity).toFixed(2)}}
+              <i ng-if="(entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="(entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+            <td>
+              <!-- TOTAL % GAIN/LOSS -->
+              {{((entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice).toFixed(2)}}
+              <i ng-if="(entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice>0" class="fa fa-caret-up green" aria-hidden="true"></i>
+              <i ng-if="(entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice<0" class="fa fa-caret-down red" aria-hidden="true"></i>
+            </td>
+            <td>
+              <!-- PURCHASE PRICE -->
+              {{entry.stock.LastPrice.toFixed(2)}}
+            </td>
+            <td>
+              <!-- STOCK VOLUME -->
+              {{entry.stock.Volume}}
+            </td>
+            <td>
+              <!-- STOCK MARKET CAP -->
+              {{entry.stock.MarketCap}}
+            </td>
          </tr>
         </tbody>
       </table>
     </div>
     <div class="col-xs-12">
-      <p class="text-danger" ng-hide="portfolioComp.purchasedPastData.length>0">Search then click "Buy" to purchase stocks.</p>
+      <p class="text-danger" ng-hide="portfolioComp.purchased.length>0">Search then click "Buy" to purchase stocks.</p>
     </div>
   </div>
 
   <div class="row">
     <div class="col-xs-12">
-      <composite-purchased-comp ng-if="portfolioComp.purchasedPastData.length>0"></composite-purchased-comp>
+      <composite-purchased-comp ng-if="portfolioComp.purchased.length>0"></composite-purchased-comp>
     </div>
   </div>
 

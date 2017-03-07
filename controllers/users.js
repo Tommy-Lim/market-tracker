@@ -31,7 +31,7 @@ router.route('/watchlist')
     email: req.user.email
   }, function(err, user){
     if(!user){
-      console.log("no user found");
+      // console.log("no user found");
     } else{
       if(!user.watchlist){
         res.send({msg: "watchlist empty", watchlist: []});
@@ -50,9 +50,9 @@ router.route('/purchased')
   models.User.findOne({
     email: req.user.email
   }, function(err, user){
-    console.log("user: ", user);
+    // console.log("user: ", user);
     if(!user){
-      console.log("no user found");
+      // console.log("no user found");
     } else{
       if(!user.purchased){
         res.send({msg: "purchases empty", purchases: []});
@@ -73,7 +73,7 @@ router.route('/watch/:symbol')
     email: req.user.email
   }, function(err, user){
     if(!user){
-      console.log("user not found");
+      // console.log("user not found");
     } else{
       user.watchlist.push(req.params.symbol);
       user.save();
@@ -90,11 +90,11 @@ router.route('/watch/:symbol')
     email: req.user.email
   }, function(err, user){
     if(!user){
-      console.log("user not found");
+      // console.log("user not found");
     } else{
-      console.log("before", user.watchlist);
+      // console.log("before", user.watchlist);
       user.watchlist.splice(user.watchlist.indexOf(req.params.symbol), 1);
-      console.log("after", user.watchlist);
+      // console.log("after", user.watchlist);
       user.save();
       res.send({
         msg: req.params.symbol + " deleted from " + req.user.email + "'s watchlist"
@@ -114,17 +114,17 @@ router.route('/buy/')
     quantity: req.body.data.quantity
   }
 
-  console.log(newPurchase);
+  // console.log(newPurchase);
 
   models.Purchased.create(
     newPurchase,
     function(err, created){
-      console.log("purchase created: ", created.stock.Name);
+      // console.log("purchase created: ", created.stock.Name);
       models.User.findOne({
         email: newPurchase.userEmail
       }, function(err, user){
-        console.log("found user: ", user.email);
-        console.log("add to user created:", created);
+        // console.log("found user: ", user.email);
+        // console.log("add to user created:", created);
         user.purchased.push(created);
         user.save();
         res.send({

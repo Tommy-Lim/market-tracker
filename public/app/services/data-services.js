@@ -221,7 +221,7 @@ function DataServices($http, $window, $location){
       query = "tech";
     }
 
-    console.log("search news hit")
+    // console.log("search news hit")
 
     var req = {
       url: '/api/news/' + query,
@@ -229,12 +229,12 @@ function DataServices($http, $window, $location){
     };
 
     return $http(req).then(function success(res) {
-      console.log("http request hit")
+      // console.log("http request hit")
       if (res.data.Error === "News not found!") {
         $window.alerts.push({msg: 'Error retrieving articles from news API', type: 'danger'});
         $location.path('/');
       } else {
-        console.log(res.data.posts)
+        // console.log(res.data.posts)
         return res.data.posts;
       }
     }, function failure(res) {

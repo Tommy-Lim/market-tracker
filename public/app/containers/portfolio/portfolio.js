@@ -38,15 +38,14 @@ function PortfolioCompCtrl($state, $window, DataServices){
   // GET DETAILS FOR PURCHASED STOCKS AT TIME OF PURCHASE AND CURRENT
   DataServices.getPurchased().then(function(data){
     // DATA FOR PURCHASED STOCKS AT TIME OF PURCHASE
-    portfolioComp.purchasedPastData = data;
-    console.log("purchasedPastData: ", portfolioComp.purchasedPastData);
+    portfolioComp.purchased = data;
 
     // CURRENT DATA FOR PURCHASED STOCKS
-    portfolioComp.purchasedSymbols = portfolioComp.purchasedPastData.map(function(stock){
+    portfolioComp.purchasedSymbols = portfolioComp.purchased.map(function(stock){
       return stock.stock.Symbol;
     })
     DataServices.getStockDetails(portfolioComp.purchasedSymbols, function(data) {
-      if(data[0] == 'Request blockedExceeded requests/sec limit.'){
+      if(data[0] == 'Request blocked. Exceeded requests/sec limit.'){
         if($window.alerts[0] && $window.alerts[0].msg == 'Sorry, Stock API request limit exceeded, please wait 1 min and try again'){
           // already exists
         } else{
@@ -54,7 +53,14 @@ function PortfolioCompCtrl($state, $window, DataServices){
         }
       }
       portfolioComp.purchasedCurrentData = data;
-      console.log("purchasedCurrentData: ", portfolioComp.purchasedCurrentData);
+      portfolioComp.purchased.forEach(function(item1, index){
+        portfolioComp.purchasedCurrentData.forEach(function(item2, index){
+          if(item1.stock.Symbol == item2.Symbol){
+            item1.current = item2;
+          }
+        })
+      })
+      console.log("purchased: ", portfolioComp.purchased);
     })
   });
 

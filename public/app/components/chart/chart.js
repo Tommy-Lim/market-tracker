@@ -28,7 +28,7 @@ function ChartCompCtrl($state, $timeout, DataServices){
   ]
 
   DataServices.getChartData(arr).then(function(data){
-    console.log(data);
+    // console.log(data);
     chartComp.chartLoaded = true;
     $(function () {
       // Create the chart
