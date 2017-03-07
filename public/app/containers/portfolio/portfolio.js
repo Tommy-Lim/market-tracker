@@ -111,12 +111,9 @@ function PortfolioCompCtrl($state, $window, $rootScope, DataServices){
             }
           })
         })
-        console.log($rootScope.purchasedData);
         portfolioComp.calculateTotalGains($rootScope.purchasedData);
       })
     }
-
-    portfolioComp.calculateTotalGains($rootScope.purchasedData);
 
   });
 

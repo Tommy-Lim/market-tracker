@@ -21,7 +21,7 @@
               <i class="fa fa-times red fa-0.5x" aria-hidden="true" ng-click="portfolioComp.deletePurchase(entry._id, entry.stock.Symbol, entry.quantity)"></i>
             </td>
           </tr>
-          <tr>
+          <tr ng-if="portfolioComp.purchased.length>1">
             <th><strong> <br /></strong></th>
           </tr>
         </tbody>
@@ -121,7 +121,7 @@
               {{entry.stock.MarketCap}}
             </td>
           </tr>
-          <tr>
+          <tr ng-if="portfolioComp.purchased.length>1">
             <th></th>
             <th></th>
             <th></th>
