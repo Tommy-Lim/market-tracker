@@ -74,6 +74,18 @@ function PortfolioCompCtrl($state, $window, $rootScope, DataServices){
         }
         portfolioComp.purchased = $rootScope.purchasedData;
       })
+      for(var i = $rootScope.purchasedData.length-1; i>=0; i--){
+        var removeStock = true;
+        data.forEach(function(stockFound){
+          if($rootScope.purchasedData[i].stock.Symbol == stockFound.stock.Symbol){
+            removeStock = false;
+          }
+        })
+        if(removeStock){
+          $rootScope.purchasedData.splice(i,1);
+          portfolioComp.purchased = $rootScope.purchasedData;
+        }
+      }
     }
     // CURRENT DATA FOR PURCHASED STOCKS
     $rootScope.purchasedData.forEach(function(stock){
