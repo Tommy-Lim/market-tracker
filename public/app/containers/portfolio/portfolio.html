@@ -101,7 +101,7 @@
             </td>
             <td>
               <!-- TOTAL % GAIN/LOSS -->
-              {{((entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice).toFixed(2)}}
+              {{((entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice*100).toFixed(2)}} %
               <i ng-if="(entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice>0" class="fa fa-caret-up green" aria-hidden="true"></i>
               <i ng-if="(entry.current.LastPrice - entry.stock.LastPrice)/entry.stock.LastPrice<0" class="fa fa-caret-down red" aria-hidden="true"></i>
             </td>
