@@ -48,6 +48,8 @@ a:hover, a:focus{
 
 .feature-container div{
   height: 140px;
+  display: flex;
+  align-items: center;
 }
 
 .signup-container{
